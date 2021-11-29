@@ -1,9 +1,13 @@
 .App {
   text-align: center;
+  background-image: url("./images/bg-banner.jpeg");
+  background-repeat: "no-repeat";
+  background-size: cover;
+  background-position: "center";
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 20vmin;
   pointer-events: none;
 }
 
@@ -15,7 +19,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 20vh;
   display: flex;
   flex-direction: column;
   align-items: center;
