@@ -8,6 +8,8 @@ import Questions from "./components/quiz/questions";
 import Account from "./components/user/Account";
 import HomePage from "./components/HomePage";
 import firebaseApp from "./firebase/firebaseApp";
+import Faqs from './components/faqs/Faqs_comp.js';
+
 import { useSetRecoilState } from "recoil";
 import state from "./state/global";
 
@@ -46,6 +48,7 @@ const App = () => {
             <Route path="/login" component={SignIn} />
             <Route path="/quiz" component={Questions} />
             <Route path="/user/account" component={Account} />
+            <Route path="/faqs" component={Faqs} />
           </Switch>
         </div>
       </div>
