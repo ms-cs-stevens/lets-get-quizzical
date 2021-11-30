@@ -40,7 +40,17 @@ async function changePassword(email, oldPassword, newPassword) {
 
 async function emailSignIn(email, password) {
   try {
-    await firebase.auth().signInWithEmailAndPassword(email, password);
+    const authResponse = await firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password);
+
+    const user = authResponse.user;
+    return {
+      email: user.email,
+      uid: user.uid,
+      firstName: user.displayName.split(" ")[0],
+      lastName: user.displayName.split(" ")[1],
+    };
   } catch (e) {
     throw e;
   }

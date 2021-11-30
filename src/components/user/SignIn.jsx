@@ -13,6 +13,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import { emailSignIn, passwordReset } from "../../firebase/firebaseFunctions";
 import banner from "../../images/sign-in-page.jpg";
 import { useForm, Controller } from "react-hook-form";
+import { Redirect } from "react-router";
+import { useRecoilValue } from "recoil";
+import state from "../../state/global";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -62,8 +65,8 @@ export default function SignInSide({ showWelcomeMessage }) {
   const classes = useStyles();
   const [additionalError, setAdditionalError] = useState("");
   const { handleSubmit, control } = useForm();
+  const currentUser = useRecoilValue(state.currentUserState);
 
-  // const { currentUser } = useContext(AuthContext);
   const handleLogin = async (values) => {
     const { email, password } = values;
     try {
@@ -95,15 +98,13 @@ export default function SignInSide({ showWelcomeMessage }) {
       );
     }
   };
-  // if (currentUser) {
-  //   return <Redirect to="/" />;
-  // }
+
+  if (currentUser) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <Grid container component="main" className={classes.root}>
-      {/* <Helmet>
-        <title>Roadster | Login</title>
-      </Helmet> */}
       <CssBaseline />
       <Grid item xs={false} sm={4} md={8} className={classes.image} />
       <Grid item xs={12} sm={8} md={4} component={Paper} elevation={6} square>
