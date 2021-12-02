@@ -13,12 +13,11 @@ import { useRecoilState } from "recoil";
 import state from "../state/global";
 
 const useStyles = makeStyles((theme) => ({
-  // appBar: {
-  //   borderBottomColor: "#564691",
-  //   background: "#564691",
-  //   height: "10vh",
-  //   // position: "fixed",
-  // },
+  appBar: {
+    borderBottomColor: "#564691",
+    background: "#564691",
+    height: "10vh",
+  },
   root: {
     flexGrow: 1,
   },
@@ -82,7 +81,7 @@ export default function Navigation() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="sticky" className={classes.appBar}>
         <Toolbar>
           <Typography
             component="h1"
