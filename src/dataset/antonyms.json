@@ -68,5 +68,75 @@
     "answer": "Unfortunate",
     "choices": ["Unfortunate", "Infortunate", "Nonfortunate", "Afortunate"],
     "category": "antonyms"
+  },
+  {
+    "id": "a-11",
+    "statement": "Start",
+    "answer": "Stop",
+    "choices": ["Initialize", "Stop", "Commence", "Begin"],
+    "category": "antonyms"
+  },
+  {
+    "id": "a-12",
+    "statement": "Payment",
+    "answer": "Nonpayment",
+    "choices": ["Nonpayment", "Inpayment", "Unpayment", "Apayment"],
+    "category": "antonyms"
+  },
+  {
+    "id": "a-13",
+    "statement": "Sense",
+    "answer": "Nonsense",
+    "choices": ["Nonsense", "Insense", "Unsense", "Asense"],
+    "category": "antonyms"
+  },
+  {
+    "id": "a-14",
+    "statement": "Able",
+    "answer": "Unable",
+    "choices": ["Nonable", "Inable", "Unable", "Notable"],
+    "category": "antonyms"
+  },
+  {
+    "id": "a-15",
+    "statement": "Lead",
+    "answer": "Mislead",
+    "choices": ["Mislead", "Misinterpret", "Unable", "Notable"],
+    "category": "antonyms"
+  },
+  {
+    "id": "a-16",
+    "statement": "Trust",
+    "answer": "Mistrust",
+    "choices": ["Mislead", "Untrust", "Mistrust", "Nontrust"],
+    "category": "antonyms"
+  },
+  {
+    "id": "a-17",
+    "statement": "Behave",
+    "answer": "Mibehave",
+    "choices": ["Mislead", "Misinterpret", "Mibehave", "Nontrust"],
+    "category": "antonyms"
+  },
+  {
+    "id": "a-18",
+    "statement": "Decent",
+    "answer": "Indecent",
+    "choices": ["Misdecent", "Indecent", "Nondecent", "Mislead"],
+    "category": "antonyms"
+  },
+  {
+    "id": "a-19",
+    "statement": "Discreet",
+    "answer": "Indiscreet",
+    "choices": ["Indiscreet", "Misinterpret", "Mibehave", "Mislead"],
+    "category": "antonyms"
+  },
+  {
+    "id": "a-20",
+    "statement": "Belief",
+    "answer": "Disbelief",
+    "choices": ["Disbelief", "Misbelief", "Nonbelieve", "Indecent"],
+    "category": "antonyms"
   }
 ]
