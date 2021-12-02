@@ -1,0 +1,23 @@
+[
+  {
+    "id": "cc-1",
+    "statement": "India",
+    "answer": "Delhi",
+    "choices": ["Delhi", "Chandigarh", "Mumbai", "Chennai"],
+    "category": "country-capitals"
+  },
+  {
+    "id": "cc-2",
+    "statement": "",
+    "answer": "",
+    "choices": ["", ""],
+    "category": "country-capitals"
+  },
+  {
+    "id": "cc-3",
+    "statement": "",
+    "answer": "",
+    "choices": ["", ""],
+    "category": "country-capitals"
+  }
+]

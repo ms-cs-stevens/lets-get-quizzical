@@ -1,0 +1,44 @@
+[
+  {
+    "id": "ss-1",
+    "statement": "Which planet is the most likely candidate for a future human habitat?",
+    "choices": ["Mars", "Jupiter", "Venus", "Neptune"],
+    "answer": "Mars",
+    "category": "solar-system"
+  },
+  {
+    "id": "ss-2",
+    "category": "solar-system",
+    "statement": "Which planet is named after the Roman goddess of beauty?",
+    "answer": "Venus",
+    "choices": ["Venus", "Saturn", "Mars", "Earth"]
+  },
+  {
+    "id": "ss-3",
+    "choices": ["Mercury", "Earth", "Jupiter", "Mars"],
+    "category": "solar-system",
+    "answer": "Mercury",
+    "statement": "Which is the fastest planet?"
+  },
+  {
+    "id": "ss-4",
+    "statement": "Which planet is known for the \"Great Red Spot\"?",
+    "answer": "Jupiter",
+    "category": "solar-system",
+    "choices": ["Mars", "Jupiter", "Venus", "Mercury"]
+  },
+  {
+    "id": "ss-5",
+    "statement": "How many years does it take for Uranus to orbit once around the sun?",
+    "choices": ["165", "163", "167", "120"],
+    "answer": "165",
+    "category": "solar-system"
+  },
+  {
+    "id": "ss-6",
+    "choices": ["Earth", "Mars", "Jupiter", "Neptune"],
+    "category": "solar-system",
+    "statement": "Which planet is covered largely by water?",
+    "answer": "Earth"
+  }
+]

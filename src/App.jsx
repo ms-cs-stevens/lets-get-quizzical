@@ -18,6 +18,7 @@ import Faqs from "./components/faqs/Faqs_comp.js";
 
 import { useSetRecoilState } from "recoil";
 import state from "./state/global";
+import { Leaderboard } from "./components/leaderboard/Leaderboard";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -33,8 +34,8 @@ const App = () => {
             primary: purple,
             divider: purple[700],
             background: {
-              default: '#2d195c', //'#362b6b', //purple[900],
-              paper: '#5b4197', //purple[900],
+              default: "#2d195c", //'#362b6b', //purple[900],
+              paper: "#5b4197", //purple[900],
             },
             text: {
               primary: "#fff",
@@ -80,6 +81,7 @@ const App = () => {
               <Route path="/quiz" component={Questions} />
               <Route path="/add_questions" component={AddQuestions} />
               <Route path="/categories" component={Categories} />
+              <Route path="/leaderboard" component={Leaderboard} />
               <Route path="/user/account" component={Account} />
               <Route path="/faqs" component={Faqs} />
             </Switch>
