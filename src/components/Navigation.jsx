@@ -145,6 +145,13 @@ export default function Navigation() {
               <Button
                 style={{ color: "#fff" }}
                 component={NavLink}
+                to={"/categories"}
+              >
+                Categories
+              </Button>
+              <Button
+                style={{ color: "#fff" }}
+                component={NavLink}
                 to={"/how-to-play"}
               >
                 How to play
