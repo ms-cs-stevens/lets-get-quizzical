@@ -1,0 +1,72 @@
+[
+  {
+    "id": "a-1",
+    "statement": "Withstand",
+    "answer": "Surrender",
+    "choices": ["Withoutstand", "Surrender", "Understand", "Agree"],
+    "category": "antonyms"
+  },
+  {
+    "id": "a-2",
+    "statement": "Boy",
+    "answer": "Girl",
+    "choices": ["Girl", "Friend", "Alice", "Bob"],
+    "category": "antonyms"
+  },
+  {
+    "id": "a-3",
+    "statement": "Doctor",
+    "answer": "Patient",
+    "choices": ["Nurse", "Patient", "Receptionist", "Compounder"],
+    "category": "antonyms"
+  },
+  {
+    "id": "a-4",
+    "statement": "Exterior",
+    "answer": "Interior",
+    "choices": ["Interior", "Currenterior", "Untolerent", "Surrender"],
+    "category": "antonyms"
+  },
+  {
+    "id": "a-5",
+    "statement": "Day",
+    "answer": "Night",
+    "choices": ["Day", "Night", "Evening", "Morning"],
+    "category": "antonyms"
+  },
+  {
+    "id": "a-6",
+    "statement": "Dead",
+    "answer": "Alive",
+    "choices": ["Alice", "Alive", "Slept", "Drowsy"],
+    "category": "antonyms"
+  },
+  {
+    "id": "a-7",
+    "statement": "Off",
+    "answer": "On",
+    "choices": ["On", "Out", "In", "Own"],
+    "category": "antonyms"
+  },
+  {
+    "id": "a-8",
+    "statement": "Agree",
+    "answer": "Disagree",
+    "choices": ["Disagree", "Disappear", "Disgrace", "Un-agree"],
+    "category": "antonyms"
+  },
+  {
+    "id": "a-9",
+    "statement": "Tolerent",
+    "answer": "Intolerent",
+    "choices": ["Untolerent", "Intolerent", "Atolerent", "Nontolerent"],
+    "category": "antonyms"
+  },
+  {
+    "id": "a-10",
+    "statement": "Fortunate",
+    "answer": "Unfortunate",
+    "choices": ["Unfortunate", "Infortunate", "Nonfortunate", "Afortunate"],
+    "category": "antonyms"
+  }
+]
