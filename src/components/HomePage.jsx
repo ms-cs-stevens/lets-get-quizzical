@@ -4,11 +4,13 @@ import { useRecoilValue } from "recoil";
 const HomePage = () => {
   const currentUser = useRecoilValue(state.currentUserState);
   console.log(currentUser);
-  if (currentUser) {
-    return "Welcome to homepage";
-  } else {
-    return "please signin";
-  }
+  return (
+    <div className="homePage">
+      <h1>
+        {currentUser ? "Welcome to homepage" : "Please signin to continue"}
+      </h1>
+    </div>
+  );
 };
 
 export default HomePage;

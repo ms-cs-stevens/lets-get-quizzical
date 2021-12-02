@@ -6,9 +6,9 @@ const states = {
     default: undefined, // default value (aka initial value)
   }),
 
-  ranking: atom({
-    key: "ranking",
-    default: undefined,
+  themeModeState: atom({
+    key: "theme",
+    default: "dark",
   }),
 };
 
