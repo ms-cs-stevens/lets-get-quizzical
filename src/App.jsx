@@ -9,6 +9,8 @@ import Navigation from "./components/Navigation";
 import Signup from "./components/user/SignUp";
 import SignIn from "./components/user/SignIn";
 import Questions from "./components/quiz/questions";
+import AddQuestions from "./components/quiz/AddQuestion";
+import Categories from "./components/quiz/Categories";
 import Account from "./components/user/Account";
 import HomePage from "./components/HomePage";
 import firebaseApp from "./firebase/firebaseApp";
@@ -31,8 +33,8 @@ const App = () => {
             primary: purple,
             divider: purple[700],
             background: {
-              default: "#362b6b", //purple[900],
-              paper: purple[900],
+              default: '#2d195c', //'#362b6b', //purple[900],
+              paper: '#5b4197', //purple[900],
             },
             text: {
               primary: "#fff",
@@ -76,6 +78,8 @@ const App = () => {
               <Route path="/register" component={Signup} />
               <Route path="/login" component={SignIn} />
               <Route path="/quiz" component={Questions} />
+              <Route path="/add_questions" component={AddQuestions} />
+              <Route path="/categories" component={Categories} />
               <Route path="/user/account" component={Account} />
               <Route path="/faqs" component={Faqs} />
             </Switch>
