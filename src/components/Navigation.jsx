@@ -13,6 +13,12 @@ import { useRecoilState } from "recoil";
 import state from "../state/global";
 
 const useStyles = makeStyles((theme) => ({
+  // appBar: {
+  //   borderBottomColor: "#564691",
+  //   background: "#564691",
+  //   height: "10vh",
+  //   // position: "fixed",
+  // },
   root: {
     flexGrow: 1,
   },
@@ -76,15 +82,34 @@ export default function Navigation() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" style={{ background: "#2E3B55" }}>
+      <AppBar position="static">
         <Toolbar>
-          <Typography component="h1" variant="h6" className={classes.title}>
+          <Typography
+            component="h1"
+            align="left"
+            variant="h6"
+            className={classes.title}
+          >
             Let's Get Quizzical
           </Typography>
           {currentUser ? (
             <>
-              <Button style={{ color: "#fff" }} component={NavLink} to="/quiz">
-                Questions
+              <Button style={{ color: "#fff" }} component={NavLink} to={"/"}>
+                Home
+              </Button>
+              <Button
+                style={{ color: "#fff" }}
+                component={NavLink}
+                to={"/faqs"}
+              >
+                FAQs
+              </Button>
+              <Button
+                style={{ color: "#fff" }}
+                component={NavLink}
+                to={"/how-to-play"}
+              >
+                How to play
               </Button>
               <Button
                 style={{ color: "#fff" }}
@@ -114,9 +139,9 @@ export default function Navigation() {
               <Button
                 style={{ color: "#fff" }}
                 component={NavLink}
-                to={"/about"}
+                to={"/faqs"}
               >
-                About
+                FAQs
               </Button>
               <Button
                 style={{ color: "#fff" }}
