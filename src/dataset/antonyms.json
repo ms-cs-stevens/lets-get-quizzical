@@ -138,5 +138,75 @@
     "answer": "Disbelief",
     "choices": ["Disbelief", "Misbelief", "Nonbelieve", "Indecent"],
     "category": "antonyms"
+  },
+  {
+    "id": "a-21",
+    "statement": "Arrive",
+    "answer": "Departure",
+    "choices": ["Go", "Cloudy", "Departure", "Guilty"],
+    "category": "antonyms"
+  },
+  {
+    "id": "a-22",
+    "statement": "Blunt",
+    "answer": "Sharp",
+    "choices": ["Solid", "Defend", "Sharp", "Bold"],
+    "category": "antonyms"
+  },
+  {
+    "id": "a-23",
+    "statement": "Simple",
+    "answer": "Complicated",
+    "choices": ["Complicated", "Humble", "Break", "Cloudy"],
+    "category": "antonyms"
+  },
+  {
+    "id": "a-24",
+    "statement": "Achieve",
+    "answer": "Fail",
+    "choices": ["Humble", "Break", "Fail", "Nonacheive"],
+    "category": "antonyms"
+  },
+  {
+    "id": "a-25",
+    "statement": "Innocent",
+    "answer": "Guilty",
+    "choices": ["Sharp", "Smart", "Guilty", "Blunt"],
+    "category": "antonyms"
+  },
+  {
+    "id": "a-26",
+    "statement": "Arrogant",
+    "answer": "Humble",
+    "choices": ["Bold", "Blunt", "Sharp", "Humble"],
+    "category": "antonyms"
+  },
+  {
+    "id": "a-27",
+    "statement": "Sunny",
+    "answer": "Cloudy",
+    "choices": ["Cloudy", "Rainy", "Dark", "Night"],
+    "category": "antonyms"
+  },
+  {
+    "id": "a-28",
+    "statement": "Timid",
+    "answer": "Bold",
+    "choices": ["Smart", "Blunt", "Bold", "Sharp"],
+    "category": "antonyms"
+  },
+  {
+    "id": "a-29",
+    "statement": "Attack",
+    "answer": "Defend",
+    "choices": ["Hit", "Defend", "Hide", "Look"],
+    "category": "antonyms"
+  },
+  {
+    "id": "a-30",
+    "statement": "Giant",
+    "answer": "Dwarf",
+    "choices": ["Big", "Small", "Solid", "Dwarf"],
+    "category": "antonyms"
   }
 ]

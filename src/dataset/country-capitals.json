@@ -8,16 +8,205 @@
   },
   {
     "id": "cc-2",
-    "statement": "",
-    "answer": "",
-    "choices": ["", ""],
+    "statement": "United States of America (USA)",
+    "answer": "Washington D.C.",
+    "choices": ["Washington D.C.", "New York City", "San Fransisco", "Boston"],
     "category": "country-capitals"
   },
   {
     "id": "cc-3",
-    "statement": "",
-    "answer": "",
-    "choices": ["", ""],
+    "statement": "Canada",
+    "answer": "Ottawa",
+    "choices": ["Vancouver", "Toronto", "Ottawa", "British Columbia"],
+    "category": "country-capitals"
+  },
+  {
+    "id": "cc-4",
+    "statement": "Australia",
+    "answer": "Sydney",
+    "choices": ["Sydney", "Perth", "Melbourne", "Gaba"],
+    "category": "country-capitals"
+  },
+  {
+    "id": "cc-5",
+    "statement": "South Africa",
+    "answer": "Capetown",
+    "choices": ["Johannesburg", "Capetown", "Georgetown", "Maryland"],
+    "category": "country-capitals"
+  },
+  {
+    "id": "cc-6",
+    "statement": "Belgium",
+    "answer": "Brussels",
+    "choices": ["Belmopan", "Thimphu", "Brussels", "Capetown"],
+    "category": "country-capitals"
+  },
+  {
+    "id": "cc-7",
+    "statement": "Columbia",
+    "answer": "Bogota",
+    "choices": ["Bogota", "Mexico city", "Nicosa", "Havana"],
+    "category": "country-capitals"
+  },
+  {
+    "id": "cc-8",
+    "statement": "Cuba",
+    "answer": "Havana",
+    "choices": ["Havana", "Mexico City", "Bogota", "Brussels"],
+    "category": "country-capitals"
+  },
+  {
+    "id": "cc-9",
+    "statement": "France",
+    "answer": "Paris",
+    "choices": ["Rome", "Paris", "London", "Helsinki"],
+    "category": "country-capitals"
+  },
+  {
+    "id": "cc-10",
+    "statement": "Israel",
+    "answer": "Jerusalem",
+    "choices": ["Jerusalem", "Dublin", "Jakarta", "Rome"],
+    "category": "country-capitals"
+  },
+  {
+    "id": "cc-11",
+    "statement": "Italy",
+    "answer": "Rome",
+    "choices": ["Rome", "Nairobi", "Dublin", "Pristina"],
+    "category": "country-capitals"
+  },
+  {
+    "id": "cc-12",
+    "statement": "Malaysia",
+    "answer": "Kuala Lumpur",
+    "choices": ["Kuala Lumpur", "Perak", "Male", "Majuro"],
+    "category": "country-capitals"
+  },
+  {
+    "id": "cc-13",
+    "statement": "New Zeland",
+    "answer": "Wellington",
+    "choices": ["Wellington", "Oslo", "Amsterdam", "Kathmandu"],
+    "category": "country-capitals"
+  },
+  {
+    "id": "cc-14",
+    "statement": "Pakistan",
+    "answer": "Islamabad",
+    "choices": ["Lahore", "Rawalpindi", "Islamabad", "Karimabad"],
+    "category": "country-capitals"
+  },
+  {
+    "id": "cc-15",
+    "statement": "China",
+    "answer": "Beijing",
+    "choices": ["Beijing", "Seoul", "Bern", "Stockholm"],
+    "category": "country-capitals"
+  },
+  {
+    "id": "cc-16",
+    "statement": "Russia",
+    "answer": "Moscow",
+    "choices": ["Moscow", "Beijing", "Tunis", "Berlin"],
+    "category": "country-capitals"
+  },
+  {
+    "id": "cc-17",
+    "statement": "United Arab Emirates (UAE)",
+    "answer": "Abu Dhabi",
+    "choices": ["Dubai", "Abu Dhabi", "Baghdad", "Kabul"],
+    "category": "country-capitals"
+  },
+  {
+    "id": "cc-18",
+    "statement": "Bangladesh",
+    "answer": "Dhaka",
+    "choices": ["Manama", "Dhaka", "Minsk", "Sucre"],
+    "category": "country-capitals"
+  },
+  {
+    "id": "cc-19",
+    "statement": "Brazil",
+    "answer": "Brasilia",
+    "choices": ["Brasilia", "Sofia", "Belmopan", "Stockholm"],
+    "category": "country-capitals"
+  },
+  {
+    "id": "cc-20",
+    "statement": "Cameroon",
+    "answer": "Yaounde",
+    "choices": ["Yaounde", "Bangui", "Rangoon", "Moroni"],
+    "category": "country-capitals"
+  },
+  {
+    "id": "cc-21",
+    "statement": "Chile",
+    "answer": "Santiago",
+    "choices": ["Santiago", "San Jose", "Tunis", "Sydney"],
+    "category": "country-capitals"
+  },
+  {
+    "id": "cc-22",
+    "statement": "Egypt",
+    "answer": "Cairo",
+    "choices": ["Cairo", "Mexico city", "Tunis", "Sofia"],
+    "category": "country-capitals"
+  },
+  {
+    "id": "cc-23",
+    "statement": "Finland",
+    "answer": "Helsinki",
+    "choices": ["Helsinki", "Banjul", "Paris", "Athens"],
+    "category": "country-capitals"
+  },
+  {
+    "id": "cc-24",
+    "statement": "Greece",
+    "answer": "Athens",
+    "choices": ["Berlin", "Athens", "Suva", "Sofia"],
+    "category": "country-capitals"
+  },
+  {
+    "id": "cc-25",
+    "statement": "Germany",
+    "answer": "Berlin",
+    "choices": ["Dublin", "Berlin", "Tunis", "Belmopan"],
+    "category": "country-capitals"
+  },
+  {
+    "id": "cc-26",
+    "statement": "Iran",
+    "answer": "Terhan",
+    "choices": ["Dhaka", "Baghdad", "Jakarta", "Kabul"],
+    "category": "country-capitals"
+  },
+  {
+    "id": "cc-27",
+    "statement": "Mexico",
+    "answer": "Mexico City",
+    "choices": ["Havana", "Mexico City", "Berlin", "Monaco"],
+    "category": "country-capitals"
+  },
+  {
+    "id": "cc-28",
+    "statement": "Netherlands",
+    "answer": "Amsterdam",
+    "choices": ["Oslo", "Dublin", "Amsterdam", "Berlin"],
+    "category": "country-capitals"
+  },
+  {
+    "id": "cc-29",
+    "statement": "Norway",
+    "answer": "Oslo",
+    "choices": ["Muscat", "Oslo", "Warsaw", "Helsinki"],
+    "category": "country-capitals"
+  },
+  {
+    "id": "cc-30",
+    "statement": "Spain",
+    "answer": "Madrid",
+    "choices": ["Barcelona", "Madrid", "Majuro", "Moroni"],
     "category": "country-capitals"
   }
 ]
