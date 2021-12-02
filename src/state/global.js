@@ -10,6 +10,11 @@ const states = {
     key: "theme",
     default: "dark",
   }),
+
+  currentCategoryState: atom({
+    key: "currentCategory",
+    default: undefined,
+  })
 };
 
 export default states;
