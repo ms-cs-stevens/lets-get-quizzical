@@ -2,12 +2,11 @@ import { useEffect, useState } from 'react';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
-import Link from "@material-ui/core/Link";
 import Container from "@mui/material/Container";
-import { NavLink, Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { styled } from '@mui/material/styles';
 import firebase from '../../firebase/firebaseApp';
-import { useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import state from "../../state/global"
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -26,6 +25,7 @@ function Categories() {
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
   const setCurrentState = useSetRecoilState(state.currentCategoryState);
+  const currentCategory = useRecoilValue(state.currentCategoryState);
   const db = firebase.firestore();
 
   const handleCategorySelect = (e, categoryId) => {
@@ -35,12 +35,15 @@ function Categories() {
 
   const getCategories = async () => {
     setLoading(true);
-    const snapshot = await db
-      .collection('categories')
-      .get();
-    let data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    // const snapshot = await db
+    //   .collection('categories')
+    //   .get();
+    // let data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    let data = [
+      {'id': 'country-capitals', 'label': 'Country Capitals'},
+      {'id': 'mathematics', 'label': 'Maths'},
+      {'id': 'solar-system', 'label': 'Solar System'}]
     setCategories(data)
-    console.log(categories)
     setLoading(false)
   };
 
