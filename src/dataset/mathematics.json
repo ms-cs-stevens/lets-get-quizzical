@@ -1,0 +1,23 @@
+[
+  {
+    "id": "m-1",
+    "statement": "1/4 + 3/4 = ?",
+    "answer": "1",
+    "choices": ["1", "3", "4"],
+    "category": "mathematics"
+  },
+  {
+    "id": "m-2",
+    "statement": "",
+    "answer": "",
+    "choices": ["", ""],
+    "category": "mathematics"
+  },
+  {
+    "id": "m-3",
+    "statement": "",
+    "answer": "",
+    "choices": ["", ""],
+    "category": "mathematics"
+  }
+]

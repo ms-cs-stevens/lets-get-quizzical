@@ -6,15 +6,15 @@ const states = {
     default: undefined, // default value (aka initial value)
   }),
 
-  themeModeState: atom({
-    key: "theme",
-    default: "dark",
+  timerState: atom({
+    key: "timer",
+    default: "true",
   }),
 
   currentCategoryState: atom({
     key: "currentCategory",
     default: undefined,
-  })
+  }),
 };
 
 export default states;
