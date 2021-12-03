@@ -40,5 +40,200 @@
     "category": "solar-system",
     "statement": "Which planet is covered largely by water?",
     "answer": "Earth"
+  },
+  {
+    "id": "ss-7",
+    "choices": ["Earth", "Mars", "Jupiter", "Saturn"],
+    "category": "solar-system",
+    "statement": "What is the largest planet in our solar system?",
+    "answer": "Jupiter"
+  },
+  {
+    "id": "ss-8",
+    "choices": ["Earth", "Mars", "Jupiter", "Saturn"],
+    "category": "solar-system",
+    "statement": "Which planet in our solar system has massive rings that are easily visible with a small telescope?",
+    "answer": "Saturn"
+  },
+  {
+    "id": "ss-8",
+    "choices": ["Earth", "Mars", "Jupiter", "Saturn"],
+    "category": "solar-system",
+    "statement": "Which planet in our solar system has massive rings that are easily visible with a small telescope?",
+    "answer": "Saturn"
+  },
+  {
+    "id": "ss-9",
+    "choices": [
+      "Mars is covered by a thick blanket of clouds that only reflect back red light",
+      "The surface is incredibly hot, causing it to glow",
+      "The surface has a lot of iron which turns orange-red when it rusts",
+      "The Martian atmosphere has lots of red dust particles"
+    ],
+    "category": "solar-system",
+    "statement": "Mars is often called “The Red Planet,” but why does it look so red to begin with?",
+    "answer": "The surface has a lot of iron which turns orange-red when it rusts"
+  },
+  {
+    "id": "ss-10",
+    "choices": ["8", "9", "10", "11"],
+    "category": "solar-system",
+    "statement": "How many planets are there in our solar system?",
+    "answer": "8"
+  },
+  {
+    "id": "ss-11",
+    "choices": ["true", "false"],
+    "category": "solar-system",
+    "statement": "In our solar system, the planets known as the giant planets are also known as the outer planets?",
+    "answer": "true"
+  },
+  {
+    "id": "ss-12",
+    "choices": ["1 minutes", "8 minutes", "Instant", "24 hours"],
+    "category": "solar-system",
+    "statement": "How many planets are there in our solar system?",
+    "answer": "8 minutes"
+  },
+  {
+    "id": "ss-13",
+    "choices": [
+      "5000 years",
+      "5 million years",
+      "5 billion years",
+      "500 billion years"
+    ],
+    "category": "solar-system",
+    "statement": "How old is the solar system",
+    "answer": "5 billion years"
+  },
+  {
+    "id": "ss-14",
+    "choices": ["Mars", "Jupiter", "Earth", "Mercury"],
+    "category": "solar-system",
+    "statement": "I am called the red planet. People are planning to visit me.",
+    "answer": "Mars"
+  },
+  {
+    "id": "ss-15",
+    "choices": ["Mars", "Jupiter", "Earth", "Mercury"],
+    "category": "solar-system",
+    "statement": "I'm the closest planet to the sun.",
+    "answer": "Mars"
+  },
+  {
+    "id": "ss-16",
+    "choices": ["Mars", "Jupiter", "Venus", "Mercury"],
+    "category": "solar-system",
+    "statement": "I am the hottest planet.",
+    "answer": "Venus"
+  },
+  {
+    "id": "ss-17",
+    "choices": ["True", "False"],
+    "category": "solar-system",
+    "statement": "Saturn is the only planet with rings.",
+    "answer": "False"
+  },
+  {
+    "id": "ss-18",
+    "choices": ["Lo", "Pluto", "Titan", "Mercury"],
+    "category": "solar-system",
+    "statement": "I am one of the moons of Jupiter.",
+    "answer": "Lo"
+  },
+  {
+    "id": "ss-19",
+    "choices": ["Lo", "Pluto", "Titan", "Mercury"],
+    "category": "solar-system",
+    "statement": "I am one of the moons of Saturn.",
+    "answer": "Titan"
+  },
+  {
+    "id": "ss-20",
+    "choices": ["Uranus", "Saturn", "Jupiter", "Mercury"],
+    "category": "solar-system",
+    "statement": "I move through my orbit on my side like a football.",
+    "answer": "Uranus"
+  },
+  {
+    "id": "ss-21",
+    "choices": ["Uranus", "Neptune", "Jupiter", "Mercury"],
+    "category": "solar-system",
+    "statement": "I am the coldest planets and the farthest from the sun.",
+    "answer": "Neptune"
+  },
+  {
+    "id": "ss-22",
+    "choices": ["True", "False"],
+    "category": "solar-system",
+    "statement": "Earth is the only planet known to have life.",
+    "answer": "True"
+  },
+  {
+    "id": "ss-23",
+    "choices": ["Uranus", "Neptune", "Jupiter", "Mercury"],
+    "category": "solar-system",
+    "statement": "I am the coldest planets and the farthest from the sun.",
+    "answer": "Neptune"
+  },
+  {
+    "id": "ss-24",
+    "choices": ["The Atmosphere", "Stars", "Galaxies", "Pluto"],
+    "category": "solar-system",
+    "statement": "What destroys asteroids and meteorites when they enter its area?",
+    "answer": "The Atmosphere"
+  },
+  {
+    "id": "ss-25",
+    "choices": [
+      "Neil Armstrong",
+      "Marc Garneau",
+      "Yelena Kondakova",
+      "Richard Mullane"
+    ],
+    "category": "solar-system",
+    "statement": "Who was the first person to walk on the moon?",
+    "answer": "Neil Armstrong"
+  },
+  {
+    "id": "ss-26",
+    "choices": ["Planets", "Comets", "The Moon", "The Sun"],
+    "category": "solar-system",
+    "statement": "What is made out of ice, dust, rock and frozen gases?",
+    "answer": "Comets"
+  },
+  {
+    "id": "ss-27",
+    "choices": ["Asteroids", "Comets", "The Moon", "The Sun"],
+    "category": "solar-system",
+    "statement": "What is in the asteroid belt?",
+    "answer": "Asteroids"
+  },
+  {
+    "id": "ss-28",
+    "choices": [
+      "Halley's Comet",
+      "Comet Swift-Tuttle",
+      "Comet Hyakutake",
+      "Comet Shoemaker-Levy 9"
+    ],
+    "category": "solar-system",
+    "statement": "Which comet's orbit brings it close to Earth every 75 years?",
+    "answer": "Halley's Comet"
+  },
+  {
+    "id": "ss-29",
+    "choices": ["A star", "A planet", "A comet", "An asteroid"],
+    "category": "solar-system",
+    "statement": "What is the Sun?",
+    "answer": "A star"
+  },
+  {
+    "id": "ss-30",
+    "choices": ["The Oort Cloud", "The Kuiper Cloud", "Venus", "Nebulas"],
+    "category": "solar-system",
+    "statement": "What was named after the astronomer Jan Oort?",
+    "answer": "The Oort Cloud"
   }
 ]
