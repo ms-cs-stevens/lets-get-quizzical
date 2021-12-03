@@ -167,11 +167,11 @@ function Account() {
     return (
       <Container component="main" maxWidth="md">
         <Helmet>
-          <title>Let's get quizzical | My Account</title>
+          <title>{user.firstName} | My Account</title>
         </Helmet>
         <CssBaseline />
         <div className={classes.paper}>
-        <ProfileCard></ProfileCard>
+        <ProfileCard username={user.firstName}></ProfileCard>
         <br />
         <Card></Card>
           <Avatar
@@ -183,9 +183,7 @@ function Account() {
           </Avatar>
           <br />
           <Typography component="h1" variant="h5">
-            {currentUser
-              ? currentUser.firstName + " " + currentUser.lastName
-              : ""}
+            {user ? user.firstName + " " + user.lastName : ""}
           </Typography>
           <br />
           {userDetails()}
