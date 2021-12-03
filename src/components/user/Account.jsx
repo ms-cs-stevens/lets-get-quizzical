@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import Helmet from "react-helmet";
 import { NavLink } from "react-router-dom";
 // import { updateUserName } from "../../firebase/firebaseFunctions";
 import { useForm, Controller } from "react-hook-form";
@@ -166,14 +165,11 @@ function Account() {
   if (user) {
     return (
       <Container component="main" maxWidth="md">
-        <Helmet>
-          <title>{user.firstName} | My Account</title>
-        </Helmet>
         <CssBaseline />
         <div className={classes.paper}>
-        <ProfileCard username={user.firstName}></ProfileCard>
-        <br />
-        <Card></Card>
+          <ProfileCard username={user.firstName}></ProfileCard>
+          <br />
+          <Card></Card>
           <Avatar
             alt={user.firstName}
             src={user.profileImage}
