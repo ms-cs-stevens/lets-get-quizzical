@@ -1,16 +1,35 @@
 import { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import state from "../../state/global";
-import Button from "@mui/material/Button";
-import firebase from "../../firebase/firebaseApp";
-import Timer from "./Timer";
+import state from "../../state/global"
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import Paper from "@mui/material/Paper";
+import { styled } from "@mui/material/styles";
+import Grid from "@mui/material/Grid";
+import firebase from '../../firebase/firebaseApp';
+import Timer from './Timer';
+import Summary from './Summary'
 import { AuthContext } from "../../AuthProvider";
-
 import countryQuestions from "../../dataset/country-capitals.json";
 import mathematicsQuestions from "../../dataset/mathematics.json";
 import antonymsQuestions from "../../dataset/antonyms.json";
 import solarSystemQuestions from "../../dataset/solar-system.json";
+
+const Item = styled(Paper)(({ theme }) => ({
+  ...theme.typography.body2,
+  textAlign: "center",
+  padding: theme.spacing(2),
+  color: theme.palette.text.primary,
+  lineHeight: "100px",
+  fontWeight: "600",
+  fontSize: 20,
+  borderRadius: 20,
+  cursor: 'pointer',
+}));
 
 function Questions() {
   const history = useHistory();
@@ -62,14 +81,9 @@ function Questions() {
     if (choice === correctAns) {
       setScore(score + 1);
       // save question with ans
-      console.log("--before---", quizAnswers);
-      setQuizAnswers(
-        quizAnswers.push({
-          questionId: { isCorrect: true, selected: choice },
-        })
-      );
-
-      console.log("---quiz ans---", quizAnswers);
+      let answers = quizAnswers;
+      answers[questionId] = { isCorrect: true, selected: choice }
+      setQuizAnswers(answers)
     }
     const nextQuestion = currentQuestion + 1;
     if (nextQuestion < questions.length) {
@@ -89,7 +103,7 @@ function Questions() {
     } else {
       // redirect to category page to select category
       // give alert before redirecting
-      history.push("/categories");
+      // history.push("/categories");
     }
   }, [currentCategory]);
 
@@ -103,44 +117,49 @@ function Questions() {
 
   return (
     <div className="App">
+      <Container maxWidth="lg">
+      <br />
       {showScore ? (
-        <div className="score-section">
-          You scored {score} out of {questions.length}
-        </div>
+        <Summary score={score} questionLength={questions.length}/>
       ) : (
         <>
-          <h1>Quiz</h1>
-          <Timer></Timer>
-          {questions.length > 0 && (
+          <h1>QUIZ</h1>
+          {questions.length > 0 &&
             <>
-              <div className="question-section">
-                <div className="question-count">
-                  <span>Question {currentQuestion + 1}</span>/{questions.length}
-                </div>
-                <div className="question-text">
-                  {questions[currentQuestion].statement}
-                </div>
-              </div>
-              <div className="answer-section">
-                {questions[currentQuestion].choices.map((answerOption) => (
-                  <Button
-                    variant="contained"
-                    onClick={() =>
-                      handleAnswerOptionClick(
-                        questions[currentQuestion].id,
-                        answerOption,
-                        questions[currentQuestion].answer
-                      )
-                    }
-                  >
-                    {answerOption}
-                  </Button>
-                ))}
-              </div>
+              <Timer></Timer>
+              <Card sx={{ minWidth: 275 }} variant="outlined">
+                <CardContent>
+                  <Typography sx={{ fontSize: 16, mt: 2 }} color="text.secondary" gutterBottom>
+                    Question {currentQuestion + 1} / {questions.length}
+                  </Typography>
+                  <Typography variant="h5" component="div" sx={{ mb: 5, mt: 3 }}>
+                    {questions[currentQuestion].statement}
+                  </Typography>
+
+                  <Typography variant="body2">
+                    <Box sx={{ flexGrow: 1 }}>
+                      <Grid container spacing={2}>
+                        {questions[currentQuestion].choices.map((answerOption, index) => (
+                          <Grid item xs={6} key={index}>
+                            <Item
+                              onClick={() => handleAnswerOptionClick(questions[currentQuestion].id, answerOption, questions[currentQuestion].answer)}
+                              key={index}
+                              elevation={3}
+                            >
+                              {answerOption}
+                            </Item>
+                          </Grid>
+                        ))}
+                      </Grid>
+                    </Box>
+                  </Typography>
+                </CardContent>
+              </Card>
             </>
-          )}
+          }
         </>
       )}
+    </Container>
     </div>
   );
 }
