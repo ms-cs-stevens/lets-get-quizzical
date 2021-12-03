@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   Avatar,
   Button,
@@ -14,9 +14,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import { createUserWithEmailPass } from "../../firebase/firebaseFunctions";
 import banner from "../../images/sign-in-page.jpg";
 import { useForm, Controller } from "react-hook-form";
-import { Redirect } from "react-router";
-import { useRecoilValue } from "recoil";
-import state from "../../state/global";
+import { Redirect, useHistory } from "react-router";
+import { AuthContext } from "../../AuthProvider";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -67,8 +66,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignInSide() {
   const classes = useStyles();
+  const history = useHistory();
   const [addlError, setAddlError] = useState("");
-  const currentUser = useRecoilValue(state.currentUserState);
+  const { currentUser } = useContext(AuthContext);
+
   const { handleSubmit, control } = useForm();
   const emailRegex =
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z-]+(?:\.[a-zA-Z-]+)*$/;
@@ -89,6 +90,7 @@ export default function SignInSide() {
       }
 
       await createUserWithEmailPass(email, password, firstName, lastName);
+      history.push("/");
     } catch (error) {
       setAddlError(error.message);
     }

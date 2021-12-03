@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -7,16 +7,13 @@ import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { signout } from "../firebase/firebaseFunctions";
-import { useRecoilState } from "recoil";
-import state from "../state/global";
+import { AuthContext } from "../AuthProvider";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    borderBottomColor: "#564691",
-    background: "#564691",
-    height: "10vh",
+    height: "3.5 rem",
   },
   root: {
     flexGrow: 1,
@@ -39,7 +36,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Navigation() {
   const classes = useStyles();
-  const [currentUser, setCurrentUser] = useRecoilState(state.currentUserState);
+  const history = useHistory();
+  const { currentUser } = useContext(AuthContext);
   const [anchorEl, setAnchorEl] = useState(null);
   const isMenuOpen = Boolean(anchorEl);
 
@@ -54,7 +52,7 @@ export default function Navigation() {
   const SignOut = () => {
     handleMenuClose();
     signout();
-    setCurrentUser(undefined);
+    history.push("/");
   };
 
   const menuId = "primary-search-account-menu";
@@ -81,7 +79,7 @@ export default function Navigation() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="sticky" className={classes.appBar}>
+      <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <Typography
             component="h1"
@@ -119,7 +117,7 @@ export default function Navigation() {
               </Button>
               &nbsp;
               <Avatar
-                aria-label={currentUser.name}
+                aria-label={currentUser.displayName}
                 aria-controls={menuId}
                 aria-haspopup="true"
                 onClick={handleProfileMenuOpen}
@@ -128,8 +126,7 @@ export default function Navigation() {
                 src={currentUser.photoURL}
                 className={classes.avatar}
               >
-                {currentUser.firstName[0]}
-                {currentUser.lastName[0]}
+                {currentUser.displayName && currentUser.displayName[0]}
               </Avatar>
               {renderMenu}
             </>

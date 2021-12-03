@@ -1,18 +1,49 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import state from "../../state/global"
-import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import Paper from "@mui/material/Paper";
+import { styled } from "@mui/material/styles";
+import Grid from "@mui/material/Grid";
 import firebase from '../../firebase/firebaseApp';
+import Timer from './Timer';
+import Summary from './Summary'
+import { AuthContext } from "../../AuthProvider";
+import countryQuestions from "../../dataset/country-capitals.json";
+import mathematicsQuestions from "../../dataset/mathematics.json";
+import antonymsQuestions from "../../dataset/antonyms.json";
+import solarSystemQuestions from "../../dataset/solar-system.json";
+
+const Item = styled(Paper)(({ theme }) => ({
+  ...theme.typography.body2,
+  textAlign: "center",
+  padding: theme.spacing(2),
+  color: theme.palette.text.primary,
+  lineHeight: "100px",
+  fontWeight: "600",
+  fontSize: 20,
+  borderRadius: 20,
+  cursor: 'pointer',
+}));
 
 function Questions() {
+  const history = useHistory();
+  const { currentUser } = useContext(AuthContext);
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [quizAnswers, setQuizAnswers] = useState([])
-  const [startTime, setStartTime] = useState()
-  const [currentCategory, setCategory] = useRecoilState(state.currentCategoryState)
+  const [quizAnswers, setQuizAnswers] = useState([]);
+  const [startTime, setStartTime] = useState();
+  const [currentCategory, setCategory] = useRecoilState(
+    state.currentCategoryState
+  );
   const db = firebase.firestore();
 
   const getQuestions = async () => {
@@ -24,145 +55,111 @@ function Questions() {
     // let data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
     // // Select Random Question for quiz
     // setQuestions(data.slice(0, 10))
-    setQuestions([
-      {
-          "id": "0LhNFrZ0rWHWQhOqGqX2",
-          "statement": "Which planet is the most likely candidate for a future human habitat?",
-          "choices": [
-              "Mars",
-              "Jupiter",
-              "Venus",
-              "Neptune"
-          ],
-          "answer": "Mars",
-          "category": "solar-system"
-      },
-      {
-          "id": "BkTTY9DSnal7cvxKB7Kl",
-          "category": "solar-system",
-          "statement": "Which planet is named after the Roman goddess of beauty?",
-          "answer": "Venus",
-          "choices": [
-              "Venus",
-              "Saturn",
-              "Mars",
-              "Earth"
-          ]
-      },
-      {
-          "id": "KhXf0gWVbwc6c5JpLTOf",
-          "choices": [
-              "Mercury",
-              "Earth",
-              "Jupiter",
-              "Mars"
-          ],
-          "category": "solar-system",
-          "answer": "Mercury",
-          "statement": "Which is the fastest planet?"
-      },
-      {
-          "id": "g9I91xtGgD6sbNbpVMv3",
-          "statement": "Which planet is known for the \"Great Red Spot\"?",
-          "answer": "Jupiter",
-          "category": "solar-system",
-          "choices": [
-              "Mars",
-              "Jupiter",
-              "Venus",
-              "Mercury"
-          ]
-      },
-      {
-          "id": "jwWT6txpDt2TXfRmyayF",
-          "statement": "How many years does it take for Uranus to orbit once around the sun?",
-          "choices": [
-              "165",
-              "163",
-              "167",
-              "120"
-          ],
-          "answer": "165",
-          "category": "solar-system"
-      },
-      {
-          "id": "vThEBfLPxFy6mCBfpgQg",
-          "choices": [
-              "Earth",
-              "Mars",
-              "Jupiter",
-              "Neptune"
-          ],
-          "category": "solar-system",
-          "statement": "Which planet is covered largely by water?",
-          "answer": "Earth"
-      }
-    ])
-    setLoading(false)
+    let questions;
+    switch (currentCategory) {
+      case "country-capitals":
+        questions = countryQuestions;
+        break;
+      case "mathematics":
+        questions = mathematicsQuestions;
+        break;
+      case "antonyms":
+        questions = antonymsQuestions;
+        break;
+      case "solar-system":
+        questions = solarSystemQuestions;
+        break;
+      default:
+        break;
+    }
+
+    setQuestions(questions);
+    setLoading(false);
   };
 
   const handleAnswerOptionClick = async (questionId, choice, correctAns) => {
-    if(choice === correctAns) {
+    if (choice === correctAns) {
       setScore(score + 1);
       // save question with ans
-      console.log("--before---", quizAnswers)
-      setQuizAnswers(quizAnswers.push({
-        questionId : {isCorrect: true, selected: choice}
-      }))
-
-      console.log("---quiz ans---", quizAnswers)
+      let answers = quizAnswers;
+      answers[questionId] = { isCorrect: true, selected: choice }
+      setQuizAnswers(answers)
     }
     const nextQuestion = currentQuestion + 1;
-		if (nextQuestion < questions.length) {
-			setCurrentQuestion(nextQuestion);
-		} else {
+    if (nextQuestion < questions.length) {
+      setCurrentQuestion(nextQuestion);
+    } else {
       // generate quiz record in db
-			setShowScore(true);
-      setCategory(undefined)
-		}
-  }
+      setShowScore(true);
+      setCategory(undefined);
+    }
+  };
 
   useEffect(() => {
-    if(currentCategory) {
+    if (currentCategory) {
+      const d = new Date();
+      setStartTime(d.getTime());
       getQuestions();
     } else {
       // redirect to category page to select category
+      // give alert before redirecting
+      // history.push("/categories");
     }
-  }, [currentCategory])
+  }, [currentCategory]);
 
-
-  if(loading) {
+  if (loading) {
     return <h1>Loading...</h1>;
+  }
+
+  if (!currentUser) {
+    history.push("/login");
   }
 
   return (
     <div className="App">
+      <Container maxWidth="lg">
+      <br />
       {showScore ? (
-        <div className='score-section'>
-          You scored {score} out of {questions.length}
-        </div>
+        <Summary score={score} questionLength={questions.length}/>
       ) : (
         <>
-          <h1>Quiz</h1>
+          <h1>QUIZ</h1>
           {questions.length > 0 &&
             <>
-              <div className='question-section'>
-                <div className='question-count'>
-                  <span>Question {currentQuestion + 1}</span>/{questions.length}
-                </div>
-                <div className='question-text'>{questions[currentQuestion].statement}</div>
-              </div>
-              <div className='answer-section'>
-                {questions[currentQuestion].choices.map((answerOption) => (
-                  <Button variant="contained" onClick={() => handleAnswerOptionClick(questions[currentQuestion].id, answerOption, questions[currentQuestion].answer)}>
-                    {answerOption}
-                  </Button>
-                ))}
-              </div>
+              <Timer></Timer>
+              <Card sx={{ minWidth: 275 }} variant="outlined">
+                <CardContent>
+                  <Typography sx={{ fontSize: 16, mt: 2 }} color="text.secondary" gutterBottom>
+                    Question {currentQuestion + 1} / {questions.length}
+                  </Typography>
+                  <Typography variant="h5" component="div" sx={{ mb: 5, mt: 3 }}>
+                    {questions[currentQuestion].statement}
+                  </Typography>
+
+                  <Typography variant="body2">
+                    <Box sx={{ flexGrow: 1 }}>
+                      <Grid container spacing={2}>
+                        {questions[currentQuestion].choices.map((answerOption, index) => (
+                          <Grid item xs={6} key={index}>
+                            <Item
+                              onClick={() => handleAnswerOptionClick(questions[currentQuestion].id, answerOption, questions[currentQuestion].answer)}
+                              key={index}
+                              elevation={3}
+                            >
+                              {answerOption}
+                            </Item>
+                          </Grid>
+                        ))}
+                      </Grid>
+                    </Box>
+                  </Typography>
+                </CardContent>
+              </Card>
             </>
           }
         </>
       )}
+    </Container>
     </div>
   );
 }

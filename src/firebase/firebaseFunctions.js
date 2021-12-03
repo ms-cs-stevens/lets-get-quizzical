@@ -1,4 +1,6 @@
+import { doc, setDoc } from "firebase/firestore";
 import firebase from "./firebaseApp";
+const db = firebase.firestore();
 
 const createToken = async () => {
   const user = await firebase.auth().currentUser;
@@ -18,10 +20,21 @@ async function updateUserName(id, data) {
 async function createUserWithEmailPass(email, password, firstName, lastName) {
   await firebase.auth().createUserWithEmailAndPassword(email, password);
   let currentUser = await firebase.auth().currentUser;
-  const newUser = await currentUser.updateProfile({
+  await currentUser.updateProfile({
     displayName: `${firstName} ${lastName}`,
   });
-  return newUser;
+
+  // create user on firebase
+  const user = await firebase.auth().currentUser;
+  const payload = {
+    firstName: user.displayName.split(" ")[0],
+    lastName: user.displayName.split(" ")[1],
+    email: user.email,
+    id: user.uid,
+    score: 0,
+  };
+
+  await setDoc(doc(db, "users", payload.id), payload);
 }
 
 async function signout() {
