@@ -79,7 +79,7 @@ export default function Navigation() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="sticky" className={classes.appBar}>
+      <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <Typography
             component="h1"

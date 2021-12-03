@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
@@ -7,14 +7,15 @@ import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from '@mui/material/DialogContentText';
-import Avatar from '@mui/material/Avatar';
-import AssignmentIcon from '@mui/icons-material/Assignment';
+import DialogContentText from "@mui/material/DialogContentText";
+import Avatar from "@mui/material/Avatar";
+import AssignmentIcon from "@mui/icons-material/Assignment";
 import { Switch, FormControlLabel } from "@material-ui/core";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useHistory } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import firebase from "../../firebase/firebaseApp";
+import { AuthContext } from "../../AuthProvider";
 import { useRecoilState } from "recoil";
 import state from "../../state/global";
 
@@ -27,12 +28,13 @@ const Item = styled(Paper)(({ theme }) => ({
   fontWeight: "600",
   fontSize: 20,
   borderRadius: 20,
-  cursor: 'pointer',
+  cursor: "pointer",
 }));
 
 function Categories() {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const { currentUser } = useContext(AuthContext);
   const [categories, setCategories] = useState({});
   const [currentCategory, setCurrentCategory] = useRecoilState(
     state.currentCategoryState
@@ -63,9 +65,12 @@ function Categories() {
     //   .get();
     // let data = {}
     // snapshot.docs.map((doc) => (data[doc.id] = ...doc.data()));
-    let data = { "country-capitals": "Country Capitals",
-      "mathematics": "Maths",
-      "solar-system": "Solar System" };
+    let data = {
+      "country-capitals": "Country Capitals",
+      mathematics: "Maths",
+      "solar-system": "Solar System",
+      antonyms: "Antonyms",
+    };
     setCategories(data);
     setLoading(false);
   };
@@ -78,6 +83,10 @@ function Categories() {
     return <h1>Loading...</h1>;
   }
 
+  if (!currentUser) {
+    history.push("/login");
+  }
+
   return (
     <Container maxWidth="md">
       <h2>SELECT THE CATEGORY FOR QUIZ</h2>
@@ -87,7 +96,7 @@ function Categories() {
         justifyContent="space-evenly"
         alignItems="center"
       >
-        { Object.entries(categories).map(([key, value]) => (
+        {Object.entries(categories).map(([key, value]) => (
           <Grid item xs={6} md={4} key={key}>
             <Box
               sx={{
@@ -111,22 +120,23 @@ function Categories() {
       </Grid>
       <Dialog maxWidth={"sm"} fullWidth={true} open={open} align="left">
         <DialogTitle>
-        <Grid container direction="row" alignItems="center">
-          <Grid item xs={2}>
-            <Avatar variant="rounded" sx={{ width: 56, height: 56 }}>
-              <AssignmentIcon />
-            </Avatar>
+          <Grid container direction="row" alignItems="center">
+            <Grid item xs={2}>
+              <Avatar variant="rounded" sx={{ width: 56, height: 56 }}>
+                <AssignmentIcon />
+              </Avatar>
+            </Grid>
+            <Grid item xs={10}>
+              Selected Category: {categories[currentCategory]}
+              <br />
+              <small>10 Questions</small>
+            </Grid>
           </Grid>
-          <Grid item xs={10}>
-            Selected Category: {categories[currentCategory]}
-            <br/>
-            <small>10 Questions</small>
-          </Grid>
-        </Grid>
         </DialogTitle>
         <DialogContent dividers>
           <DialogContentText>
-            You can set timer for quiz. You'll get 1 bonus point for each correct question if finished within the time.
+            You can set timer for quiz. You'll get 1 bonus point for each
+            correct question if finished within the time.
           </DialogContentText>
           <Box
             noValidate
@@ -140,7 +150,9 @@ function Categories() {
           >
             <FormControlLabel
               sx={{ mt: 1 }}
-              control={ <Switch checked={timer} onChange={() => setTimer(!timer)} />  }
+              control={
+                <Switch checked={timer} onChange={() => setTimer(!timer)} />
+              }
               label="Timer"
             />
           </Box>

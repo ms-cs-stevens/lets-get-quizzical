@@ -16,8 +16,6 @@ import {
   makeStyles,
 } from "@material-ui/core";
 import { deepPurple } from "@material-ui/core/colors";
-import { useRecoilValue } from "recoil";
-import state from "../../state/global";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -27,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   form: {
-    width: "100%", // Fix IE 11 issue.
+    width: "100%",
     marginTop: theme.spacing(3),
   },
   submit: {

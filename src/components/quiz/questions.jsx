@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import state from "../../state/global";
 import Button from "@mui/material/Button";
 import firebase from "../../firebase/firebaseApp";
 import Timer from "./Timer";
+import { AuthContext } from "../../AuthProvider";
 
 import countryQuestions from "../../dataset/country-capitals.json";
 import mathematicsQuestions from "../../dataset/mathematics.json";
@@ -13,6 +14,7 @@ import solarSystemQuestions from "../../dataset/solar-system.json";
 
 function Questions() {
   const history = useHistory();
+  const { currentUser } = useContext(AuthContext);
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showScore, setShowScore] = useState(false);
@@ -93,6 +95,10 @@ function Questions() {
 
   if (loading) {
     return <h1>Loading...</h1>;
+  }
+
+  if (!currentUser) {
+    history.push("/login");
   }
 
   return (
