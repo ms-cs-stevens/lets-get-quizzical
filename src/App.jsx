@@ -38,7 +38,7 @@ const App = () => {
               <Route path="/learn" component={Learn} />
               <Route path="/leaderboard" component={Leaderboard} />
               <Route path="/user/account" component={Account} />
-              <Route path="/faqs" component={Faqs} />
+              <Route path="/how-to-play" component={Faqs} />
             </Switch>
           </div>
         </div>
