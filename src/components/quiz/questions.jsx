@@ -1,18 +1,18 @@
 import { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import state from "../../state/global"
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
+import state from "../../state/global";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
-import firebase from '../../firebase/firebaseApp';
-import Timer from './Timer';
-import Summary from './Summary'
+import firebase from "../../firebase/firebaseApp";
+import Timer from "./Timer";
+import Summary from "./Summary";
 import { AuthContext } from "../../AuthProvider";
 import countryQuestions from "../../dataset/country-capitals.json";
 import mathematicsQuestions from "../../dataset/mathematics.json";
@@ -28,7 +28,7 @@ const Item = styled(Paper)(({ theme }) => ({
   fontWeight: "600",
   fontSize: 20,
   borderRadius: 20,
-  cursor: 'pointer',
+  cursor: "pointer",
 }));
 
 function Questions() {
@@ -82,8 +82,8 @@ function Questions() {
       setScore(score + 1);
       // save question with ans
       let answers = quizAnswers;
-      answers[questionId] = { isCorrect: true, selected: choice }
-      setQuizAnswers(answers)
+      answers[questionId] = { isCorrect: true, selected: choice };
+      setQuizAnswers(answers);
     }
     const nextQuestion = currentQuestion + 1;
     if (nextQuestion < questions.length) {
@@ -101,9 +101,8 @@ function Questions() {
       setStartTime(d.getTime());
       getQuestions();
     } else {
-      // redirect to category page to select category
-      // give alert before redirecting
-      // history.push("/categories");
+      setCategory("country-capitals");
+      getQuestions();
     }
   }, [currentCategory]);
 
@@ -118,48 +117,64 @@ function Questions() {
   return (
     <div className="App">
       <Container maxWidth="lg">
-      <br />
-      {showScore ? (
-        <Summary score={score} questionLength={questions.length}/>
-      ) : (
-        <>
-          <h1>QUIZ</h1>
-          {questions.length > 0 &&
-            <>
-              <Timer></Timer>
-              <Card sx={{ minWidth: 275 }} variant="outlined">
-                <CardContent>
-                  <Typography sx={{ fontSize: 16, mt: 2 }} color="text.secondary" gutterBottom>
-                    Question {currentQuestion + 1} / {questions.length}
-                  </Typography>
-                  <Typography variant="h5" component="div" sx={{ mb: 5, mt: 3 }}>
-                    {questions[currentQuestion].statement}
-                  </Typography>
+        <br />
+        {showScore ? (
+          <Summary score={score} questionLength={questions.length} />
+        ) : (
+          <>
+            <h1>QUIZ</h1>
+            {questions && questions.length > 0 && (
+              <>
+                <Timer></Timer>
+                <Card sx={{ minWidth: 275 }} variant="outlined">
+                  <CardContent>
+                    <Typography
+                      sx={{ fontSize: 16, mt: 2 }}
+                      color="text.secondary"
+                      gutterBottom
+                    >
+                      Question {currentQuestion + 1} / {questions.length}
+                    </Typography>
+                    <Typography
+                      variant="h5"
+                      component="div"
+                      sx={{ mb: 5, mt: 3 }}
+                    >
+                      {questions[currentQuestion].statement}
+                    </Typography>
 
-                  <Typography variant="body2">
-                    <Box sx={{ flexGrow: 1 }}>
-                      <Grid container spacing={2}>
-                        {questions[currentQuestion].choices.map((answerOption, index) => (
-                          <Grid item xs={6} key={index}>
-                            <Item
-                              onClick={() => handleAnswerOptionClick(questions[currentQuestion].id, answerOption, questions[currentQuestion].answer)}
-                              key={index}
-                              elevation={3}
-                            >
-                              {answerOption}
-                            </Item>
-                          </Grid>
-                        ))}
-                      </Grid>
-                    </Box>
-                  </Typography>
-                </CardContent>
-              </Card>
-            </>
-          }
-        </>
-      )}
-    </Container>
+                    <Typography variant="body2">
+                      <Box sx={{ flexGrow: 1 }}>
+                        <Grid container spacing={2}>
+                          {questions[currentQuestion].choices.map(
+                            (answerOption, index) => (
+                              <Grid item xs={6} key={index}>
+                                <Item
+                                  onClick={() =>
+                                    handleAnswerOptionClick(
+                                      questions[currentQuestion].id,
+                                      answerOption,
+                                      questions[currentQuestion].answer
+                                    )
+                                  }
+                                  key={index}
+                                  elevation={3}
+                                >
+                                  {answerOption}
+                                </Item>
+                              </Grid>
+                            )
+                          )}
+                        </Grid>
+                      </Box>
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </>
+            )}
+          </>
+        )}
+      </Container>
     </div>
   );
 }

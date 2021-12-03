@@ -10,7 +10,6 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import Avatar from "@mui/material/Avatar";
 import AssignmentIcon from "@mui/icons-material/Assignment";
-import { Switch, FormControlLabel } from "@material-ui/core";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useHistory } from "react-router-dom";
 import { styled } from "@mui/material/styles";
@@ -128,34 +127,14 @@ function Categories() {
             </Grid>
             <Grid item xs={10}>
               Selected Category: {categories[currentCategory]}
-              <br />
-              <small>10 Questions</small>
             </Grid>
           </Grid>
         </DialogTitle>
         <DialogContent dividers>
           <DialogContentText>
-            You can set timer for quiz. You'll get 1 bonus point for each
-            correct question if finished within the time.
+            You'll now see a list of flashcards for your selected category.
+            Click on each card to see the answer.
           </DialogContentText>
-          <Box
-            noValidate
-            component="form"
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              m: "auto",
-              width: "fit-content",
-            }}
-          >
-            <FormControlLabel
-              sx={{ mt: 1 }}
-              control={
-                <Switch checked={timer} onChange={() => setTimer(!timer)} />
-              }
-              label="Timer"
-            />
-          </Box>
         </DialogContent>
         <DialogActions>
           <Button color="primary" onClick={cancelLearn}>
