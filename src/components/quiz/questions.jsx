@@ -3,6 +3,7 @@ import { useRecoilState } from "recoil";
 import state from "../../state/global"
 import Button from '@mui/material/Button';
 import firebase from '../../firebase/firebaseApp';
+import Timer from './Timer';
 
 function Questions() {
   const [questions, setQuestions] = useState([]);
@@ -144,6 +145,7 @@ function Questions() {
       ) : (
         <>
           <h1>Quiz</h1>
+          <Timer></Timer>
           {questions.length > 0 &&
             <>
               <div className='question-section'>
