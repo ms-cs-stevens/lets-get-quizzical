@@ -7,7 +7,7 @@ import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { signout } from "../firebase/firebaseFunctions";
 import { AuthContext } from "../AuthProvider";
 
@@ -36,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Navigation() {
   const classes = useStyles();
+  const history = useHistory();
   const { currentUser } = useContext(AuthContext);
   const [anchorEl, setAnchorEl] = useState(null);
   const isMenuOpen = Boolean(anchorEl);
@@ -51,6 +52,7 @@ export default function Navigation() {
   const SignOut = () => {
     handleMenuClose();
     signout();
+    history.push("/");
   };
 
   const menuId = "primary-search-account-menu";
