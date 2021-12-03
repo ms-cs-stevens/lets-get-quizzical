@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Helmet from "react-helmet";
 import { NavLink } from "react-router-dom";
 // import { updateUserName } from "../../firebase/firebaseFunctions";
 import { useForm, Controller } from "react-hook-form";
+import { AuthContext } from "../../AuthProvider";
 
 import {
   Avatar,
@@ -59,24 +60,25 @@ const useStyles = makeStyles((theme) => ({
 
 function Account() {
   const classes = useStyles();
-  const currentUser = useRecoilValue(state.currentUserState);
+  const { currentUser } = useContext(AuthContext);
   const [user, setUser] = useState(null);
   const { handleSubmit, control } = useForm();
 
   useEffect(() => {
     async function fetchUser() {
       if (currentUser) {
-        setUser(user);
+        setUser({
+          firstName: currentUser.displayName.split(" ")[0],
+          lastName: currentUser.displayName.split(" ")[1],
+          email: currentUser.email,
+        });
       }
     }
     fetchUser();
   }, [currentUser]);
 
   const onSubmit = async (data) => {
-    if (
-      data.firstName !== currentUser.firstName ||
-      data.lastName !== currentUser.lastName
-    ) {
+    if (data.firstName !== user.firstName || data.lastName !== user.lastName) {
       try {
         // setUser(updatedUser);
       } catch (e) {
@@ -93,7 +95,7 @@ function Account() {
             <Controller
               name="firstName"
               control={control}
-              defaultValue={currentUser.firstName}
+              defaultValue={user.firstName}
               render={({
                 field: { onChange, value },
                 fieldState: { error },
@@ -117,7 +119,7 @@ function Account() {
             <Controller
               name="lastName"
               control={control}
-              defaultValue={currentUser.lastName}
+              defaultValue={user.lastName}
               render={({
                 field: { onChange, value },
                 fieldState: { error },
@@ -147,7 +149,7 @@ function Account() {
               }}
               label="Email"
               name="email"
-              defaultValue={currentUser.email}
+              defaultValue={user.email}
               variant="outlined"
             />
           </Grid>
@@ -161,7 +163,7 @@ function Account() {
     );
   };
 
-  if (currentUser) {
+  if (user) {
     return (
       <Container component="main" maxWidth="sm">
         <Helmet>
@@ -170,17 +172,15 @@ function Account() {
         <CssBaseline />
         <div className={classes.paper}>
           <Avatar
-            alt={currentUser.firstName}
-            src={currentUser.profileImage}
+            alt={user.firstName}
+            src={user.profileImage}
             className={classes.avatar}
           >
-            {currentUser.firstName[0] + currentUser.lastName[0]}
+            {user.firstName[0] + user.lastName[0]}
           </Avatar>
           <br />
           <Typography component="h1" variant="h5">
-            {currentUser
-              ? currentUser.firstName + " " + currentUser.lastName
-              : ""}
+            {user ? user.firstName + " " + user.lastName : ""}
             's Profile
           </Typography>
           <br />

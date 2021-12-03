@@ -1,8 +1,8 @@
-import state from "../state/global";
-import { useRecoilValue } from "recoil";
+import { AuthContext } from "../AuthProvider";
+import { useContext } from "react";
 
 const HomePage = () => {
-  const currentUser = useRecoilValue(state.currentUserState);
+  const { currentUser } = useContext(AuthContext);
   console.log(currentUser);
   return (
     <div className="homePage">

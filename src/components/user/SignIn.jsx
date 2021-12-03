@@ -1,5 +1,5 @@
 // import { Helmet } from "react-helmet";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -14,8 +14,7 @@ import { emailSignIn, passwordReset } from "../../firebase/firebaseFunctions";
 import banner from "../../images/sign-in-page.jpg";
 import { useForm, Controller } from "react-hook-form";
 import { Redirect } from "react-router";
-import { useRecoilValue } from "recoil";
-import state from "../../state/global";
+import { AuthContext } from "../../AuthProvider";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -65,7 +64,7 @@ export default function SignInSide({ showWelcomeMessage }) {
   const classes = useStyles();
   const [additionalError, setAdditionalError] = useState("");
   const { handleSubmit, control } = useForm();
-  const currentUser = useRecoilValue(state.currentUserState);
+  const { currentUser } = useContext(AuthContext);
 
   const handleLogin = async (values) => {
     const { email, password } = values;
