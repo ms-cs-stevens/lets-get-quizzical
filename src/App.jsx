@@ -1,5 +1,4 @@
 import "./App.css";
-import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Signup from "./components/user/SignUp";
@@ -9,38 +8,13 @@ import AddQuestions from "./components/quiz/AddQuestion";
 import Categories from "./components/quiz/Categories";
 import Account from "./components/user/Account";
 import HomePage from "./components/HomePage";
-import firebaseApp from "./firebase/firebaseApp";
 import Faqs from "./components/faqs/Faqs_comp.js";
-
-import { useSetRecoilState } from "recoil";
-import state from "./state/global";
-import { Leaderboard } from "./components/leaderboard/Leaderboard";
+import { AuthProvider } from "./AuthProvider.jsx";
+import Leaderboard from "./components/leaderboard/Leaderboard";
 
 const App = () => {
-  const [loading, setLoading] = useState(true);
-  const setCurrentUser = useSetRecoilState(state.currentUserState);
-
-  // authentication and setting up current user
-  useEffect(() => {
-    firebaseApp.auth().onAuthStateChanged((user) => {
-      setLoading(true);
-      if (user) {
-        setCurrentUser({
-          email: user.email,
-          uid: user.uid,
-          firstName: user.displayName.split(" ")[0],
-          lastName: user.displayName.split(" ")[1],
-        });
-      }
-      setLoading(false);
-    });
-  }, [setCurrentUser]);
-
-  if (loading) {
-    return "";
-  }
-
   return (
+    <AuthProvider>
       <Router>
         <div className="App">
           <Navigation />
@@ -59,6 +33,7 @@ const App = () => {
           </div>
         </div>
       </Router>
+    </AuthProvider>
   );
 };
 

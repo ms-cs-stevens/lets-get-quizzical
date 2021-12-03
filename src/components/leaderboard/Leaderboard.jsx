@@ -1,8 +1,10 @@
-import * as React from "react";
-import { useRecoilValue } from "recoil";
-import state from "../../state/global";
+import React, { useContext } from "react";
+import { AuthContext } from "../../AuthProvider";
 
-export const Leaderboard = () => {
-  const currentUser = useRecoilValue(state.currentUserState);
-  return <div>Leaderboard for {currentUser.firstName}</div>;
+const Leaderboard = () => {
+  const { currentUser } = useContext(AuthContext);
+  console.log(currentUser);
+  return <div>Leaderboard for {currentUser && currentUser.displayName}</div>;
 };
+
+export default Leaderboard;
