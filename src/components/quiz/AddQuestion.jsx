@@ -1,6 +1,9 @@
-import { useEffect, useState } from 'react';
-import firebase from '../../firebase/firebaseApp';
-import countryQuestions from '../../dataset/countries.json'
+import { useEffect, useState } from "react";
+import firebase from "../../firebase/firebaseApp";
+import countryQuestions from "../../dataset/country-capitals.json";
+import mathematicsQuestions from "../../dataset/mathematics.json";
+import antonymsQuestions from "../../dataset/antonyms.json";
+import solarSystemQuestions from "../../dataset/solar-system.json";
 
 function AddQuestions() {
   const [loading, setLoading] = useState(false);
@@ -8,12 +11,12 @@ function AddQuestions() {
 
   const addQuestions = async () => {
     setLoading(true);
-    let batch = db.batch()
+    let batch = db.batch();
 
     let options = [];
     countryQuestions.forEach((doc) => {
       options.push(doc.capital);
-    })
+    });
 
     // Shuffle array
     const shuffled = options.sort(() => 0.5 - Math.random());
@@ -25,24 +28,23 @@ function AddQuestions() {
       let newDoc = {
         answer: doc.capital,
         statement: doc.name,
-        category: 'country-capitals',
-        choices: choices
-      }
+        category: "country-capitals",
+        choices: choices,
+      };
       // console.log(newDoc)
-      let docRef = db.collection('questions').doc(); //automatically generate unique id
+      let docRef = db.collection("questions").doc(); //automatically generate unique id
       batch.set(docRef, newDoc);
     });
 
-    batch.commit()
-    setLoading(false)
-  }
+    batch.commit();
+    setLoading(false);
+  };
 
   useEffect(() => {
     addQuestions();
-  }, [])
+  }, []);
 
-
-  if(loading) {
+  if (loading) {
     return <h1>Loading...</h1>;
   }
 

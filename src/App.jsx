@@ -1,8 +1,7 @@
 import "./App.css";
 import { useEffect, useState, useMemo } from "react";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { amber, purple, grey } from "@mui/material/colors";
+import { purple, grey } from "@mui/material/colors";
 import CssBaseline from "@mui/material/CssBaseline";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
