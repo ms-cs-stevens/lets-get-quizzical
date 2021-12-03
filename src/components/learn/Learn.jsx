@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useRecoilValue } from "recoil";
-import { Helmet } from "react-helmet";
 import state from "../../state/global";
 import Container from "@mui/material/Container";
 import FlashcardList from "./FlashcardList";
@@ -72,9 +71,6 @@ const Learn = () => {
 
   return (
     <div className="learn">
-      <Helmet>
-        <title>Learn | {title}</title>
-      </Helmet>
       <h1>Learn - {title}</h1>
       <Container>
         {questions.length > 0 && <FlashcardList flashcards={questions} />}
