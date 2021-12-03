@@ -6,6 +6,7 @@ import SignIn from "./components/user/SignIn";
 import Questions from "./components/quiz/questions";
 // import AddQuestions from "./components/quiz/AddQuestion";
 import Categories from "./components/quiz/Categories";
+import LearnCategories from "./components/learn/SelectCategory";
 import Account from "./components/user/Account";
 import HomePage from "./components/HomePage";
 import Faqs from "./components/faqs/Faqs_comp.js";
@@ -28,7 +29,11 @@ const App = () => {
               <Route path="/login" component={SignIn} />
               <Route path="/quiz" component={Questions} />
               {/* <Route path="/add_questions" component={AddQuestions} /> */}
-              <Route path="/categories" component={Categories} />
+              <Route path="/select-quiz-category" component={Categories} />
+              <Route
+                path="/select-learning-category"
+                component={LearnCategories}
+              />
               <Route path="/leaderboard" component={Leaderboard} />
               <Route path="/user/account" component={Account} />
               <Route path="/faqs" component={Faqs} />
