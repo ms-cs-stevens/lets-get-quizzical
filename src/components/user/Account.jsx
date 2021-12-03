@@ -5,6 +5,8 @@ import { useForm, Controller } from "react-hook-form";
 import Card from "../StatsCard";
 import ProfileCard from "../ProfileCard";
 import { AuthContext } from "../../AuthProvider";
+import Card from "../StatsCard";
+import ProfileCard from "../ProfileCard";
 
 import {
   Avatar,
@@ -167,7 +169,11 @@ function Account() {
       <Container component="main" maxWidth="md">
         <CssBaseline />
         <div className={classes.paper}>
+<<<<<<< HEAD
           <ProfileCard username={user.firstName}></ProfileCard>
+=======
+          <ProfileCard></ProfileCard>
+>>>>>>> a7a569b (merge)
           <br />
           <Card></Card>
           <Avatar
