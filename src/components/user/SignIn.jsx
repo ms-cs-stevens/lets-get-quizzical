@@ -111,20 +111,14 @@ export default function SignInSide({ showWelcomeMessage }) {
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
-          {showWelcomeMessage ? (
-            <>
-              <Typography component="h1" variant="h5">
-                Welcome to Roadster
-              </Typography>
-              <Typography component="h2" style={{ color: "#333" }} variant="h6">
-                Turn your road trip into an adventure!
-              </Typography>
-            </>
-          ) : (
-            <Typography component="h1" variant="h5">
-              What&apos;s your email and password?
-            </Typography>
-          )}
+
+          <Typography component="h1" variant="h5">
+            Welcome to Let's Get Quizzical
+          </Typography>
+          <br />
+          <Typography component="h3" variant="p">
+            Enter your email and password
+          </Typography>
           <br />
           <Typography
             variant="caption"

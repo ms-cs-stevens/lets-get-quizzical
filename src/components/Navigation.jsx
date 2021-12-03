@@ -97,9 +97,16 @@ export default function Navigation() {
               <Button
                 style={{ color: "#fff" }}
                 component={NavLink}
-                to={"/faqs"}
+                to={"/select-learning-category"}
               >
-                FAQs
+                Learn
+              </Button>
+              <Button
+                style={{ color: "#fff" }}
+                component={NavLink}
+                to={"/select-quiz-category"}
+              >
+                Quiz
               </Button>
               <Button
                 style={{ color: "#fff" }}
@@ -138,13 +145,6 @@ export default function Navigation() {
                 to={"/faqs"}
               >
                 FAQs
-              </Button>
-              <Button
-                style={{ color: "#fff" }}
-                component={NavLink}
-                to={"/categories"}
-              >
-                Categories
               </Button>
               <Button
                 style={{ color: "#fff" }}

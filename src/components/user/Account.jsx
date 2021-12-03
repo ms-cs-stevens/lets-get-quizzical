@@ -167,7 +167,7 @@ function Account() {
     return (
       <Container component="main" maxWidth="md">
         <Helmet>
-          <title>{currentUser.firstName} | My Account</title>
+          <title>Let's get quizzical | My Account</title>
         </Helmet>
         <CssBaseline />
         <div className={classes.paper}>
