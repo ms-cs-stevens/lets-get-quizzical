@@ -14,9 +14,7 @@ import state from "../state/global";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    borderBottomColor: "#564691",
-    background: "#564691",
-    height: "10vh",
+    height: "3.5 rem",
   },
   root: {
     flexGrow: 1,

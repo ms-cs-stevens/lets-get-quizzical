@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useHistory } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import state from "../../state/global"
 import Button from '@mui/material/Button';
@@ -6,6 +7,7 @@ import firebase from '../../firebase/firebaseApp';
 import Timer from './Timer';
 
 function Questions() {
+  const history = useHistory();
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showScore, setShowScore] = useState(false);
@@ -108,7 +110,7 @@ function Questions() {
       // save question with ans
       console.log("--before---", quizAnswers)
       setQuizAnswers(quizAnswers.push({
-        questionId : {isCorrect: true, selected: choice}
+        questionId : { isCorrect: true, selected: choice }
       }))
 
       console.log("---quiz ans---", quizAnswers)
@@ -125,9 +127,13 @@ function Questions() {
 
   useEffect(() => {
     if(currentCategory) {
+      const d = new Date();
+      setStartTime(d.getTime())
       getQuestions();
     } else {
       // redirect to category page to select category
+      // give alert before redirecting
+      history.push("/categories");
     }
   }, [currentCategory])
 

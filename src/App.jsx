@@ -1,8 +1,5 @@
 import "./App.css";
-import { useEffect, useState, useMemo } from "react";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { purple, grey } from "@mui/material/colors";
-import CssBaseline from "@mui/material/CssBaseline";
+import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Signup from "./components/user/SignUp";
@@ -22,29 +19,6 @@ import { Leaderboard } from "./components/leaderboard/Leaderboard";
 const App = () => {
   const [loading, setLoading] = useState(true);
   const setCurrentUser = useSetRecoilState(state.currentUserState);
-
-  const theme = useMemo(
-    () =>
-      createTheme({
-        palette: {
-          mode: "dark",
-          ...{
-            // palette values for dark mode
-            primary: purple,
-            divider: purple[700],
-            background: {
-              default: "#2d195c", //'#362b6b', //purple[900],
-              paper: "#5b4197", //purple[900],
-            },
-            text: {
-              primary: "#fff",
-              secondary: grey[500],
-            },
-          },
-        },
-      }),
-    []
-  );
 
   // authentication and setting up current user
   useEffect(() => {
@@ -67,8 +41,6 @@ const App = () => {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
       <Router>
         <div className="App">
           <Navigation />
@@ -87,7 +59,6 @@ const App = () => {
           </div>
         </div>
       </Router>
-    </ThemeProvider>
   );
 };
 
