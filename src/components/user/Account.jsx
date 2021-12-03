@@ -3,6 +3,8 @@ import Helmet from "react-helmet";
 import { NavLink } from "react-router-dom";
 // import { updateUserName } from "../../firebase/firebaseFunctions";
 import { useForm, Controller } from "react-hook-form";
+import Card from "../StatsCard";
+import ProfileCard from "../ProfileCard";
 
 import {
   Avatar,
@@ -163,12 +165,15 @@ function Account() {
 
   if (currentUser) {
     return (
-      <Container component="main" maxWidth="sm">
+      <Container component="main" maxWidth="md">
         <Helmet>
-          <title>Roadster | My Account</title>
+          <title>{currentUser.firstName} | My Account</title>
         </Helmet>
         <CssBaseline />
         <div className={classes.paper}>
+        <ProfileCard></ProfileCard>
+        <br />
+        <Card></Card>
           <Avatar
             alt={currentUser.firstName}
             src={currentUser.profileImage}
@@ -181,7 +186,6 @@ function Account() {
             {currentUser
               ? currentUser.firstName + " " + currentUser.lastName
               : ""}
-            's Profile
           </Typography>
           <br />
           {userDetails()}
