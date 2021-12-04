@@ -37,7 +37,7 @@ function Questions() {
   const { currentUser } = useContext(AuthContext);
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [score, setScore] = useState(0);
+  // const [score, setScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [quizAnswers, setQuizAnswers] = useState({});
   const [startTime, setStartTime] = useState();
@@ -46,6 +46,8 @@ function Questions() {
   );
   const timer = useRecoilValue(state.timerState);
   const db = firebase.firestore();
+
+  let score = 0;
 
   const getQuestions = async () => {
     setLoading(true);
@@ -81,20 +83,35 @@ function Questions() {
   };
 
   const handleAnswerOptionClick = async (choice) => {
+    const answers = quizAnswers;
+    console.log("before", score, choice === questions[currentQuestion].answer)
+    let currentScore = score;
     if (choice === questions[currentQuestion].answer) {
-      setScore(score + 3); // Give 3 point for correct question
+      console.log("---correct---")
       // save question with ans
-      const answers = quizAnswers;
       answers[questions[currentQuestion].id] = {
         statement: questions[currentQuestion].statement,
         isCorrect: true,
         selected: choice,
         correctChoice: questions[currentQuestion].answer
       };
-      setQuizAnswers(answers);
+      currentScore =+ 3;
+      console.log("current..........", currentScore)
+       // Give 3 point for correct question
     } else {
-      setScore(score - 1); // -ve marking; reduce 1/3 marks for each wrong question
+      console.log("---incorrect----")
+      answers[questions[currentQuestion].id] = {
+        statement: questions[currentQuestion].statement,
+        isCorrect: false,
+        selected: choice,
+        correctChoice: questions[currentQuestion].answer
+      };
+      currentScore -= 1; // -ve marking; reduce 1/3 marks for each wrong question
+      console.log("current..........", currentScore)
     }
+    score = currentScore;
+    console.log("after score", currentQuestion, score)
+    setQuizAnswers(answers);
     const nextQuestion = currentQuestion + 1;
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);

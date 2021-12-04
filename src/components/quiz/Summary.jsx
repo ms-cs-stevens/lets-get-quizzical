@@ -5,6 +5,7 @@ import firebase from "../../firebase/firebaseApp";
 import { doc, getDoc } from "firebase/firestore";
 import Grid from "@mui/material/Grid";
 import Button from '@mui/material/Button';
+import { Paper } from "@material-ui/core";
 import CardActions from '@mui/material/CardActions';
 import InfoCard from './InfoCard';
 import TimerIcon from '@mui/icons-material/Timer';
@@ -66,7 +67,7 @@ const Summary = ({score, questionLength}) => {
         <Grid item lg={4} sm={6} xl={3} xs={12}>
           <InfoCard
             title="Correct"
-            value={quiz.correctQuestion}
+            value={quiz.correctQuestions}
             icon={<CheckIcon />}
             color={green}
           />
@@ -106,30 +107,41 @@ const Summary = ({score, questionLength}) => {
 
       </Grid>
       <br />
-      <Card variant="outlined">
-        <CardContent>
-          <Typography variant="h5" component="div" sx={{ mb: 5, mt: 3 }}>
-            Review Questions
-          </Typography>
-          <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            {quiz.category}
-          </Typography>
-          {Object.entries(quiz.questions).map(([key, value]) => (
-            <Typography variant="body2">
-              {value.statement}
-              <br />
-              Your Choice:
-              {value.selected}
-              <br />
-              Correct Answer:
-              {value.correctChoice}
-            </Typography>
-          ))}
-        </CardContent>
-      </Card>
+      <Paper>
+        <br />
+        <Typography variant="h5" component="div" sx={{ mb: 1, mt: 2 }}>
+          Review Questions
+        </Typography>
+        <Typography sx={{ mb: 1.5 }} color="text.secondary">
+          {quiz.category}
+        </Typography>
+        <Grid container justifyContent="space-evenly" alignItems="center" alignContent="center" spacing={1}>
+
+        {Object.entries(quiz.questions).map(([key, value]) => (
+          <Grid item xs={4}>
+            <br/>
+            <Card variant="outlined" sx={{borderColor: (value.isCorrect ? 'green' :' red')}}>
+              <CardContent>
+                <Typography variant="body2">
+                  {value.statement} - ({value.isCorrect ? '3/3': '-1/3'})
+                  <hr />
+                  <Grid container>
+                    Your Choice: {value.selected}
+                    <br />
+                    Correct Answer: {value.correctChoice}
+                  </Grid>
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
+        </Grid>
+        <br />
+      </Paper>
+      <br />
     </Container>
   )}
-  </>)
-}
+  </>
+)}
 
 export default Summary;
