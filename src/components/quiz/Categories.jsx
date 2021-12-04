@@ -14,7 +14,6 @@ import { Switch, FormControlLabel } from "@material-ui/core";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useHistory } from "react-router-dom";
 import { styled } from "@mui/material/styles";
-import firebase from "../../firebase/firebaseApp";
 import { AuthContext } from "../../AuthProvider";
 import { useRecoilState } from "recoil";
 import state from "../../state/global";
@@ -42,7 +41,6 @@ function Categories() {
   const [timer, setTimer] = useRecoilState(state.timerState);
 
   const history = useHistory();
-  const db = firebase.firestore();
 
   const handleCategorySelect = (e, categoryId) => {
     setCurrentCategory(categoryId);

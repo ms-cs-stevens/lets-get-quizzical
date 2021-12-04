@@ -13,6 +13,7 @@ import HomePage from "./components/HomePage";
 import Faqs from "./components/faqs/Faqs_comp.js";
 import { AuthProvider } from "./AuthProvider.jsx";
 import Leaderboard from "./components/leaderboard/Leaderboard";
+import Summary from "./components/quiz/Summary";
 
 const App = () => {
   return (
@@ -39,6 +40,7 @@ const App = () => {
               <Route path="/leaderboard" component={Leaderboard} />
               <Route path="/user/account" component={Account} />
               <Route path="/how-to-play" component={Faqs} />
+              <Route path="/:id/summary" component={Summary} />
             </Switch>
           </div>
         </div>
