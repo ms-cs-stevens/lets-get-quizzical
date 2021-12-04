@@ -17,15 +17,18 @@ import firebase from "../../firebase/firebaseApp";
 import { AuthContext } from "../../AuthProvider";
 import { useRecoilState } from "recoil";
 import state from "../../state/global";
+import { Typography } from "@material-ui/core";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
   textAlign: "center",
-  color: theme.palette.text.primary,
-  width: 250,
+  color: "#fff",
+  width: 400,
+  height: 200,
   lineHeight: "100px",
-  fontWeight: "600",
-  fontSize: 20,
+  fontWeight: "400",
+  fontSize: 25,
+  backgroundColor: "#fb8c00",
   borderRadius: 20,
   cursor: "pointer",
 }));
@@ -38,7 +41,6 @@ function Categories() {
   const [currentCategory, setCurrentCategory] = useRecoilState(
     state.currentCategoryState
   );
-  const [timer, setTimer] = useRecoilState(state.timerState);
 
   const history = useHistory();
   const db = firebase.firestore();
@@ -88,7 +90,12 @@ function Categories() {
 
   return (
     <Container maxWidth="md">
-      <h2>SELECT THE CATEGORY FOR LEARNING</h2>
+      <br />
+      <br />
+      <Typography variant={"h5"} style={{ fontWeight: "bold" }}>
+        SELECT A CATEGORY FOR LEARNING
+      </Typography>
+      <br />
       <Grid
         container
         direction="row"
@@ -96,7 +103,7 @@ function Categories() {
         alignItems="center"
       >
         {Object.entries(categories).map(([key, value]) => (
-          <Grid item xs={6} md={4} key={key}>
+          <Grid item xs={6} md={6} key={key}>
             <Box
               sx={{
                 p: 2,
@@ -109,6 +116,7 @@ function Categories() {
               <Item
                 onClick={(e) => handleCategorySelect(e, key)}
                 key={key}
+                className="card"
                 elevation={3}
               >
                 {value}

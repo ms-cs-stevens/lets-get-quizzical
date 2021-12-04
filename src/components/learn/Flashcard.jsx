@@ -9,14 +9,16 @@ export default function Flashcard({ flashcard }) {
   return (
     <Card
       variant="outlined"
-      className="card"
+      className={`card ${flip ? "flipped" : ""}`}
       sx={{ mr: 2, mb: 2 }}
       onClick={() => {
         setFlip(!flip);
       }}
     >
       {flip ? (
-        <CardContent>{flashcard.answer}</CardContent>
+        <CardContent>
+          <strong>{flashcard.answer}</strong>
+        </CardContent>
       ) : (
         <CardContent>
           <Typography color="text.secondary" gutterBottom>

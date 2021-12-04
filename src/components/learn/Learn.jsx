@@ -16,44 +16,37 @@ const Learn = () => {
   const { currentUser } = useContext(AuthContext);
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [title, setTitle] = useState("Solar System");
+  const [category, setCategory] = useState("Solar System");
   const currentCategory = useRecoilValue(state.currentCategoryState);
   const db = firebase.firestore();
 
   const getQuestions = async () => {
     setLoading(true);
-    // const snapshot = await db
-    //   .collection('questions')
-    //   .where("category", "==", currentCategory)
-    //   .get();
-    // let data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-    // // Select Random Question for quiz
-    // setQuestions(data.slice(0, 10))
-    let questions, title;
+    let questions, category;
     switch (currentCategory) {
       case "country-capitals":
         questions = countryQuestions;
-        title = "Country Capitals";
+        category = "Country Capitals";
         break;
       case "mathematics":
         questions = mathematicsQuestions;
-        title = "Mathematics";
+        category = "Mathematics";
         break;
       case "antonyms":
         questions = antonymsQuestions;
-        title = "Antonyms";
+        category = "Antonyms";
         break;
       case "solar-system":
         questions = solarSystemQuestions;
-        title = "Solar System";
+        category = "Solar System";
         break;
       default:
         questions = solarSystemQuestions;
-        title = "Solar System";
+        category = "Solar System";
     }
 
     setQuestions(questions);
-    setTitle(title);
+    setCategory(category);
     setLoading(false);
   };
 
@@ -71,7 +64,7 @@ const Learn = () => {
 
   return (
     <div className="learn">
-      <h1>Learn - {title}</h1>
+      <h1>Learn - {category}</h1>
       <Container>
         {questions.length > 0 && <FlashcardList flashcards={questions} />}
       </Container>
