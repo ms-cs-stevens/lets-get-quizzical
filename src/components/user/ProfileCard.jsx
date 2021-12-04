@@ -49,7 +49,12 @@ const useStyles = makeStyles(({ palette }) => ({
   },
 }));
 
-export const ProfileCard = ({ firstName, lastName }) => {
+export const ProfileCard = ({
+  firstName,
+  lastName,
+  totalData,
+  categoryData,
+}) => {
   const styles = useStyles();
   const shadowStyles = useFadedShadowStyles();
   const borderedGridStyles = useGutterBorderedGridStyles({
@@ -68,13 +73,24 @@ export const ProfileCard = ({ firstName, lastName }) => {
       <Divider light />
       <Box display={"flex"} textAlign={"center"}>
         <Box p={2} flex={"auto"} className={borderedGridStyles.item}>
-          <p className={styles.statLabel}>Game Wins</p>
-          <p className={styles.statValue}>12</p>
+          <p className={styles.statLabel}>Total Quizzes</p>
+          <p className={styles.statValue}>{totalData.count}</p>
         </Box>
         <Box p={2} flex={"auto"} className={borderedGridStyles.item}>
-          <p className={styles.statLabel}>Highest Score</p>
-          <p className={styles.statValue}>6941</p>
+          <p className={styles.statLabel}>Total Score</p>
+          <p className={styles.statValue}>{totalData.score}</p>
         </Box>
+      </Box>
+      <Divider light />
+      <Box display={"flex"} textAlign={"center"}>
+        {categoryData.map((data) => (
+          <Box p={2} flex={"auto"} className={borderedGridStyles.item}>
+            <p className={styles.statLabel}>{data.label} (# quizzes)</p>
+            <p className={styles.statValue}>{data.count}</p>
+            <p className={styles.statLabel}>Highest Score</p>
+            <p className={styles.statValue}>{data.highestScore}</p>
+          </Box>
+        ))}
       </Box>
     </Card>
   );

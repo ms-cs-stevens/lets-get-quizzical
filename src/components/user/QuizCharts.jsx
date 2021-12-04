@@ -1,42 +1,49 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Chart from "react-google-charts";
 
-const QuizCharts = ({ uid }) => {
-  useEffect(() => {});
+const QuizCharts = ({ quizData, category, chartType }) => {
+  const categoryLabel = category.replace("-", " ").toUpperCase();
+
+  const formatDate = (d) => {
+    const date = new Date(d);
+    return `${date.getMonth() + 1}/${date.getDate()}`;
+  };
+
+  const formatQuizData = (category) => {
+    const data = [];
+    data.push(["Date", categoryLabel]);
+
+    const sortedQuizzes = quizData.sort((a, b) =>
+      a.startTime < b.startTime ? 1 : -1
+    );
+
+    sortedQuizzes.forEach((quiz) => {
+      if (quiz.category === category) {
+        data.push([formatDate(quiz.startTime), quiz.score]);
+      }
+    });
+    return data;
+  };
 
   return (
     <>
-      <div style={{ display: "flex", maxWidth: 900 }}>
-        <Chart
-          width={850}
-          height={600}
-          chartType="LineChart"
-          loader={<div>Loading Chart</div>}
-          data={[
-            [
-              "Date",
-              "Mathematics",
-              "Country Capitals",
-              "Solar System",
-              "Antonyms",
-            ],
-            ["Q1", 20, 10, 15, 30],
-            ["Q2", 25, 27, 30, 29],
-            ["Q3", 15, 20, 25, 25],
-            ["Q4", 18, 5, 18, 30],
-          ]}
-          options={{
-            title: "Performance in each category",
-            hAxis: { title: "Quiz", titleTextStyle: { color: "#333" } },
-            vAxis: {
-              title: "Score",
-              titleTextStyle: { color: "#333" },
-              minValue: 0,
-              maxValue: 40,
-            },
-          }}
-        />
-      </div>
+      <Chart
+        width={850}
+        height={600}
+        chartType={chartType}
+        loader={<div>Loading Chart</div>}
+        data={formatQuizData(category)}
+        options={{
+          title: `Performance in ${categoryLabel}`,
+          hAxis: { title: "Score", titleTextStyle: { color: "#333" } },
+          vAxis: {
+            title: "Date",
+            titleTextStyle: { color: "#333" },
+            minValue: 0,
+            maxValue: 40,
+          },
+        }}
+      />
     </>
   );
 };

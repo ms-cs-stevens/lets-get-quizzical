@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
-import Grid from "@material-ui/core/Grid";
 import { Column, Row } from "@mui-treasury/components/flex";
 import { Info, InfoSubtitle, InfoTitle } from "@mui-treasury/components/info";
 import { useApexInfoStyles } from "@mui-treasury/styles/info/apex";
 import QuizCharts from "./QuizCharts.jsx";
+import Chip from "@mui/material/Chip";
+import Stack from "@mui/material/Stack";
+import { Grid } from "@material-ui/core";
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -46,15 +48,71 @@ const CustomCard = ({
   );
 };
 
-const Card = () => {
+const Card = ({ quizData }) => {
+  const [category, setCategory] = useState("country-capitals");
+  const categories = [
+    {
+      value: "country-capitals",
+      label: "Country capitals",
+    },
+    {
+      value: "mathematics",
+      label: "Mathematics",
+    },
+    {
+      value: "antonyms",
+      label: "Antonyms",
+    },
+    {
+      value: "solar-system",
+      label: "Solar System",
+    },
+  ];
+
+  const handleClick = (e, category) => {
+    setCategory(category);
+  };
+
   return (
     <>
+      <Stack
+        direction="row"
+        spacing={1}
+        style={{
+          position: "absolute",
+          zIndex: 100,
+          marginTop: 20,
+          marginLeft: "30%",
+        }}
+      >
+        {categories.map((category) => (
+          <Chip
+            label={category.label}
+            onClick={(e) => handleClick(e, category.value)}
+          />
+        ))}
+      </Stack>
       <CustomCard
         joined
-        title={"Performance"}
+        title={"Performance Analytics"}
         description={
           <>
-            <QuizCharts />
+            <Grid container>
+              <Grid item xs={12}>
+                <QuizCharts
+                  quizData={quizData}
+                  category={category}
+                  chartType={"AreaChart"}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <QuizCharts
+                  quizData={quizData}
+                  category={category}
+                  chartType={"ColumnChart"}
+                />
+              </Grid>
+            </Grid>
           </>
         }
       />

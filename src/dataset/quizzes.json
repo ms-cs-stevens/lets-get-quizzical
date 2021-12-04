@@ -1,0 +1,763 @@
+[
+  {
+    "id": "0R6RH99Uq1lYcl9Ze03t",
+    "score": 7,
+    "category": "solar-system",
+    "correctQuestions": 4,
+    "userId": "k1XwT1inGjWSrT8cOs1Q1KAPNrY2",
+    "timer": true,
+    "questions": {
+      "ss-5": {
+        "isCorrect": true,
+        "statement": "How many years does it take for Uranus to orbit once around the sun?",
+        "selected": "165",
+        "correctChoice": "165"
+      },
+      "ss-6": {
+        "selected": "Mars",
+        "statement": "Which planet is covered largely by water?",
+        "isCorrect": false,
+        "correctChoice": "Earth"
+      },
+      "ss-9": {
+        "correctChoice": "The surface has a lot of iron which turns orange-red when it rusts",
+        "selected": "Mars is covered by a thick blanket of clouds that only reflect back red light",
+        "statement": "Mars is often called “The Red Planet,” but why does it look so red to begin with?",
+        "isCorrect": false
+      },
+      "ss-2": {
+        "isCorrect": false,
+        "statement": "Which planet is named after the Roman goddess of beauty?",
+        "correctChoice": "Venus",
+        "selected": "Saturn"
+      },
+      "ss-8": {
+        "isCorrect": true,
+        "statement": "Which planet in our solar system has massive rings that are easily visible with a small telescope?",
+        "correctChoice": "Saturn",
+        "selected": "Saturn"
+      },
+      "ss-10": {
+        "correctChoice": "8",
+        "isCorrect": false,
+        "statement": "How many planets are there in our solar system?",
+        "selected": "9"
+      },
+      "ss-3": {
+        "selected": "Jupiter",
+        "correctChoice": "Mercury",
+        "isCorrect": false,
+        "statement": "Which is the fastest planet?"
+      },
+      "ss-7": {
+        "statement": "What is the largest planet in our solar system?",
+        "selected": "Jupiter",
+        "correctChoice": "Jupiter",
+        "isCorrect": true
+      },
+      "ss-4": {
+        "statement": "Which planet is known for the \"Great Red Spot\"?",
+        "correctChoice": "Jupiter",
+        "selected": "Mercury",
+        "isCorrect": false
+      },
+      "ss-1": {
+        "selected": "Mars",
+        "correctChoice": "Mars",
+        "isCorrect": true,
+        "statement": "Which planet is the most likely candidate for a future human habitat?"
+      }
+    },
+    "endTime": 1638591795512,
+    "actualEndTime": 1638591795512,
+    "startTime": 1638591781546
+  },
+  {
+    "id": "1uWG6DXbR2AVzprWQ9ss",
+    "timer": true,
+    "actualEndTime": 1638593064508,
+    "startTime": 1638593050397,
+    "endTime": 1638593064508,
+    "userId": "k1XwT1inGjWSrT8cOs1Q1KAPNrY2",
+    "category": "country-capitals",
+    "correctQuestions": 4,
+    "score": -1,
+    "questions": {
+      "cc-7": {
+        "isCorrect": true,
+        "correctChoice": "Bogota",
+        "statement": "Columbia",
+        "selected": "Bogota"
+      },
+      "cc-6": {
+        "statement": "Belgium",
+        "selected": "Capetown",
+        "correctChoice": "Brussels",
+        "isCorrect": false
+      },
+      "cc-10": {
+        "selected": "Jakarta",
+        "isCorrect": false,
+        "correctChoice": "Jerusalem",
+        "statement": "Israel"
+      },
+      "cc-5": {
+        "correctChoice": "Capetown",
+        "selected": "Georgetown",
+        "statement": "South Africa",
+        "isCorrect": false
+      },
+      "cc-9": {
+        "statement": "France",
+        "selected": "Paris",
+        "correctChoice": "Paris",
+        "isCorrect": true
+      },
+      "cc-8": {
+        "correctChoice": "Havana",
+        "isCorrect": true,
+        "selected": "Havana",
+        "statement": "Cuba"
+      },
+      "cc-4": {
+        "selected": "Perth",
+        "correctChoice": "Sydney",
+        "statement": "Australia",
+        "isCorrect": false
+      },
+      "cc-1": {
+        "correctChoice": "Delhi",
+        "statement": "India",
+        "isCorrect": true,
+        "selected": "Delhi"
+      },
+      "cc-3": {
+        "correctChoice": "Ottawa",
+        "selected": "Vancouver",
+        "statement": "Canada",
+        "isCorrect": false
+      },
+      "cc-2": {
+        "correctChoice": "Washington D.C.",
+        "selected": "New York City",
+        "statement": "United States of America (USA)",
+        "isCorrect": false
+      }
+    }
+  },
+  {
+    "id": "LOaqcGHxZI0MnpXUsriY",
+    "questions": {
+      "cc-7": {
+        "selected": "Bogota",
+        "isCorrect": true,
+        "statement": "Columbia",
+        "correctChoice": "Bogota"
+      },
+      "cc-6": {
+        "isCorrect": false,
+        "selected": "Thimphu",
+        "statement": "Belgium",
+        "correctChoice": "Brussels"
+      },
+      "cc-5": {
+        "selected": "Capetown",
+        "isCorrect": true,
+        "statement": "South Africa",
+        "correctChoice": "Capetown"
+      },
+      "cc-3": {
+        "correctChoice": "Ottawa",
+        "statement": "Canada",
+        "isCorrect": false,
+        "selected": "Toronto"
+      },
+      "cc-9": {
+        "correctChoice": "Paris",
+        "statement": "France",
+        "isCorrect": false,
+        "selected": "Rome"
+      },
+      "cc-4": {
+        "selected": "Perth",
+        "isCorrect": false,
+        "statement": "Australia",
+        "correctChoice": "Sydney"
+      },
+      "cc-1": {
+        "isCorrect": true,
+        "statement": "India",
+        "selected": "Delhi",
+        "correctChoice": "Delhi"
+      },
+      "cc-10": {
+        "statement": "Israel",
+        "correctChoice": "Jerusalem",
+        "isCorrect": true,
+        "selected": "Jerusalem"
+      },
+      "cc-8": {
+        "selected": "Havana",
+        "statement": "Cuba",
+        "correctChoice": "Havana",
+        "isCorrect": true
+      },
+      "cc-2": {
+        "selected": "Washington D.C.",
+        "correctChoice": "Washington D.C.",
+        "statement": "United States of America (USA)",
+        "isCorrect": true
+      }
+    },
+    "category": "country-capitals",
+    "correctQuestions": 6,
+    "actualEndTime": 1638593563093,
+    "startTime": 1638593365700,
+    "timer": true,
+    "score": 11,
+    "endTime": 1638593563093,
+    "userId": "k1XwT1inGjWSrT8cOs1Q1KAPNrY2"
+  },
+  {
+    "id": "Q8Ln2ArlpUDjlvH6PnIO",
+    "actualEndTime": 1638589704223,
+    "score": 27,
+    "timer": true,
+    "userId": "k1XwT1inGjWSrT8cOs1Q1KAPNrY2",
+    "startTime": 1638589686505,
+    "endTime": 1638589704223,
+    "questions": {
+      "cc-6": {
+        "statement": "Belgium",
+        "correctChoice": "Brussels",
+        "selected": "Brussels",
+        "isCorrect": true
+      },
+      "cc-8": {
+        "statement": "Cuba",
+        "isCorrect": true,
+        "selected": "Havana",
+        "correctChoice": "Havana"
+      },
+      "cc-9": {
+        "statement": "France",
+        "selected": "Paris",
+        "isCorrect": true,
+        "correctChoice": "Paris"
+      },
+      "cc-3": {
+        "correctChoice": "Ottawa",
+        "statement": "Canada",
+        "isCorrect": true,
+        "selected": "Ottawa"
+      },
+      "cc-10": {
+        "isCorrect": true,
+        "selected": "Jerusalem",
+        "statement": "Israel",
+        "correctChoice": "Jerusalem"
+      },
+      "cc-7": {
+        "statement": "Columbia",
+        "selected": "Bogota",
+        "correctChoice": "Bogota",
+        "isCorrect": true
+      },
+      "cc-2": {
+        "isCorrect": true,
+        "statement": "United States of America (USA)",
+        "correctChoice": "Washington D.C.",
+        "selected": "Washington D.C."
+      },
+      "cc-5": {
+        "statement": "South Africa",
+        "isCorrect": true,
+        "correctChoice": "Capetown",
+        "selected": "Capetown"
+      },
+      "cc-4": {
+        "statement": "Australia",
+        "isCorrect": true,
+        "selected": "Sydney",
+        "correctChoice": "Sydney"
+      },
+      "cc-1": {
+        "selected": "Delhi",
+        "isCorrect": true,
+        "statement": "India",
+        "correctChoice": "Delhi"
+      }
+    },
+    "category": "country-capitals",
+    "correctQuestions": 10
+  },
+  {
+    "id": "XLFJTcVMzMiUusUUFB9y",
+    "category": "mathematics",
+    "timer": true,
+    "score": -1,
+    "correctQuestions": 3,
+    "actualEndTime": 1638591605698,
+    "startTime": 1638591597896,
+    "userId": "k1XwT1inGjWSrT8cOs1Q1KAPNrY2",
+    "questions": {
+      "m-4": {
+        "statement": "What fraction of an hour is 30 minutes?",
+        "selected": "1/2",
+        "correctChoice": "1/2",
+        "isCorrect": true
+      },
+      "m-10": {
+        "isCorrect": true,
+        "selected": "15",
+        "correctChoice": "15",
+        "statement": "Three times the first of three consecutive odd integers is 3 more than twice the third. The third integer is"
+      },
+      "m-1": {
+        "isCorrect": true,
+        "selected": "1",
+        "correctChoice": "1",
+        "statement": "1/4 + 3/4 = ?"
+      }
+    },
+    "endTime": 1638591605698
+  },
+  {
+    "id": "fEqJKbxTKVlm4flGIBKo",
+    "actualEndTime": 1638592925573,
+    "questions": {
+      "cc-3": {
+        "statement": "Canada",
+        "selected": "Toronto",
+        "correctChoice": "Ottawa",
+        "isCorrect": false
+      },
+      "cc-7": {
+        "selected": "Bogota",
+        "statement": "Columbia",
+        "correctChoice": "Bogota",
+        "isCorrect": true
+      },
+      "cc-10": {
+        "statement": "Israel",
+        "isCorrect": true,
+        "selected": "Jerusalem",
+        "correctChoice": "Jerusalem"
+      },
+      "cc-1": {
+        "correctChoice": "Delhi",
+        "isCorrect": true,
+        "selected": "Delhi",
+        "statement": "India"
+      },
+      "cc-2": {
+        "selected": "Washington D.C.",
+        "statement": "United States of America (USA)",
+        "correctChoice": "Washington D.C.",
+        "isCorrect": true
+      },
+      "cc-9": {
+        "isCorrect": true,
+        "correctChoice": "Paris",
+        "statement": "France",
+        "selected": "Paris"
+      },
+      "cc-8": {
+        "correctChoice": "Havana",
+        "isCorrect": false,
+        "selected": "Brussels",
+        "statement": "Cuba"
+      },
+      "cc-4": {
+        "selected": "Gaba",
+        "correctChoice": "Sydney",
+        "isCorrect": false,
+        "statement": "Australia"
+      },
+      "cc-6": {
+        "isCorrect": false,
+        "selected": "Thimphu",
+        "correctChoice": "Brussels",
+        "statement": "Belgium"
+      },
+      "cc-5": {
+        "statement": "South Africa",
+        "selected": "Georgetown",
+        "isCorrect": false,
+        "correctChoice": "Capetown"
+      }
+    },
+    "startTime": 1638592899740,
+    "timer": true,
+    "endTime": 1638592925573,
+    "correctQuestions": 5,
+    "userId": "k1XwT1inGjWSrT8cOs1Q1KAPNrY2",
+    "category": "country-capitals",
+    "score": 3
+  },
+  {
+    "id": "fIrn5yc9oGvsYeVNKl7x",
+    "userId": "k1XwT1inGjWSrT8cOs1Q1KAPNrY2",
+    "endTime": 1638593663947,
+    "questions": {
+      "cc-1": {
+        "correctChoice": "Delhi",
+        "isCorrect": true,
+        "statement": "India",
+        "selected": "Delhi"
+      },
+      "cc-5": {
+        "correctChoice": "Capetown",
+        "selected": "Johannesburg",
+        "statement": "South Africa",
+        "isCorrect": false
+      },
+      "cc-8": {
+        "correctChoice": "Havana",
+        "selected": "Havana",
+        "statement": "Cuba",
+        "isCorrect": true
+      },
+      "cc-3": {
+        "statement": "Canada",
+        "isCorrect": false,
+        "correctChoice": "Ottawa",
+        "selected": "Vancouver"
+      },
+      "cc-6": {
+        "selected": "Belmopan",
+        "isCorrect": false,
+        "correctChoice": "Brussels",
+        "statement": "Belgium"
+      },
+      "cc-4": {
+        "correctChoice": "Sydney",
+        "statement": "Australia",
+        "selected": "Sydney",
+        "isCorrect": true
+      },
+      "cc-2": {
+        "selected": "Washington D.C.",
+        "isCorrect": true,
+        "statement": "United States of America (USA)",
+        "correctChoice": "Washington D.C."
+      },
+      "cc-9": {
+        "statement": "France",
+        "selected": "Rome",
+        "correctChoice": "Paris",
+        "isCorrect": false
+      },
+      "cc-10": {
+        "isCorrect": true,
+        "correctChoice": "Jerusalem",
+        "selected": "Jerusalem",
+        "statement": "Israel"
+      },
+      "cc-7": {
+        "statement": "Columbia",
+        "correctChoice": "Bogota",
+        "isCorrect": true,
+        "selected": "Bogota"
+      }
+    },
+    "score": 11,
+    "category": "country-capitals",
+    "correctQuestions": 6,
+    "actualEndTime": 1638593663947,
+    "timer": true,
+    "startTime": 1638593658664
+  },
+  {
+    "id": "im6RE86DQoa6nqZjYIvL",
+    "startTime": 1638591667173,
+    "correctQuestions": 3,
+    "score": 3,
+    "timer": true,
+    "category": "mathematics",
+    "userId": "k1XwT1inGjWSrT8cOs1Q1KAPNrY2",
+    "questions": {
+      "m-8": {
+        "selected": "34Kg",
+        "isCorrect": false,
+        "statement": "The average weight of A, B and C is 45 kg. If the average weight of A and B be 40 kg and that of B and C be 43 kg, then the weight of B is",
+        "correctChoice": "31Kg"
+      },
+      "m-5": {
+        "correctChoice": "1/2",
+        "statement": "What fraction of a day is 12 hours?",
+        "selected": "1/2",
+        "isCorrect": true
+      },
+      "m-3": {
+        "correctChoice": "1/4",
+        "statement": "What fraction of $1 is 25¢?",
+        "selected": "1/6",
+        "isCorrect": false
+      },
+      "m-7": {
+        "isCorrect": true,
+        "statement": "What is increasing order of the fractions 14/17, 10/12, 6/7, 18/22?",
+        "correctChoice": "6/7, 10/12, 14/17, 18/22",
+        "selected": "6/7, 10/12, 14/17, 18/22"
+      },
+      "m-9": {
+        "isCorrect": true,
+        "statement": "If one-third of one-fourth of a number is 15, then three-tenth of that number is",
+        "selected": "54",
+        "correctChoice": "54"
+      },
+      "m-10": {
+        "correctChoice": "15",
+        "statement": "Three times the first of three consecutive odd integers is 3 more than twice the third. The third integer is",
+        "selected": "9",
+        "isCorrect": false
+      },
+      "m-4": {
+        "selected": "1/7",
+        "correctChoice": "1/2",
+        "statement": "What fraction of an hour is 30 minutes?",
+        "isCorrect": false
+      },
+      "m-2": {
+        "isCorrect": false,
+        "selected": "1/8",
+        "statement": "What fraction of $1 is 50¢?",
+        "correctChoice": "1/2"
+      },
+      "m-6": {
+        "isCorrect": false,
+        "statement": "The average of 20 numbers is zero. Of them, at the most, how many may be greater than zero?",
+        "correctChoice": "19",
+        "selected": "10"
+      },
+      "m-1": {
+        "correctChoice": "1",
+        "statement": "1/4 + 3/4 = ?",
+        "isCorrect": false,
+        "selected": "3"
+      }
+    },
+    "endTime": 1638591675645,
+    "actualEndTime": 1638591675645
+  },
+  {
+    "id": "ktnWeYYCb5lSfB7Y9vEK",
+    "correctQuestions": 1,
+    "actualEndTime": 1638593885845,
+    "userId": "k1XwT1inGjWSrT8cOs1Q1KAPNrY2",
+    "category": "country-capitals",
+    "questions": {
+      "cc-3": {
+        "correctChoice": "Ottawa",
+        "isCorrect": false,
+        "selected": "Toronto",
+        "statement": "Canada"
+      },
+      "cc-2": {
+        "isCorrect": false,
+        "statement": "United States of America (USA)",
+        "correctChoice": "Washington D.C.",
+        "selected": "Boston"
+      },
+      "cc-4": {
+        "isCorrect": false,
+        "selected": "Melbourne",
+        "correctChoice": "Sydney",
+        "statement": "Australia"
+      },
+      "cc-9": {
+        "isCorrect": false,
+        "selected": "Rome",
+        "statement": "France",
+        "correctChoice": "Paris"
+      },
+      "cc-7": {
+        "statement": "Columbia",
+        "correctChoice": "Bogota",
+        "isCorrect": false,
+        "selected": "Mexico city"
+      },
+      "cc-6": {
+        "statement": "Belgium",
+        "selected": "Capetown",
+        "correctChoice": "Brussels",
+        "isCorrect": false
+      },
+      "cc-1": {
+        "selected": "Delhi",
+        "correctChoice": "Delhi",
+        "statement": "India",
+        "isCorrect": true
+      },
+      "cc-5": {
+        "selected": "Johannesburg",
+        "correctChoice": "Capetown",
+        "isCorrect": false,
+        "statement": "South Africa"
+      },
+      "cc-8": {
+        "correctChoice": "Havana",
+        "selected": "Bogota",
+        "statement": "Cuba",
+        "isCorrect": false
+      },
+      "cc-10": {
+        "selected": "Dublin",
+        "correctChoice": "Jerusalem",
+        "statement": "Israel",
+        "isCorrect": false
+      }
+    },
+    "endTime": 1638593885845,
+    "startTime": 1638593874148,
+    "timer": true,
+    "score": -6
+  },
+  {
+    "id": "nw2qLw8fMmCpFhP3Btap",
+    "questions": {
+      "cc-1": {
+        "correctChoice": "Delhi",
+        "selected": "Delhi",
+        "isCorrect": true,
+        "statement": "India"
+      },
+      "cc-5": {
+        "isCorrect": true,
+        "correctChoice": "Capetown",
+        "statement": "South Africa",
+        "selected": "Capetown"
+      },
+      "cc-7": {
+        "selected": "Nicosa",
+        "correctChoice": "Bogota",
+        "statement": "Columbia",
+        "isCorrect": false
+      },
+      "cc-3": {
+        "selected": "Ottawa",
+        "correctChoice": "Ottawa",
+        "statement": "Canada",
+        "isCorrect": true
+      },
+      "cc-10": {
+        "statement": "Israel",
+        "selected": "Jakarta",
+        "correctChoice": "Jerusalem",
+        "isCorrect": false
+      },
+      "cc-2": {
+        "correctChoice": "Washington D.C.",
+        "statement": "United States of America (USA)",
+        "isCorrect": false,
+        "selected": "New York City"
+      },
+      "cc-9": {
+        "selected": "Rome",
+        "statement": "France",
+        "correctChoice": "Paris",
+        "isCorrect": false
+      },
+      "cc-8": {
+        "statement": "Cuba",
+        "selected": "Mexico City",
+        "isCorrect": false,
+        "correctChoice": "Havana"
+      },
+      "cc-6": {
+        "correctChoice": "Brussels",
+        "statement": "Belgium",
+        "selected": "Brussels",
+        "isCorrect": true
+      },
+      "cc-4": {
+        "isCorrect": true,
+        "statement": "Australia",
+        "correctChoice": "Sydney",
+        "selected": "Sydney"
+      }
+    },
+    "endTime": 1638643675392,
+    "correctQuestions": 5,
+    "userId": "k1XwT1inGjWSrT8cOs1Q1KAPNrY2",
+    "category": "country-capitals",
+    "score": 10,
+    "startTime": 1638643659773,
+    "timer": true,
+    "actualEndTime": 1638643675392
+  },
+  {
+    "id": "rzKzTvRvPiLP0SblSJ4G",
+    "userId": "k1XwT1inGjWSrT8cOs1Q1KAPNrY2",
+    "score": 3,
+    "endTime": 1638592725262,
+    "questions": {
+      "cc-7": {
+        "isCorrect": false,
+        "selected": "Nicosa",
+        "statement": "Columbia",
+        "correctChoice": "Bogota"
+      },
+      "cc-6": {
+        "statement": "Belgium",
+        "isCorrect": false,
+        "correctChoice": "Brussels",
+        "selected": "Capetown"
+      },
+      "cc-8": {
+        "correctChoice": "Havana",
+        "isCorrect": false,
+        "statement": "Cuba",
+        "selected": "Mexico City"
+      },
+      "cc-2": {
+        "isCorrect": false,
+        "correctChoice": "Washington D.C.",
+        "selected": "New York City",
+        "statement": "United States of America (USA)"
+      },
+      "cc-9": {
+        "selected": "Rome",
+        "isCorrect": false,
+        "correctChoice": "Paris",
+        "statement": "France"
+      },
+      "cc-5": {
+        "correctChoice": "Capetown",
+        "selected": "Johannesburg",
+        "isCorrect": false,
+        "statement": "South Africa"
+      },
+      "cc-4": {
+        "isCorrect": false,
+        "statement": "Australia",
+        "selected": "Perth",
+        "correctChoice": "Sydney"
+      },
+      "cc-3": {
+        "correctChoice": "Ottawa",
+        "isCorrect": true,
+        "selected": "Ottawa",
+        "statement": "Canada"
+      },
+      "cc-1": {
+        "correctChoice": "Delhi",
+        "isCorrect": true,
+        "statement": "India",
+        "selected": "Delhi"
+      },
+      "cc-10": {
+        "isCorrect": true,
+        "correctChoice": "Jerusalem",
+        "statement": "Israel",
+        "selected": "Jerusalem"
+      }
+    },
+    "timer": true,
+    "correctQuestions": 3,
+    "category": "country-capitals",
+    "actualEndTime": 1638592725262,
+    "startTime": 1638592706084
+  }
+]

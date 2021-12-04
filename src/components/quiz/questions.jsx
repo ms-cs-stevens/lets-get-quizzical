@@ -72,7 +72,6 @@ function Questions() {
         break;
     }
 
-
     // TODO: Randomly select 10 questions
     setQuestions(allQuestions.slice(0, 10));
     setLoading(false);
@@ -86,14 +85,14 @@ function Questions() {
         statement: questions[currentQuestion].statement,
         isCorrect: true,
         selected: choice,
-        correctChoice: questions[currentQuestion].answer
+        correctChoice: questions[currentQuestion].answer,
       };
     } else {
       answers[questions[currentQuestion].id] = {
         statement: questions[currentQuestion].statement,
         isCorrect: false,
         selected: choice,
-        correctChoice: questions[currentQuestion].answer
+        correctChoice: questions[currentQuestion].answer,
       };
     }
     setQuizAnswers(answers);
@@ -101,9 +100,11 @@ function Questions() {
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
     } else {
-      const correctQuestions = Object.entries(quizAnswers).filter(([key, value]) => value.isCorrect).length
-      let totalScore = (correctQuestions * 3 - (10 - correctQuestions));
-      if(timer) {
+      const correctQuestions = Object.entries(quizAnswers).filter(
+        ([key, value]) => value.isCorrect
+      ).length;
+      let totalScore = correctQuestions * 3 - (10 - correctQuestions);
+      if (timer) {
         // TODO: give extra points if finished within time
       }
 
@@ -116,9 +117,9 @@ function Questions() {
         endTime: d.getTime(),
         actualEndTime: d.getTime(), // TODO: Save actual End time
         questions: quizAnswers,
-        timer: timer === 'true',
+        timer: timer === "true",
         correctQuestions: correctQuestions,
-      }
+      };
 
       const quiz = await addDoc(collection(db, "quizes"), payload);
       history.push(`${quiz.id}/summary`);
@@ -143,53 +144,51 @@ function Questions() {
   }
 
   return (
-      <Container maxWidth="lg">
-        <br />
-        <h1>QUIZ</h1>
-        {questions && questions.length > 0 && (
-          <>
-            {timer && (<Timer></Timer>)}
-            <Card sx={{ minWidth: 275 }} variant="outlined">
-              <CardContent>
-                <Typography
-                  sx={{ fontSize: 16, mt: 2 }}
-                  color="text.secondary"
-                  gutterBottom
-                >
-                  Question {currentQuestion + 1} / {questions.length}
-                </Typography>
-                <Typography
-                  variant="h5"
-                  component="div"
-                  sx={{ mb: 5, mt: 3 }}
-                >
-                  {questions[currentQuestion].statement}
-                </Typography>
+    <Container maxWidth="lg">
+      <br />
+      <h1>QUIZ</h1>
+      {questions && questions.length > 0 && (
+        <>
+          {timer && <Timer></Timer>}
+          <Card sx={{ minWidth: 275 }} variant="outlined">
+            <CardContent>
+              <Typography
+                sx={{ fontSize: 16, mt: 2 }}
+                color="text.secondary"
+                gutterBottom
+              >
+                Question {currentQuestion + 1} / {questions.length}
+              </Typography>
+              <Typography variant="h5" component="div" sx={{ mb: 5, mt: 3 }}>
+                {questions[currentQuestion].statement}
+              </Typography>
 
-                <Typography variant="body2">
-                  <Box sx={{ flexGrow: 1 }}>
-                    <Grid container spacing={2}>
-                      {questions[currentQuestion].choices.map(
-                        (answerOption, index) => (
-                          <Grid item xs={6} key={index}>
-                            <Item
-                              onClick={() => handleAnswerOptionClick(answerOption) }
-                              key={index}
-                              elevation={3}
-                            >
-                              {answerOption}
-                            </Item>
-                          </Grid>
-                        )
-                      )}
-                    </Grid>
-                  </Box>
-                </Typography>
-              </CardContent>
-            </Card>
-          </>
-        )}
-      </Container>
+              <Typography variant="body2">
+                <Box sx={{ flexGrow: 1 }}>
+                  <Grid container spacing={2}>
+                    {questions[currentQuestion].choices.map(
+                      (answerOption, index) => (
+                        <Grid item xs={6} key={index}>
+                          <Item
+                            onClick={() =>
+                              handleAnswerOptionClick(answerOption)
+                            }
+                            key={index}
+                            elevation={3}
+                          >
+                            {answerOption}
+                          </Item>
+                        </Grid>
+                      )
+                    )}
+                  </Grid>
+                </Box>
+              </Typography>
+            </CardContent>
+          </Card>
+        </>
+      )}
+    </Container>
   );
 }
 
