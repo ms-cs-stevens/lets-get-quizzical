@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useRecoilState } from "recoil";
+import { useRecoilValue, useRecoilState } from "recoil";
 import state from "../../state/global";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
@@ -12,6 +12,7 @@ import { styled } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
 import firebase from "../../firebase/firebaseApp";
 import Timer from "./Timer";
+import { collection, addDoc } from "firebase/firestore";
 import Summary from "./Summary";
 import { AuthContext } from "../../AuthProvider";
 import countryQuestions from "../../dataset/country-capitals.json";
@@ -36,14 +37,14 @@ function Questions() {
   const { currentUser } = useContext(AuthContext);
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [quizAnswers, setQuizAnswers] = useState([]);
+  const [quizAnswers, setQuizAnswers] = useState({});
   const [startTime, setStartTime] = useState();
   const [currentCategory, setCategory] = useRecoilState(
     state.currentCategoryState
   );
+  const timer = useRecoilValue(state.timerState);
   const db = firebase.firestore();
 
   const getQuestions = async () => {
@@ -55,43 +56,70 @@ function Questions() {
     // let data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
     // // Select Random Question for quiz
     // setQuestions(data.slice(0, 10))
-    let questions;
+    let allQuestions;
     switch (currentCategory) {
       case "country-capitals":
-        questions = countryQuestions;
+        allQuestions = countryQuestions;
         break;
       case "mathematics":
-        questions = mathematicsQuestions;
+        allQuestions = mathematicsQuestions;
         break;
       case "antonyms":
-        questions = antonymsQuestions;
+        allQuestions = antonymsQuestions;
         break;
       case "solar-system":
-        questions = solarSystemQuestions;
+        allQuestions = solarSystemQuestions;
         break;
       default:
         break;
     }
 
-    setQuestions(questions);
+
+    // TODO: Randomly select 10 questions
+    setQuestions(allQuestions.slice(0, 10));
     setLoading(false);
   };
 
-  const handleAnswerOptionClick = async (questionId, choice, correctAns) => {
-    if (choice === correctAns) {
-      setScore(score + 1);
+  const handleAnswerOptionClick = async (choice) => {
+    if (choice === questions[currentQuestion].answer) {
+      setScore(score + 3); // Give 3 point for correct question
       // save question with ans
-      let answers = quizAnswers;
-      answers[questionId] = { isCorrect: true, selected: choice };
+      const answers = quizAnswers;
+      answers[questions[currentQuestion].id] = {
+        statement: questions[currentQuestion].statement,
+        isCorrect: true,
+        selected: choice,
+        correctChoice: questions[currentQuestion].answer
+      };
       setQuizAnswers(answers);
+    } else {
+      setScore(score - 1); // -ve marking; reduce 1/3 marks for each wrong question
     }
     const nextQuestion = currentQuestion + 1;
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
     } else {
-      // generate quiz record in db
-      setShowScore(true);
-      setCategory(undefined);
+      if(timer) {
+        // TODO: give extra points if finished within time
+      }
+
+
+
+      const d = new Date();
+      const payload = {
+        category: currentCategory,
+        score: score,
+        userId: currentUser.uid,
+        startTime: startTime,
+        endTime: d.getTime(),
+        actualEndTime: d.getTime(), // TODO: Save actual End time
+        questions: quizAnswers,
+        timer: timer === 'true',
+        correctQuestions: Object.entries(quizAnswers).filter(([key, value]) => value.isCorrect).length,
+      }
+
+      const quiz = await addDoc(collection(db, "quizes"), payload);
+      history.push(`${quiz.id}/summary`);
     }
   };
 
@@ -102,7 +130,6 @@ function Questions() {
       getQuestions();
     } else {
       setCategory("country-capitals");
-      getQuestions();
     }
   }, [currentCategory]);
 
@@ -115,67 +142,57 @@ function Questions() {
   }
 
   return (
-    <div className="App">
       <Container maxWidth="lg">
         <br />
-        {showScore ? (
-          <Summary score={score} questionLength={questions.length} />
-        ) : (
+        <h1>QUIZ</h1>
+        {questions && questions.length > 0 && (
           <>
-            <h1>QUIZ</h1>
-            {questions && questions.length > 0 && (
-              <>
-                <Timer></Timer>
-                <Card sx={{ minWidth: 275 }} variant="outlined">
-                  <CardContent>
-                    <Typography
-                      sx={{ fontSize: 16, mt: 2 }}
-                      color="text.secondary"
-                      gutterBottom
-                    >
-                      Question {currentQuestion + 1} / {questions.length}
-                    </Typography>
-                    <Typography
-                      variant="h5"
-                      component="div"
-                      sx={{ mb: 5, mt: 3 }}
-                    >
-                      {questions[currentQuestion].statement}
-                    </Typography>
+            {timer && (<Timer></Timer>)}
+            <Card sx={{ minWidth: 275 }} variant="outlined">
+              <CardContent>
+                <Typography
+                  sx={{ fontSize: 16, mt: 2 }}
+                  color="text.secondary"
+                  gutterBottom
+                >
+                  Question {currentQuestion + 1} / {questions.length}
+                </Typography>
+                <Typography
+                  variant="h5"
+                  component="div"
+                  sx={{ mb: 5, mt: 3 }}
+                >
+                  {questions[currentQuestion].statement}
+                </Typography>
 
-                    <Typography variant="body2">
-                      <Box sx={{ flexGrow: 1 }}>
-                        <Grid container spacing={2}>
-                          {questions[currentQuestion].choices.map(
-                            (answerOption, index) => (
-                              <Grid item xs={6} key={index}>
-                                <Item
-                                  onClick={() =>
-                                    handleAnswerOptionClick(
-                                      questions[currentQuestion].id,
-                                      answerOption,
-                                      questions[currentQuestion].answer
-                                    )
-                                  }
-                                  key={index}
-                                  elevation={3}
-                                >
-                                  {answerOption}
-                                </Item>
-                              </Grid>
-                            )
-                          )}
-                        </Grid>
-                      </Box>
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </>
-            )}
+                <Typography variant="body2">
+                  <Box sx={{ flexGrow: 1 }}>
+                    <Grid container spacing={2}>
+                      {questions[currentQuestion].choices.map(
+                        (answerOption, index) => (
+                          <Grid item xs={6} key={index}>
+                            <Item
+                              onClick={() =>
+                                handleAnswerOptionClick(
+                                  answerOption
+                                )
+                              }
+                              key={index}
+                              elevation={3}
+                            >
+                              {answerOption}
+                            </Item>
+                          </Grid>
+                        )
+                      )}
+                    </Grid>
+                  </Box>
+                </Typography>
+              </CardContent>
+            </Card>
           </>
         )}
       </Container>
-    </div>
   );
 }
 
