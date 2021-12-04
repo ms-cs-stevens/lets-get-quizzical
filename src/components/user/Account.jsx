@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider.jsx";
 import Card from "./StatsCard.jsx";
+import Grid from "@material-ui/core/Grid";
 import ProfileCard from "./ProfileCard.jsx";
 import EditUser from "./EditUser.jsx";
 import Dialog from "@mui/material/Dialog";
@@ -46,9 +47,8 @@ function Account() {
 
   if (user) {
     return (
-      <Container component="main" maxWidth="md">
-        <CssBaseline />
-        <div className={classes.paper}>
+      <div className={classes.paper}>
+        <Container component="main" maxWidth="md">
           <EditIcon
             onClick={() => setOpen(true)}
             style={{
@@ -58,10 +58,19 @@ function Account() {
               top: "20%",
             }}
           />
-          <ProfileCard firstName={user.firstName} lastName={user.lastName} />
-          <br />
-          <Card />
-          <br />
+          <Grid container>
+            <Grid item xs={12}>
+              <ProfileCard
+                firstName={user.firstName}
+                lastName={user.lastName}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <br />
+              <Card />
+            </Grid>
+          </Grid>
+
           <Dialog
             maxWidth={"sm"}
             onClose={() => setOpen(false)}
@@ -76,8 +85,8 @@ function Account() {
               </DialogContentText>
             </DialogContent>
           </Dialog>
-        </div>
-      </Container>
+        </Container>
+      </div>
     );
   } else {
     return "Loading";

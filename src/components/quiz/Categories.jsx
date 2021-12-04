@@ -21,11 +21,13 @@ import state from "../../state/global";
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
   textAlign: "center",
-  color: theme.palette.text.primary,
-  width: 250,
+  color: "#fff",
+  width: 400,
+  height: 200,
   lineHeight: "100px",
-  fontWeight: "600",
-  fontSize: 20,
+  fontWeight: "400",
+  fontSize: 25,
+  backgroundColor: "#fb8c00",
   borderRadius: 20,
   cursor: "pointer",
 }));
@@ -87,6 +89,7 @@ function Categories() {
 
   return (
     <Container maxWidth="md">
+      <br />
       <h2>SELECT THE CATEGORY FOR QUIZ</h2>
       <Grid
         container
@@ -95,7 +98,7 @@ function Categories() {
         alignItems="center"
       >
         {Object.entries(categories).map(([key, value]) => (
-          <Grid item xs={6} md={4} key={key}>
+          <Grid item xs={6} md={6} key={key}>
             <Box
               sx={{
                 p: 2,
@@ -108,6 +111,7 @@ function Categories() {
               <Item
                 onClick={(e) => handleCategorySelect(e, key)}
                 key={key}
+                className="card"
                 elevation={3}
               >
                 {value}
