@@ -2,18 +2,14 @@ import React from "react";
 import NoSsr from "@material-ui/core/NoSsr";
 import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
-import AvatarGroup from "@material-ui/lab/AvatarGroup";
-import Box from "@material-ui/core/Box";
-import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
-import { Column, Row, Item } from "@mui-treasury/components/flex";
+import { Column, Row } from "@mui-treasury/components/flex";
 import { Info, InfoSubtitle, InfoTitle } from "@mui-treasury/components/info";
 import { useApexInfoStyles } from "@mui-treasury/styles/info/apex";
 import { useGraphicBtnStyles } from "@mui-treasury/styles/button/graphic";
 import star from "../../icons/star.svg";
 import power from "../../icons/power.svg";
 import group from "../../icons/group.svg";
-import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -150,27 +146,6 @@ export const TeamCardDemo = React.memo(function TeamCard() {
     <>
       <NoSsr></NoSsr>
       <Grid container spacing={4}>
-        {/* <Grid item xs={12} md={3} lg={12}>
-          <CustomCard
-            thumbnail={
-              "https://media.istockphoto.com/vectors/trophy-flat-icon-pixel-perfect-for-mobile-and-web-vector-id1152889195?k=20&m=1152889195&s=612x612&w=0&h=M3T0JbkRZUAnFqbmqxVVMmrtc506_p5RTzoAr2m61KU="
-            }
-            title={"Achievements"}
-            description={
-              <>
-                <div className={classes.luckyIcon}>
-                  <img class="icon-lg" src={star} />
-                </div>
-                <div className={classes.powerIcon}>
-                  <img class="icon-lg" src={power} />
-                </div>
-                <div className={classes.luckyIcon}>
-                  <img class="icon-lg" src={star} />
-                </div>
-              </>
-            }
-          />
-        </Grid> */}
         <Grid item xs={12} md={3} lg={6}>
           <CustomCard
             thumbnail={
@@ -188,37 +163,8 @@ export const TeamCardDemo = React.memo(function TeamCard() {
                   <img id="power" class="icon-lg" src={power} />
                   <label htmlFor="power">Comeback</label>
                 </div>
-                <div className={classes.groupIcon}>
-                  <img id="group" class="icon-lg" src={group} />
-                  <label htmlFor="group">Leader</label>
-                </div>
               </>
             }
-            // bottomText={
-            //   <>
-            //     <Typography
-            //       className={classes.luckyText}
-            //       component="h6"
-            //       variant="h6"
-            //     >
-            //       Lucky
-            //     </Typography>
-            //     <Typography
-            //       className={classes.powerText}
-            //       component="h6"
-            //       variant="h6"
-            //     >
-            //       Comeback
-            //     </Typography>
-            //     <Typography
-            //       className={classes.groupText}
-            //       component="h6"
-            //       variant="h6"
-            //     >
-            //       Leader
-            //     </Typography>
-            //   </>
-            // }
           />
         </Grid>
         <Grid item xs={12} md={3} lg={6}>
@@ -239,51 +185,10 @@ export const TeamCardDemo = React.memo(function TeamCard() {
                   <img id="power" class="icon-lg" src={power} />
                   <label htmlFor="power">50/50</label>
                 </div>
-                <div className={classes.groupIcon}>
-                  <img id="group" class="icon-lg" src={group} />
-                  <label htmlFor="group">Most Popular Answer</label>
-                </div>
               </>
             }
-            // bottomText={
-            //     <>
-            //       <Typography
-            //         className={classes.luckyText}
-            //         component="h6"
-            //         variant="h6"
-            //       >
-            //         Extra Time
-            //       </Typography>
-            //       <Typography
-            //         className={classes.powerText}
-            //         component="h6"
-            //         variant="h6"
-            //       >
-            //         50/50
-            //       </Typography>
-            //       <Typography
-            //         className={classes.groupText}
-            //         component="h6"
-            //         variant="h6"
-            //       >
-            //         Most Popular Answer
-            //       </Typography>
-            //     </>
-            //   }
           />
         </Grid>
-        {/* <Grid item xs={12} md={6} lg={4}>
-          <CustomCard
-            thumbnail={'https://avatarfiles.alphacoders.com/537/53765.jpg'}
-            title={'Overwatch official'}
-            subtitle={'Created by Bliz'}
-            description={
-              <>
-                <b>RainBOW</b> and 3 others are already members of this group.
-              </>
-            }
-          />
-        </Grid> */}
       </Grid>
     </>
   );

@@ -1,12 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider.jsx";
 import Card from "./StatsCard.jsx";
 import ProfileCard from "./ProfileCard.jsx";
 import EditUser from "./EditUser.jsx";
-import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
@@ -49,7 +46,7 @@ function Account() {
 
   if (user) {
     return (
-      <Container component="main" maxWidth="sm">
+      <Container component="main" maxWidth="md">
         <CssBaseline />
         <div className={classes.paper}>
           <EditIcon
