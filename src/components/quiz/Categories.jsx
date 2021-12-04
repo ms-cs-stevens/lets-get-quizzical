@@ -8,6 +8,7 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
+import { Typography } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import { Switch, FormControlLabel } from "@material-ui/core";
@@ -90,7 +91,11 @@ function Categories() {
   return (
     <Container maxWidth="md">
       <br />
-      <h2>SELECT THE CATEGORY FOR QUIZ</h2>
+      <br />
+      <Typography variant={"h5"} style={{ fontWeight: "bold" }}>
+        SELECT A CATEGORY FOR QUIZ
+      </Typography>
+      <br />
       <Grid
         container
         direction="row"
