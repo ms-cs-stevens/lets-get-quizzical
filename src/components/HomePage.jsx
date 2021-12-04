@@ -3,7 +3,6 @@ import { useContext } from "react";
 
 const HomePage = () => {
   const { currentUser } = useContext(AuthContext);
-  console.log(currentUser);
   return (
     <div className="homePage">
       <h1>

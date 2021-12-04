@@ -13,7 +13,6 @@ import Grid from "@mui/material/Grid";
 import firebase from "../../firebase/firebaseApp";
 import Timer from "./Timer";
 import { collection, addDoc } from "firebase/firestore";
-import Summary from "./Summary";
 import { AuthContext } from "../../AuthProvider";
 import countryQuestions from "../../dataset/country-capitals.json";
 import mathematicsQuestions from "../../dataset/mathematics.json";
@@ -37,7 +36,6 @@ function Questions() {
   const { currentUser } = useContext(AuthContext);
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(false);
-  // const [score, setScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [quizAnswers, setQuizAnswers] = useState({});
   const [startTime, setStartTime] = useState();
@@ -46,8 +44,6 @@ function Questions() {
   );
   const timer = useRecoilValue(state.timerState);
   const db = firebase.firestore();
-
-  let score = 0;
 
   const getQuestions = async () => {
     setLoading(true);
@@ -84,10 +80,7 @@ function Questions() {
 
   const handleAnswerOptionClick = async (choice) => {
     const answers = quizAnswers;
-    console.log("before", score, choice === questions[currentQuestion].answer)
-    let currentScore = score;
     if (choice === questions[currentQuestion].answer) {
-      console.log("---correct---")
       // save question with ans
       answers[questions[currentQuestion].id] = {
         statement: questions[currentQuestion].statement,
@@ -95,44 +88,36 @@ function Questions() {
         selected: choice,
         correctChoice: questions[currentQuestion].answer
       };
-      currentScore =+ 3;
-      console.log("current..........", currentScore)
-       // Give 3 point for correct question
     } else {
-      console.log("---incorrect----")
       answers[questions[currentQuestion].id] = {
         statement: questions[currentQuestion].statement,
         isCorrect: false,
         selected: choice,
         correctChoice: questions[currentQuestion].answer
       };
-      currentScore -= 1; // -ve marking; reduce 1/3 marks for each wrong question
-      console.log("current..........", currentScore)
     }
-    score = currentScore;
-    console.log("after score", currentQuestion, score)
     setQuizAnswers(answers);
     const nextQuestion = currentQuestion + 1;
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
     } else {
+      const correctQuestions = Object.entries(quizAnswers).filter(([key, value]) => value.isCorrect).length
+      let totalScore = (correctQuestions * 3 - (10 - correctQuestions));
       if(timer) {
         // TODO: give extra points if finished within time
       }
 
-
-
       const d = new Date();
       const payload = {
         category: currentCategory,
-        score: score,
+        score: totalScore,
         userId: currentUser.uid,
         startTime: startTime,
         endTime: d.getTime(),
         actualEndTime: d.getTime(), // TODO: Save actual End time
         questions: quizAnswers,
         timer: timer === 'true',
-        correctQuestions: Object.entries(quizAnswers).filter(([key, value]) => value.isCorrect).length,
+        correctQuestions: correctQuestions,
       }
 
       const quiz = await addDoc(collection(db, "quizes"), payload);
@@ -142,8 +127,7 @@ function Questions() {
 
   useEffect(() => {
     if (currentCategory) {
-      const d = new Date();
-      setStartTime(d.getTime());
+      setStartTime(+new Date());
       getQuestions();
     } else {
       setCategory("country-capitals");
@@ -189,11 +173,7 @@ function Questions() {
                         (answerOption, index) => (
                           <Grid item xs={6} key={index}>
                             <Item
-                              onClick={() =>
-                                handleAnswerOptionClick(
-                                  answerOption
-                                )
-                              }
+                              onClick={() => handleAnswerOptionClick(answerOption) }
                               key={index}
                               elevation={3}
                             >

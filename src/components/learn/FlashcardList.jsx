@@ -3,7 +3,6 @@ import Flashcard from "./Flashcard.jsx";
 import Grid from "@mui/material/Grid";
 
 export default function FlashcardList({ flashcards }) {
-  console.log(flashcards);
   return (
     <div className="card-grid">
       <Grid
@@ -12,8 +11,8 @@ export default function FlashcardList({ flashcards }) {
         alignItems="center"
         alignContent="center"
       >
-        {flashcards.map((flashcard) => (
-          <Grid item xs={4}>
+        {flashcards.map((flashcard, index) => (
+          <Grid item xs={4} key={index}>
             <Flashcard flashcard={flashcard} key={flashcard.id} />
           </Grid>
         ))}

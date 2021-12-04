@@ -4,9 +4,7 @@ import { AuthContext } from "../../AuthProvider";
 import firebase from "../../firebase/firebaseApp";
 import { doc, getDoc } from "firebase/firestore";
 import Grid from "@mui/material/Grid";
-import Button from '@mui/material/Button';
 import { Paper } from "@material-ui/core";
-import CardActions from '@mui/material/CardActions';
 import InfoCard from './InfoCard';
 import TimerIcon from '@mui/icons-material/Timer';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
@@ -21,7 +19,7 @@ import CardContent from '@mui/material/CardContent';
 import { red, orange, green, blue, purple } from "@material-ui/core/colors";
 import { yellow } from "@mui/material/colors";
 
-const Summary = ({score, questionLength}) => {
+const Summary = () => {
   const history = useHistory();
   const { currentUser } = useContext(AuthContext);
   const { id } = useParams();
@@ -33,8 +31,7 @@ const Summary = ({score, questionLength}) => {
     const snapshot = await getDoc(doc(db, "quizes", id));
     const data = { id: snapshot.id, ...snapshot.data() }
     setQuiz(data);
-
-    console.log(data)
+    setLoading(false);
   }
 
   const millisToMinutesAndSeconds = (millis) => {
@@ -49,6 +46,10 @@ const Summary = ({score, questionLength}) => {
 
   if (!currentUser) {
     history.push("/login");
+  }
+
+  if (loading) {
+    return <h1>Loading...</h1>;
   }
 
   return (

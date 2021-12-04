@@ -57,7 +57,6 @@ const EditUser = ({ user, updateUser }) => {
   const onSubmit = async (data) => {
     if (data.firstName !== user.firstName || data.lastName !== user.lastName) {
       try {
-        console.log(data);
         await updateUserName(data);
         updateUser({
           firstName: data.firstName,

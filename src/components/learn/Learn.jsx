@@ -4,7 +4,6 @@ import { useRecoilValue } from "recoil";
 import state from "../../state/global";
 import Container from "@mui/material/Container";
 import FlashcardList from "./FlashcardList";
-import firebase from "../../firebase/firebaseApp";
 import { AuthContext } from "../../AuthProvider";
 import countryQuestions from "../../dataset/country-capitals.json";
 import mathematicsQuestions from "../../dataset/mathematics.json";
@@ -18,7 +17,6 @@ const Learn = () => {
   const [loading, setLoading] = useState(false);
   const [category, setCategory] = useState("Solar System");
   const currentCategory = useRecoilValue(state.currentCategoryState);
-  const db = firebase.firestore();
 
   const getQuestions = async () => {
     setLoading(true);
