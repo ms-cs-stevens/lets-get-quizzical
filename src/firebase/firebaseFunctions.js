@@ -8,7 +8,7 @@ const createToken = async () => {
   return authToken;
 };
 
-async function updateUserName(id, data) {
+async function updateUserName(data) {
   let currentUser = await firebase.auth().currentUser;
   const updatedUser = await currentUser.updateProfile({
     displayName: `${data.firstName} ${data.lastName}`,

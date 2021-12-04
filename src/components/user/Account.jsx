@@ -1,20 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-// import { updateUserName } from "../../firebase/firebaseFunctions";
-import { useForm, Controller } from "react-hook-form";
-import { AuthContext } from "../../AuthProvider";
+import { AuthContext } from "../../AuthProvider.jsx";
+import Card from "./StatsCard.jsx";
+import ProfileCard from "./ProfileCard.jsx";
+import EditUser from "./EditUser.jsx";
+import Dialog from "@mui/material/Dialog";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import EditIcon from "@mui/icons-material/Edit";
 
-import {
-  Avatar,
-  Button,
-  TextField,
-  Container,
-  CssBaseline,
-  Typography,
-  Grid,
-  makeStyles,
-} from "@material-ui/core";
-import { deepPurple } from "@material-ui/core/colors";
+import { Container, CssBaseline, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -23,43 +18,13 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
   },
-  form: {
-    width: "100%",
-    marginTop: theme.spacing(3),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-  root: {
-    flexGrow: 1,
-    "& > *": {
-      margin: theme.spacing(1),
-    },
-  },
-  avatar: {
-    backgroundColor: deepPurple[800],
-    fontSize: "3em",
-    width: theme.spacing(15),
-    height: theme.spacing(15),
-  },
-  warningStyles: {
-    "& .MuiFormLabel-root.Mui-error": {
-      color: "#e72400 !important",
-    },
-    "& .MuiInput-underline.Mui-error:after": {
-      borderBottomColor: "#e72400 !important",
-    },
-    "& .MuiFormHelperText-root.Mui-error": {
-      color: "#e72400 !important",
-    },
-  },
 }));
 
 function Account() {
   const classes = useStyles();
   const { currentUser } = useContext(AuthContext);
   const [user, setUser] = useState(null);
-  const { handleSubmit, control } = useForm();
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     async function fetchUser() {
@@ -74,117 +39,43 @@ function Account() {
     fetchUser();
   }, [currentUser]);
 
-  const onSubmit = async (data) => {
-    if (data.firstName !== user.firstName || data.lastName !== user.lastName) {
-      try {
-        // setUser(updatedUser);
-      } catch (e) {
-        console.log(e);
-      }
-    }
-  };
-
-  const userDetails = () => {
-    return (
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Grid container spacing={5}>
-          <Grid item xs={6}>
-            <Controller
-              name="firstName"
-              control={control}
-              defaultValue={user.firstName}
-              render={({
-                field: { onChange, value },
-                fieldState: { error },
-              }) => (
-                <TextField
-                  label="First Name"
-                  id="firstName"
-                  variant="outlined"
-                  value={value}
-                  className={error ? classes.warningStyles : null}
-                  fullWidth
-                  onChange={onChange}
-                  error={!!error}
-                  helperText={error ? error.message : null}
-                />
-              )}
-              rules={{ required: "First name required" }}
-            />
-          </Grid>
-          <Grid item xs={6}>
-            <Controller
-              name="lastName"
-              control={control}
-              defaultValue={user.lastName}
-              render={({
-                field: { onChange, value },
-                fieldState: { error },
-              }) => (
-                <TextField
-                  label="Last Name"
-                  id="lastName"
-                  variant="outlined"
-                  value={value}
-                  className={error ? classes.warningStyles : null}
-                  fullWidth
-                  onChange={onChange}
-                  error={!!error}
-                  helperText={error ? error.message : null}
-                />
-              )}
-              rules={{ required: "Last name required" }}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              helperText={"Email is not editable."}
-              fullWidth
-              id="email"
-              InputProps={{
-                readOnly: true,
-              }}
-              label="Email"
-              name="email"
-              defaultValue={user.email}
-              variant="outlined"
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <Button type="submit" fullWidth variant="contained" color="primary">
-              Update profile
-            </Button>
-          </Grid>
-        </Grid>
-      </form>
-    );
+  const updateUser = (user) => {
+    setUser(user);
+    setOpen(false);
   };
 
   if (user) {
     return (
-      <Container component="main" maxWidth="sm">
+      <Container component="main" maxWidth="md">
         <CssBaseline />
         <div className={classes.paper}>
-          <Avatar
-            alt={user.firstName}
-            src={user.profileImage}
-            className={classes.avatar}
+          <EditIcon
+            onClick={() => setOpen(true)}
+            style={{
+              cursor: "pointer",
+              position: "absolute",
+              right: "20%",
+              top: "20%",
+            }}
+          />
+          <ProfileCard firstName={user.firstName} lastName={user.lastName} />
+          <br />
+          <Card />
+          <br />
+          <Dialog
+            maxWidth={"sm"}
+            onClose={() => setOpen(false)}
+            fullWidth={true}
+            open={open}
+            align="left"
           >
-            {user.firstName[0] + user.lastName[0]}
-          </Avatar>
-          <br />
-          <Typography component="h1" variant="h5">
-            {user ? user.firstName + " " + user.lastName : ""}
-            's Profile
-          </Typography>
-          <br />
-          {userDetails()}
-          <Button className="btn-right-margin">
-            <NavLink exact to="/user/change-password" activeClassName="active">
-              Change password
-            </NavLink>
-          </Button>
-          <br />
+            <DialogTitle>Edit User</DialogTitle>
+            <DialogContent dividers>
+              <DialogContentText>
+                <EditUser user={user} updateUser={updateUser} />
+              </DialogContentText>
+            </DialogContent>
+          </Dialog>
         </div>
       </Container>
     );
