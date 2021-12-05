@@ -9,6 +9,7 @@ import countryQuestions from "../../dataset/country-capitals.json";
 import mathematicsQuestions from "../../dataset/mathematics.json";
 import antonymsQuestions from "../../dataset/antonyms.json";
 import solarSystemQuestions from "../../dataset/solar-system.json";
+import { categoryList } from "../../variables/constant";
 
 const Learn = () => {
   const history = useHistory();
@@ -16,35 +17,30 @@ const Learn = () => {
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(false);
   const [category, setCategory] = useState("Solar System");
-  const currentCategory = useRecoilValue(state.currentCategoryState);
+  const currentCategory = useRecoilValue(state.currentCategoryState || "solar-system");
 
   const getQuestions = async () => {
     setLoading(true);
-    let questions, category;
+    let questions;
     switch (currentCategory) {
       case "country-capitals":
         questions = countryQuestions;
-        category = "Country Capitals";
         break;
       case "mathematics":
         questions = mathematicsQuestions;
-        category = "Mathematics";
         break;
       case "antonyms":
         questions = antonymsQuestions;
-        category = "Antonyms";
         break;
       case "solar-system":
         questions = solarSystemQuestions;
-        category = "Solar System";
         break;
       default:
         questions = solarSystemQuestions;
-        category = "Solar System";
     }
 
     setQuestions(questions);
-    setCategory(category);
+    setCategory(categoryList[currentCategory]);
     setLoading(false);
   };
 

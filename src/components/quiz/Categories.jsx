@@ -18,6 +18,7 @@ import { styled } from "@mui/material/styles";
 import { AuthContext } from "../../AuthProvider";
 import { useRecoilState } from "recoil";
 import state from "../../state/global";
+import { categoryList } from "../../variables/constant";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -70,13 +71,7 @@ function Categories() {
     //   .get();
     // let data = {}
     // snapshot.docs.map((doc) => (data[doc.id] = ...doc.data()));
-    let data = {
-      "country-capitals": "Country Capitals",
-      mathematics: "Maths",
-      "solar-system": "Solar System",
-      antonyms: "Antonyms",
-    };
-    setCategories(data);
+    setCategories(categoryList);
     setLoading(false);
   };
 
@@ -140,7 +135,7 @@ function Categories() {
             <Grid item xs={10}>
               Selected Category: {categories[currentCategory]}
               <br />
-              <small>10 Questions</small>
+              <Typography variant="subtitle1">10 Questions</Typography>
             </Grid>
           </Grid>
         </DialogTitle>
