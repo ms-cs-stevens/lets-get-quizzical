@@ -88,12 +88,9 @@ function Categories() {
 
   return (
     <Container maxWidth="md">
-      <br />
-      <br />
       <Typography variant={"h5"} style={{ fontWeight: "bold" }}>
         SELECT A CATEGORY FOR LEARNING
       </Typography>
-      <br />
       <Grid
         container
         direction="row"

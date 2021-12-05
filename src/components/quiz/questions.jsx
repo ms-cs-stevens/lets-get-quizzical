@@ -111,12 +111,11 @@ function Questions() {
       let endTime = startTime + 300000;
       const currentTime = +new Date();
       let timeBonus = false;
-      if(timer && endTime >= currentTime) {
+      if (timer && endTime >= currentTime) {
         // give extra points if finished within time
         totalScore += correctQuestions;
-        timeBonus = true
+        timeBonus = true;
       }
-
 
       const payload = {
         category: currentCategory,
@@ -126,7 +125,7 @@ function Questions() {
         endTime: currentTime,
         actualEndTime: startTime + 300000, // TODO: Save actual End time
         questions: quizAnswers,
-        timer: timer === 'true',
+        timer: timer === "true",
         timeBonus: timeBonus,
         correctQuestions: correctQuestions,
       };
@@ -168,7 +167,11 @@ function Questions() {
               </Grid>
             )}
           </Grid>
-          <Card sx={{ minWidth: 275 }} variant="outlined" className={cx(shadowStyles.root)}>
+          <Card
+            sx={{ minWidth: 275 }}
+            variant="outlined"
+            className={cx(shadowStyles.root)}
+          >
             <CardContent>
               <Typography
                 sx={{ fontSize: 16, mt: 2 }}
@@ -177,11 +180,7 @@ function Questions() {
               >
                 Question {currentQuestion + 1} / {questions.length}
               </Typography>
-              <Typography
-                variant="h5"
-                component="div"
-                sx={{ mb: 5, mt: 3 }}
-              >
+              <Typography variant="h5" component="div" sx={{ mb: 5, mt: 3 }}>
                 {questions[currentQuestion].statement}
               </Typography>
 
@@ -192,10 +191,13 @@ function Questions() {
                       (answerOption, index) => (
                         <Grid item xs={6} key={index}>
                           <Item
-                            onClick={() => handleAnswerOptionClick(answerOption) }
+                            onClick={() =>
+                              handleAnswerOptionClick(answerOption)
+                            }
                             key={index}
                             elevation={0}
-                            variant='outlined'
+                            className="card"
+                            variant="outlined"
                           >
                             {answerOption}
                           </Item>

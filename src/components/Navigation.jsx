@@ -14,6 +14,7 @@ import { AuthContext } from "../AuthProvider";
 const useStyles = makeStyles((theme) => ({
   appBar: {
     height: "3.5 rem",
+    background: "#6148be",
   },
   root: {
     flexGrow: 1,
@@ -23,6 +24,8 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+    textDecoration: "none",
+    color: "#fff",
   },
   avatar: {
     width: theme.spacing(5),
@@ -87,13 +90,12 @@ export default function Navigation() {
             variant="h6"
             className={classes.title}
           >
-            Let's Get Quizzical
+            <NavLink className={classes.title} to={"/"}>
+              Let's Get Quizzical
+            </NavLink>
           </Typography>
           {currentUser ? (
             <>
-              <Button style={{ color: "#fff" }} component={NavLink} to={"/"}>
-                Home
-              </Button>
               <Button
                 style={{ color: "#fff" }}
                 component={NavLink}

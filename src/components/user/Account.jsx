@@ -9,6 +9,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import EditIcon from "@mui/icons-material/Edit";
+import { Typography } from "@mui/material";
 import firebase from "../../firebase/firebaseApp";
 import { Container, makeStyles } from "@material-ui/core";
 import { categoryList } from "../../variables/constant";
@@ -103,6 +104,9 @@ function Account() {
   if (user) {
     return (
       <div className={classes.paper}>
+        <Typography component={"h1"} variant="h3">
+          Profile
+        </Typography>
         <Container component="main" maxWidth="md">
           <Grid container>
             <Grid item xs={12}>

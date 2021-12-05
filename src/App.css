@@ -1,19 +1,23 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+}
+
 .App {
   text-align: center;
 }
 
 .App-body {
-  height: 100vh;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-family: "Lato", "sans-serif", sans-serif;
 }
 
-.App-Bar {
-  height: 10vh;
-}
-
-.App-logo {
-  height: 20vmin;
-  pointer-events: none;
+.app-bg {
+  padding-top: 3rem;
+  padding-bottom: 10%;
+  background: url("./images/app-bg.png") no-repeat center center fixed;
+  background-size: cover;
+  -webkit-background-size: cover;
 }
 
 .card {

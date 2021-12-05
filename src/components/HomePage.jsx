@@ -2,7 +2,7 @@ import React from "react";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
-// import logo from "../images/logo.png";
+import homeBG from "../images/home-bg.png";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
@@ -11,6 +11,19 @@ import { useHistory } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   button: {
     margin: theme.spacing(1),
+    background: "#fff",
+    padding: "15px 30px",
+    color: "#6148be",
+    borderRadius: "30px",
+  },
+  home: {
+    background: `url(${homeBG})`,
+    backgroundSize: "cover",
+  },
+  buttons: {
+    position: "absolute",
+    top: "60%",
+    left: "7.5%",
   },
 }));
 
@@ -20,34 +33,21 @@ function Landing() {
   const classes = useStyles();
 
   return (
-    <div>
+    <div className={classes.home}>
       {" "}
       <Grid
         container
         spacing={2}
-        justify="center"
+        justify="left"
         alignItems="center"
         style={{
           minHeight: "100vh",
           width: "100vw",
-          // background: "url(/img/intro-bg.jpg)",
-          backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
         }}
         wrap
       >
-        <div>
-          <div> {/* <img src={logo} className="App-logo" alt="logo" /> */}</div>
-          <Typography variant="body" component="p" align="center">
-            <Box
-              fontWeight="fontWeightThin"
-              // fontFamily="Raleway"
-              m={1}
-              fontSize={32}
-            >
-              <p>Let's Get Quizzical</p>
-            </Box>
-          </Typography>
+        <div className={classes.buttons}>
           <Button
             onClick={() => {
               history.push("/select-quiz-category");
@@ -57,7 +57,6 @@ function Landing() {
             color="#2E3338"
             disableElevation
             className={classes.button}
-            style={{ padding: "5px 25px", borderRadius: "20px" }}
             endIcon={<ArrowForwardIosIcon />}
           >
             Start Quiz
@@ -71,13 +70,10 @@ function Landing() {
             color="#2E3338"
             disableElevation
             className={classes.button}
-            style={{ padding: "5px 25px", borderRadius: "20px" }}
             endIcon={<ArrowForwardIosIcon />}
           >
             How to play
           </Button>
-          <br />
-          <br />
         </div>
       </Grid>
     </div>
