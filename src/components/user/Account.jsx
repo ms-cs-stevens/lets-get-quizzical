@@ -140,7 +140,7 @@ function Account() {
             </Grid>
             <Grid item xs={12}>
               <br />
-              <Card quizData={userQuizzes} />
+              {userQuizzes.length > 0 && <Card quizData={userQuizzes} />}
             </Grid>
           </Grid>
 

@@ -1,15 +1,86 @@
-import { AuthContext } from "../AuthProvider";
-import { useContext } from "react";
+import React from "react";
+import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
+import Grid from "@material-ui/core/Grid";
+// import logo from "../images/logo.png";
+import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import { useHistory } from "react-router-dom";
 
-const HomePage = () => {
-  const { currentUser } = useContext(AuthContext);
+const useStyles = makeStyles((theme) => ({
+  button: {
+    margin: theme.spacing(1),
+  },
+}));
+
+function Landing() {
+  const history = useHistory();
+
+  const classes = useStyles();
+
   return (
-    <div className="homePage">
-      <h1>
-        {currentUser ? "Welcome to homepage" : "Please signin to continue"}
-      </h1>
+    <div>
+      {" "}
+      <Grid
+        container
+        spacing={2}
+        justify="center"
+        alignItems="center"
+        style={{
+          minHeight: "100vh",
+          width: "100vw",
+          // background: "url(/img/intro-bg.jpg)",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+        }}
+        wrap
+      >
+        <div>
+          <div> {/* <img src={logo} className="App-logo" alt="logo" /> */}</div>
+          <Typography variant="body" component="p" align="center">
+            <Box
+              fontWeight="fontWeightThin"
+              // fontFamily="Raleway"
+              m={1}
+              fontSize={32}
+            >
+              <p>Let's Get Quizzical</p>
+            </Box>
+          </Typography>
+          <Button
+            onClick={() => {
+              history.push("/select-quiz-category");
+            }}
+            variant="contained"
+            size="large"
+            color="#2E3338"
+            disableElevation
+            className={classes.button}
+            style={{ padding: "5px 25px", borderRadius: "20px" }}
+            endIcon={<ArrowForwardIosIcon />}
+          >
+            Start Quiz
+          </Button>
+          <Button
+            onClick={() => {
+              history.push("/how-to-play");
+            }}
+            variant="contained"
+            size="large"
+            color="#2E3338"
+            disableElevation
+            className={classes.button}
+            style={{ padding: "5px 25px", borderRadius: "20px" }}
+            endIcon={<ArrowForwardIosIcon />}
+          >
+            How to play
+          </Button>
+          <br />
+          <br />
+        </div>
+      </Grid>
     </div>
   );
-};
-
-export default HomePage;
+}
+export default Landing;

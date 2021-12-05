@@ -97,13 +97,6 @@ export default function Navigation() {
               <Button
                 style={{ color: "#fff" }}
                 component={NavLink}
-                to={"/select-learning-category"}
-              >
-                Learn
-              </Button>
-              <Button
-                style={{ color: "#fff" }}
-                component={NavLink}
                 to={"/select-quiz-category"}
               >
                 Quiz

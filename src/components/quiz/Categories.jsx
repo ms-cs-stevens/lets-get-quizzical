@@ -54,6 +54,10 @@ function Categories() {
     history.push("/quiz");
   };
 
+  const showFlashcards = (e) => {
+    history.push("/learn");
+  };
+
   const cancelQuiz = () => {
     setOpen(false);
     setCurrentCategory(undefined);
@@ -167,6 +171,9 @@ function Categories() {
         <DialogActions>
           <Button color="primary" onClick={cancelQuiz}>
             Change Category
+          </Button>
+          <Button color="primary" onClick={showFlashcards}>
+            Show Flashcards
           </Button>
           <Button color="primary" onClick={handleStartQuiz}>
             Start Quiz
