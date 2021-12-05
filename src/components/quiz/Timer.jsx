@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
 // import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 
-let today = new Date();
-today.setMinutes(today.getMinutes() + 5);
-
 function Timer() {
+  const [today, setToday] = useState(new Date(Date.now() + (5 * 60 * 1000)))
   const calculateTimeLeft = (endTime) => {
 
     let difference = +endTime - +new Date();
@@ -26,9 +24,9 @@ function Timer() {
 
   const timerComponents = [];
   Object.keys(timeLeft).forEach((interval) => {
-    if (!timeLeft[interval]) {
-      return;
-    }
+    // if (!timeLeft[interval]) {
+    //   return;
+    // }
 
     timerComponents.push(
       <span>

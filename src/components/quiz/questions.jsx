@@ -117,7 +117,6 @@ function Questions() {
         timeBonus = true
       }
 
-
       const payload = {
         category: currentCategory,
         score: totalScore,
