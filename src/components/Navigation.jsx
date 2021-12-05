@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid #fff",
     fontSize: "1em",
     color: "#333",
+    
     fontWeight: "bold",
     height: theme.spacing(5),
   },
@@ -87,7 +88,9 @@ export default function Navigation() {
             variant="h6"
             className={classes.title}
           >
+            <Button style={{ color: "#fff"}} component={NavLink} to={"/"}>
             Let's Get Quizzical
+            </Button>
           </Typography>
           {currentUser ? (
             <>
@@ -121,7 +124,7 @@ export default function Navigation() {
                 aria-controls={menuId}
                 aria-haspopup="true"
                 onClick={handleProfileMenuOpen}
-                color="inherit"
+                color="#37b6f6"
                 alt="user image"
                 src={currentUser.photoURL}
                 className={classes.avatar}

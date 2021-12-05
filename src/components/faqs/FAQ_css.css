@@ -1,63 +1,70 @@
-/* * {
+.App123  {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
+.App123 {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #eeee;
+  background-color: rgb(238, 242, 253);
+  
 }
 
-code {
+.App123 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-header {
+.App123  header {
   display: flex;
   justify-content: center;
   align-content: center;
   padding: 15px;
-  background-color: #3c3c3c;
-  border-bottom: 3px solid rgb(130, 136, 207);
-} */
+  background-color: rgb(163, 181, 231);
+  border-bottom: 3px solid rgb(63, 76, 211);
+}
 
-header h1 {
+.App123  header h1 {
   color: #eee;
   font-size: 28;
   font-weight: 700;
   text-transform: uppercase;
+  
 }
 
-.faqs {
+.App123  .faqs {
   width: 100%;
   max-width: 768px;
   margin: 0 auto;
   padding: 25px;
+  
 }
-.faqs .faq {
+.App123  .faqs .faq {
   margin: 15px;
   padding: 15px;
   background-color: #fff;
   border-radius: 8px;
   border: 1px solid;
-  box-shadow: 0px, 0px, 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px, 1px, 1px #eeee;
+  border-color: transparent;
+  
+ 
 }
 
-.faqs .faq .faq-question {
+.App123  .faqs .faq .faq-question {
   position: relative;
   font-size: 20px;
   padding-right: 80px;
-
+  border-color: transparent;
   transition: all 0.4s ease;
+  
 }
-.faqs .faq .faq-question::after {
+.App123  .faqs .faq .faq-question::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -65,30 +72,33 @@ header h1 {
   transform: translateY(-50%);
   width: 30px;
   height: 30px;
-
   background-image: url("./down-arrow2.png");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+  border-color: transparent;
 
   transition: all 0.4s ease;
 }
-.faqs .faq .faq-answer {
+.App123  .faqs .faq .faq-answer {
   opacity: 0;
   max-height: 0;
   overflow-y: hidden;
   transition: all 0.4s ease;
+  border-color: transparent;
 }
 
-.faqs .faq.open .faq-question {
+.App123  .faqs .faq.open .faq-question {
   margin-bottom: 15px;
+  border-color: transparent;
 }
 
-.faqs .faq.open .faq-question::after {
+.App123  .faqs .faq.open .faq-question::after {
   transform: translateY(-50%) rotate(180deg);
+  border-color: transparent;
 }
 
-.faqs .faq.open .faq-answer {
+.App123  .faqs .faq.open .faq-answer {
   max-height: 1000px;
   opacity: 1;
 }

@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import { useHistory } from "react-router-dom";
+import HomePage_ss from './faqs/HomePage_ss.js';
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -30,54 +31,14 @@ function Landing() {
         style={{
           minHeight: "100vh",
           width: "100vw",
-          // background: "url(/img/intro-bg.jpg)",
+          // # Put a background imagebackground: "url(/img/intro-bg.jpg)",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
         }}
         wrap
       >
         <div>
-          <div> {/* <img src={logo} className="App-logo" alt="logo" /> */}</div>
-          <Typography variant="body" component="p" align="center">
-            <Box
-              fontWeight="fontWeightThin"
-              // fontFamily="Raleway"
-              m={1}
-              fontSize={32}
-            >
-              <p>Let's Get Quizzical</p>
-            </Box>
-          </Typography>
-          <Button
-            onClick={() => {
-              history.push("/select-quiz-category");
-            }}
-            variant="contained"
-            size="large"
-            color="#2E3338"
-            disableElevation
-            className={classes.button}
-            style={{ padding: "5px 25px", borderRadius: "20px" }}
-            endIcon={<ArrowForwardIosIcon />}
-          >
-            Start Quiz
-          </Button>
-          <Button
-            onClick={() => {
-              history.push("/how-to-play");
-            }}
-            variant="contained"
-            size="large"
-            color="#2E3338"
-            disableElevation
-            className={classes.button}
-            style={{ padding: "5px 25px", borderRadius: "20px" }}
-            endIcon={<ArrowForwardIosIcon />}
-          >
-            How to play
-          </Button>
-          <br />
-          <br />
+         <HomePage_ss />
         </div>
       </Grid>
     </div>

@@ -6,18 +6,28 @@ import FAQ from './FAQ';
 function Faqs() {
   const [faqs, setfaqs] = useState([
     {
-      question: 'Question 1',
-      answer: 'Answer 1',
+      question: 'How many points do I gain for selecting the correct answer?',
+      answer: '3 Points',
       open: true
     },
     {
-      question: 'Question 2',
-      answer: 'Answer 2',
+      question: 'How many points do I loose for selecting the wrong answer?',
+      answer: '1 Point',
       open: false
     },
     {
-      question: 'Question 3',
-      answer: 'Answer 3',
+      question: 'Can I earn bonus points?',
+      answer: 'Yes, if you finnish the quiz in the given time frame, you earn 1 extra point for every correct answer',
+      open: false
+    },
+    {
+      question: 'What does the leaderboard page tell me?',
+      answer: 'The leaderboard keeps track of the total points you earned for all quizess, as your rank number based on your total score',
+      open: false
+    },
+    {
+      question: 'Can I reset my password?',
+      answer: 'Currently this is not possible, but you can change your user-name',
       open: false
     }
   ]);
@@ -34,7 +44,7 @@ function Faqs() {
     }))
   }
   return (
-    <div className="App">
+    <div className="App123">
       <Header />
       <div className="faqs">
         {faqs.map( (faq,i) => (
