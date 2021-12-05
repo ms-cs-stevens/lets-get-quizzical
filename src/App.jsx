@@ -1,5 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 import Navigation from "./components/Navigation";
 import Signup from "./components/user/SignUp";
 import SignIn from "./components/user/SignIn";
@@ -15,8 +17,24 @@ import { AuthProvider } from "./AuthProvider.jsx";
 import Leaderboard from "./components/leaderboard/Leaderboard";
 import Summary from "./components/quiz/Summary";
 
+const theme = createTheme({
+  h5: {
+    fontFamily: ['Roboto Condensed'].join(','),
+  },
+  typography: {
+    subtitle1: {
+      color: '#333',
+      fontSize: 12,
+    },
+    // fontFamily: ["Dancing Script", "cursive"].join(","),
+    // fontFamily: ["Baloo Bhaijaan 2", "cursive"].join(","),
+  },
+});
+
 const App = () => {
   return (
+    <ThemeProvider theme={theme}>
+    <CssBaseline />
     <AuthProvider>
       <Router>
         <Navigation />
@@ -46,6 +64,7 @@ const App = () => {
         </div>
       </Router>
     </AuthProvider>
+    </ThemeProvider>
   );
 };
 

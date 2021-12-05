@@ -12,12 +12,14 @@ import GradeIcon from '@mui/icons-material/Grade';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 import PercentIcon from '@mui/icons-material/Percent';
+import TimerOffIcon from '@mui/icons-material/TimerOff';
 import Container from "@mui/material/Container";
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { red, orange, green, blue, purple } from "@material-ui/core/colors";
 import { yellow } from "@mui/material/colors";
+import { categoryList } from "../../variables/constant";
 
 const Summary = () => {
   const history = useHistory();
@@ -91,9 +93,9 @@ const Summary = () => {
         </Grid>
         <Grid item lg={4} sm={6} xl={3} xs={12}>
           <InfoCard
-            title="Timer"
-            value={quiz.timer ? 'On' : 'Off'}
-            icon={<TimerIcon />}
+            title="Time Bonus"
+            value={quiz.timeBonus ? quiz.correctQuestions : 0}
+            icon={quiz.timer? <TimerIcon /> : <TimerOffIcon />}
             color={blue}
           />
         </Grid>
@@ -114,7 +116,7 @@ const Summary = () => {
           Review Questions
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          {quiz.category}
+          {categoryList[quiz.category]}
         </Typography>
         <Grid container justifyContent="space-evenly" alignItems="center" alignContent="center" spacing={1}>
 

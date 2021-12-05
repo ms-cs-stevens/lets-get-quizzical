@@ -10,6 +10,8 @@ import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
+import { useFadedShadowStyles } from "@mui-treasury/styles/shadow/faded";
+import cx from "clsx";
 import firebase from "../../firebase/firebaseApp";
 import Timer from "./Timer";
 import { collection, addDoc } from "firebase/firestore";
@@ -18,6 +20,7 @@ import countryQuestions from "../../dataset/country-capitals.json";
 import mathematicsQuestions from "../../dataset/mathematics.json";
 import antonymsQuestions from "../../dataset/antonyms.json";
 import solarSystemQuestions from "../../dataset/solar-system.json";
+import { categoryList } from "../../variables/constant";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -33,12 +36,13 @@ const Item = styled(Paper)(({ theme }) => ({
 
 function Questions() {
   const history = useHistory();
+  const shadowStyles = useFadedShadowStyles();
   const { currentUser } = useContext(AuthContext);
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [quizAnswers, setQuizAnswers] = useState({});
-  const [startTime, setStartTime] = useState();
+  const [startTime, setStartTime] = useState(+new Date());
   const [currentCategory, setCategory] = useRecoilState(
     state.currentCategoryState
   );
@@ -104,20 +108,26 @@ function Questions() {
         ([key, value]) => value.isCorrect
       ).length;
       let totalScore = correctQuestions * 3 - (10 - correctQuestions);
-      if (timer) {
-        // TODO: give extra points if finished within time
+      let endTime = startTime + 300000;
+      const currentTime = +new Date();
+      let timeBonus = false;
+      if(timer && endTime >= currentTime) {
+        // give extra points if finished within time
+        totalScore += correctQuestions;
+        timeBonus = true
       }
 
-      const d = new Date();
+
       const payload = {
         category: currentCategory,
         score: totalScore,
         userId: currentUser.uid,
         startTime: startTime,
-        endTime: d.getTime(),
-        actualEndTime: d.getTime(), // TODO: Save actual End time
+        endTime: currentTime,
+        actualEndTime: startTime + 300000, // TODO: Save actual End time
         questions: quizAnswers,
-        timer: timer === "true",
+        timer: timer === 'true',
+        timeBonus: timeBonus,
         correctQuestions: correctQuestions,
       };
 
@@ -128,7 +138,7 @@ function Questions() {
 
   useEffect(() => {
     if (currentCategory) {
-      setStartTime(+new Date());
+      // setStartTime(+new Date());
       getQuestions();
     } else {
       setCategory("country-capitals");
@@ -144,13 +154,21 @@ function Questions() {
   }
 
   return (
-    <Container maxWidth="lg">
-      <br />
-      <h1>QUIZ</h1>
+    <Container maxWidth="md">
       {questions && questions.length > 0 && (
         <>
-          {timer && <Timer></Timer>}
-          <Card sx={{ minWidth: 275 }} variant="outlined">
+          <br />
+          <Grid container spacing={2} justifyContent="space-evenly">
+            <Grid item>
+              <h1>QUIZ - {categoryList[currentCategory]}</h1>
+            </Grid>
+            {timer && (
+              <Grid item>
+                <Timer></Timer>
+              </Grid>
+            )}
+          </Grid>
+          <Card sx={{ minWidth: 275 }} variant="outlined" className={cx(shadowStyles.root)}>
             <CardContent>
               <Typography
                 sx={{ fontSize: 16, mt: 2 }}
@@ -159,7 +177,11 @@ function Questions() {
               >
                 Question {currentQuestion + 1} / {questions.length}
               </Typography>
-              <Typography variant="h5" component="div" sx={{ mb: 5, mt: 3 }}>
+              <Typography
+                variant="h5"
+                component="div"
+                sx={{ mb: 5, mt: 3 }}
+              >
                 {questions[currentQuestion].statement}
               </Typography>
 
@@ -170,11 +192,10 @@ function Questions() {
                       (answerOption, index) => (
                         <Grid item xs={6} key={index}>
                           <Item
-                            onClick={() =>
-                              handleAnswerOptionClick(answerOption)
-                            }
+                            onClick={() => handleAnswerOptionClick(answerOption) }
                             key={index}
-                            elevation={3}
+                            elevation={0}
+                            variant='outlined'
                           >
                             {answerOption}
                           </Item>
