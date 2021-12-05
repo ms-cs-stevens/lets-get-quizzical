@@ -11,7 +11,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import EditIcon from "@mui/icons-material/Edit";
 import firebase from "../../firebase/firebaseApp";
 import { Container, makeStyles } from "@material-ui/core";
-import quizzes from "../../dataset/quizzes.json";
+import { categoryList } from "../../variables/constant";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -50,6 +50,7 @@ function Account() {
         .collection("quizes")
         .where("userId", "==", currentUser.uid)
         .get();
+
       let data = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
@@ -60,25 +61,6 @@ function Account() {
     fetchData();
   }, [currentUser, db]);
 
-  const categories = [
-    {
-      value: "country-capitals",
-      label: "Country capitals",
-    },
-    {
-      value: "mathematics",
-      label: "Mathematics",
-    },
-    {
-      value: "antonyms",
-      label: "Antonyms",
-    },
-    {
-      value: "solar-system",
-      label: "Solar System",
-    },
-  ];
-
   const updateUser = (user) => {
     setUser(user);
     setOpen(false);
@@ -86,8 +68,8 @@ function Account() {
 
   const totalQuizzes = () => {
     return {
-      count: quizzes.length,
-      score: quizzes.reduce((a, b) => {
+      count: userQuizzes.length,
+      score: userQuizzes.reduce((a, b) => {
         return a + b.score;
       }, 0),
     };
@@ -95,18 +77,20 @@ function Account() {
 
   const categoryData = () => {
     const data = [];
+    const categories = Object.keys(categoryList);
+
     categories.forEach((category) => {
       let max = -1000;
       let count = 0;
-      quizzes.forEach((quiz) => {
-        console.log(quiz.category);
-        if (quiz.category === category.value) {
+      userQuizzes.forEach((quiz) => {
+        console.log(quiz);
+        if (quiz.category === category) {
           max = Math.max(max, quiz.score);
           count = count + 1;
         }
       });
       data.push({
-        label: category.label,
+        label: categoryList[category],
         count: count,
         highestScore: count === 0 ? 0 : max,
       });
