@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider.jsx";
+import firebase from "../../firebase/firebaseApp";
 import Card from "./StatsCard.jsx";
 import Grid from "@material-ui/core/Grid";
 import ProfileCard from "./ProfileCard.jsx";
@@ -10,7 +11,6 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import EditIcon from "@mui/icons-material/Edit";
 import { Typography } from "@mui/material";
-import firebase from "../../firebase/firebaseApp";
 import { Container, makeStyles } from "@material-ui/core";
 import { categoryList } from "../../variables/constant";
 

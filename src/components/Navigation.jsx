@@ -74,7 +74,10 @@ export default function Navigation() {
         component={NavLink}
         to={"/user/account"}
       >
-        My account
+        Profile
+      </MenuItem>
+      <MenuItem onClick={handleMenuClose} component={NavLink} to={"/quizzes"}>
+        Past Quizzes
       </MenuItem>
       <MenuItem onClick={SignOut}>Logout</MenuItem>
     </Menu>
