@@ -87,8 +87,11 @@ export default function Navigation() {
             variant="h6"
             className={classes.title}
           >
+            <Button style={{ color: "#fff" }} component={NavLink} to={"/"}>
             Let's Get Quizzical
+            </Button>
           </Typography>
+         
           {currentUser ? (
             <>
               <Button style={{ color: "#fff" }} component={NavLink} to={"/"}>

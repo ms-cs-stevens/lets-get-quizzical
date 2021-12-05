@@ -1,19 +1,28 @@
 .App {
   text-align: center;
+  box-shadow: 0 0 5px 2px #eeee;
+  border-color: transparent;
+  
 }
 
 .App-body {
   height: 100vh;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  box-shadow: 0 0 5px 2px rgba(146, 135, 135, 0.933);
+  border-color: transparent;
+ 
 }
 
 .App-Bar {
   height: 10vh;
+  box-shadow: 0 0 5px 2px #eeee;
 }
 
 .App-logo {
   height: 20vmin;
   pointer-events: none;
+  box-shadow: 0 0 5px 2px #eeee;
+  border-color: transparent
 }
 
 .card {
@@ -22,7 +31,7 @@
   align-items: center;
   position: relative;
   border-radius: 0.25rem;
-  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 5px 2px #eeee;;
   background-color: white;
   transform-style: preserve-3d;
   transition: 150ms;
@@ -36,11 +45,12 @@
   width: 370px;
   background-color: lemonchiffon;
   transform: rotateY(2turn);
+  box-shadow: 0 0 5px 2px #eeee;;
 }
 
 .card:hover {
   --translate-y: -2px;
-  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 5px 2px #eeee;;
 }
 /*
 .time {
