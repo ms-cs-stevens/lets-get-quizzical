@@ -103,13 +103,17 @@ const Card = ({ quizData }) => {
                   quizData={quizData}
                   category={category}
                   chartType={"AreaChart"}
+                  x={"Date"}
+                  y={"Score"}
                 />
               </Grid>
               <Grid item xs={12}>
                 <QuizCharts
                   quizData={quizData}
                   category={category}
-                  chartType={"ColumnChart"}
+                  chartType={"BarChart"}
+                  x={"Score"}
+                  y={"Date"}
                 />
               </Grid>
             </Grid>
