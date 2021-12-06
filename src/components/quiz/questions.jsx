@@ -202,7 +202,7 @@ function Questions() {
                             }
                             key={index}
                             elevation={0}
-                            className="card"
+                            className="questionChoice"
                             variant="outlined"
                           >
                             {answerOption}

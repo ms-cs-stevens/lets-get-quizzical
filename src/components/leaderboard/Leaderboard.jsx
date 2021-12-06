@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider";
 import { useHistory } from "react-router";
+import Tooltip from "@mui/material/Tooltip";
 import {
   Grid,
   Typography,
@@ -12,7 +13,6 @@ import {
   makeStyles,
   Divider,
 } from "@material-ui/core";
-import ListItemButton from "@mui/material/ListItemButton";
 import {
   WHITE_COLOR,
   PURPLE_COLOR,
@@ -111,7 +111,9 @@ const Leaderboard = () => {
               className={styles.winnersImages}
             />
             <br />
-            <p className={styles.score}> {data.score}</p>
+            <Tooltip title="Total Score" placement="bottom">
+              <p className={styles.score}> {data.score}</p>
+            </Tooltip>
             <Typography
               variant="button"
               gutterBottom
@@ -122,10 +124,11 @@ const Leaderboard = () => {
               {data.firstName} {data.lastName}
               {isCurrentUser(data.id) ? "*" : ""}
             </Typography>
-
-            <Fab size="small" className={styles.rankButton}>
-              {position}
-            </Fab>
+            <Tooltip title="Rank" placement="right-start">
+              <Fab size="small" className={styles.rankButton}>
+                {position}
+              </Fab>
+            </Tooltip>
           </div>
         </ThemeProvider>
       );
@@ -155,7 +158,6 @@ const Leaderboard = () => {
       <List style={{ width: "100%" }}>
         {data.map((k, i, a) => (
           <>
-            {console.log(a)}
             <ListItem
               className={
                 k.id === currentUser.uid
@@ -164,42 +166,44 @@ const Leaderboard = () => {
               }
             >
               <ListItemText>
-                <ListItemButton>
-                  <Grid container alignItems="center">
-                    <Grid item xs={2}>
+                <Grid container alignItems="center">
+                  <Grid item xs={2}>
+                    <Tooltip title="Rank" placement="right-start">
                       <Fab size="small" className={styles.rankButtonRP}>
                         {i + 4}
                       </Fab>
-                    </Grid>
-                    <Grid item xs={2}>
-                      <img
-                        src="avatar-default.png"
-                        alt="userImage"
-                        style={{
-                          width: "40px",
-                          height: "40px",
-                          borderRadius: "50%",
-                        }}
-                      ></img>
-                    </Grid>
-                    <Grid item xs={6}>
-                      <Typography
-                        variant="button"
-                        style={{ color: PURPLE_COLOR }}
-                      >
-                        {k.firstName} {k.lastName}
-                      </Typography>
-                    </Grid>
-                    <Grid item xs={2}>
+                    </Tooltip>
+                  </Grid>
+                  <Grid item xs={2}>
+                    <img
+                      src="avatar-default.png"
+                      alt="userImage"
+                      style={{
+                        width: "40px",
+                        height: "40px",
+                        borderRadius: "50%",
+                      }}
+                    ></img>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Typography
+                      variant="button"
+                      style={{ color: PURPLE_COLOR }}
+                    >
+                      {k.firstName} {k.lastName}
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={2}>
+                    <Tooltip title="Total Score" placement="left-start">
                       <Typography
                         variant="button"
                         style={{ color: PURPLE_COLOR }}
                       >
                         {k.score}
                       </Typography>
-                    </Grid>
+                    </Tooltip>
                   </Grid>
-                </ListItemButton>
+                </Grid>
               </ListItemText>
             </ListItem>
             <Divider light />

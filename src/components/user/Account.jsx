@@ -10,6 +10,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import EditIcon from "@mui/icons-material/Edit";
+import Tooltip from "@mui/material/Tooltip";
 import { Typography } from "@mui/material";
 import { categoryList, HEADER_CSS } from "../../variables/constant";
 import { Container, makeStyles } from "@material-ui/core";
@@ -104,15 +105,17 @@ function Account() {
         <Container component="main" maxWidth="md">
           <Grid container>
             <Grid item xs={12}>
-              <EditIcon
-                onClick={() => setOpen(true)}
-                style={{
-                  cursor: "pointer",
-                  position: "absolute",
-                  right: "20%",
-                  top: "25%",
-                }}
-              />
+              <Tooltip title="Edit User">
+                <EditIcon
+                  onClick={() => setOpen(true)}
+                  style={{
+                    cursor: "pointer",
+                    position: "absolute",
+                    right: "20%",
+                    top: "25%",
+                  }}
+                />
+              </Tooltip>
               <ProfileCard
                 firstName={user.firstName}
                 lastName={user.lastName}
