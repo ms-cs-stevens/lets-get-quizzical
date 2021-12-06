@@ -41,12 +41,12 @@ const App = () => {
                 <Route exact path="/" component={HomePage} />
                 <Route path="/register" component={Signup} />
                 <Route path="/login" component={SignIn} />
+                <Route path="/leaderboard" component={Leaderboard} />
                 <div className="app-bg">
                   <Route path="/quiz" component={Questions} />
                   {/* <Route path="/add_questions" component={AddQuestions} /> */}
                   <Route path="/select-quiz-category" component={Categories} />
                   <Route path="/learn" component={Learn} />
-                  <Route path="/leaderboard" component={Leaderboard} />
                   <Route path="/how-to-play" component={Faqs} />
                   <Route path="/:id/summary" component={Summary} />
                   <Route path="/user/account" component={Account} />
