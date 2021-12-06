@@ -61,7 +61,7 @@ function Landing() {
           </Button>
           <Button
             onClick={() => {
-              history.push("/how-to-play");
+              history.push("/faqs");
             }}
             variant="contained"
             size="large"
@@ -69,7 +69,7 @@ function Landing() {
             className={classes.button}
             endIcon={<ArrowForwardIosIcon />}
           >
-            How to play
+            FAQs
           </Button>
         </div>
       </Grid>

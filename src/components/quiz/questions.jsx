@@ -168,61 +168,65 @@ function Questions() {
   }
 
   return (
-    <Container component="main" maxWidth="md">
-      <Prompt
-        when={showPrompt}
-        message={() =>
-          `Are you sure you want to go to another page? Any progress made on the quiz will be lost!`
-        }
-      />
-      <Grid container spacing={2} justifyContent="space-between">
-        <Grid item>
-          <Typography component={"h1"} variant="h4" className={styles.header}>
-            QUIZ - {categoryList[currentCategory]}
-          </Typography>
+    <div className="app-bg">
+      <Container component="main" maxWidth="md">
+        <Prompt
+          when={showPrompt}
+          message={() =>
+            `Are you sure you want to go to another page? Any progress made on the quiz will be lost!`
+          }
+        />
+        <Grid container spacing={2} justifyContent="space-between">
+          <Grid item>
+            <Typography component={"h1"} variant="h4" className={styles.header}>
+              QUIZ - {categoryList[currentCategory]}
+            </Typography>
+          </Grid>
+          {timer && <Timer></Timer>}
         </Grid>
-        {timer && <Timer></Timer>}
-      </Grid>
 
-      {questions && questions.length > 0 && (
-        <Card className={cx(styles.card, shadowStyles.root)}>
-          <CardContent>
-            <Typography
-              sx={{ fontSize: 16, mt: 2 }}
-              color="text.secondary"
-              gutterBottom
-            >
-              Question {currentQuestion + 1} / {questions.length}
-            </Typography>
-            <Typography variant="h5" component="div" sx={{ mb: 5, mt: 3 }}>
-              {questions[currentQuestion].statement}
-            </Typography>
+        {questions && questions.length > 0 && (
+          <Card className={cx(styles.card, shadowStyles.root)}>
+            <CardContent>
+              <Typography
+                sx={{ fontSize: 16, mt: 2 }}
+                color="text.secondary"
+                gutterBottom
+              >
+                Question {currentQuestion + 1} / {questions.length}
+              </Typography>
+              <Typography variant="h5" component="div" sx={{ mb: 5, mt: 3 }}>
+                {questions[currentQuestion].statement}
+              </Typography>
 
-            <Typography variant="body2">
-              <Box sx={{ flexGrow: 1 }}>
-                <Grid container spacing={2}>
-                  {questions[currentQuestion].choices.map(
-                    (answerOption, index) => (
-                      <Grid item xs={6} key={index}>
-                        <Item
-                          onClick={() => handleAnswerOptionClick(answerOption)}
-                          key={index}
-                          elevation={0}
-                          className="card"
-                          variant="outlined"
-                        >
-                          {answerOption}
-                        </Item>
-                      </Grid>
-                    )
-                  )}
-                </Grid>
-              </Box>
-            </Typography>
-          </CardContent>
-        </Card>
-      )}
-    </Container>
+              <Typography variant="body2">
+                <Box sx={{ flexGrow: 1 }}>
+                  <Grid container spacing={2}>
+                    {questions[currentQuestion].choices.map(
+                      (answerOption, index) => (
+                        <Grid item xs={6} key={index}>
+                          <Item
+                            onClick={() =>
+                              handleAnswerOptionClick(answerOption)
+                            }
+                            key={index}
+                            elevation={0}
+                            className="card"
+                            variant="outlined"
+                          >
+                            {answerOption}
+                          </Item>
+                        </Grid>
+                      )
+                    )}
+                  </Grid>
+                </Box>
+              </Typography>
+            </CardContent>
+          </Card>
+        )}
+      </Container>
+    </div>
   );
 }
 

@@ -59,14 +59,13 @@ const Learn = () => {
   }
 
   return (
-    <div className="learn">
+    <div className="app-bg learn">
       <Container maxWidth="lg">
         <Grid container spacing={1}>
           <Grid item xs={12}>
             <Typography component={"h1"} variant="h4" className={styles.header}>
               Learn - {categoryList[currentCategory]}
             </Typography>
-            <br />
           </Grid>
           {questions.length > 0 && <FlashcardList flashcards={questions} />}
         </Grid>

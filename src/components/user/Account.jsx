@@ -14,12 +14,7 @@ import { Typography } from "@mui/material";
 import { categoryList, HEADER_CSS } from "../../variables/constant";
 import { Container, makeStyles } from "@material-ui/core";
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  },
+const useStyles = makeStyles(() => ({
   header: HEADER_CSS,
 }));
 
@@ -102,7 +97,7 @@ function Account() {
 
   if (user) {
     return (
-      <div className={classes.paper}>
+      <div className="app-bg">
         <Typography component={"h1"} variant="h4" className={classes.header}>
           Profile
         </Typography>

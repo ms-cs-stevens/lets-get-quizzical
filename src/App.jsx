@@ -16,7 +16,7 @@ import Leaderboard from "./components/leaderboard/Leaderboard";
 import Summary from "./components/quiz/Summary";
 import UserQuizzes from "./components/quiz/UserQuizzes";
 import { PURPLE_COLOR } from "./variables/constant";
-// import NotFound from "./components/NotFound";
+import NotFound from "./components/NotFound";
 
 const theme = createTheme({
   typography: {
@@ -43,19 +43,17 @@ const App = () => {
                 <Route exact path="/" component={HomePage} />
                 <Route path="/register" component={Signup} />
                 <Route path="/login" component={SignIn} />
-                <div className="app-bg">
-                  <Route path="/leaderboard" component={Leaderboard} />
-                  <Route path="/quiz" component={Questions} />
-                  <Route path="/select-quiz-category" component={Categories} />
-                  <Route path="/learn" component={Learn} />
-                  <Route path="/how-to-play" component={Faqs} />
-                  <Route path="/:id/summary" component={Summary} />
-                  <Route path="/user/account" component={Account} />
-                  <Route path="/quizzes" component={UserQuizzes} />
-                  <br />
-                  <br />
-                  {/* <Route component={NotFound} /> */}
-                </div>
+                <Route path="/leaderboard" component={Leaderboard} />
+                <Route path="/quiz" component={Questions} />
+                <Route path="/select-quiz-category" component={Categories} />
+                <Route path="/learn" component={Learn} />
+                <Route path="/faqs" component={Faqs} />
+                <Route path="/:id/summary" component={Summary} />
+                <Route path="/user/account" component={Account} />
+                <Route path="/quizzes" component={UserQuizzes} />
+                <Route path="*" component={NotFound} />
+                <br />
+                <br />
               </Switch>
             </div>
           </div>

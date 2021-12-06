@@ -110,16 +110,16 @@ export default function Navigation() {
               <Button
                 style={{ color: WHITE_COLOR }}
                 component={NavLink}
-                to={"/how-to-play"}
+                to={"/leaderboard"}
               >
-                How to play
+                Leaderboard
               </Button>
               <Button
                 style={{ color: WHITE_COLOR }}
                 component={NavLink}
-                to={"/leaderboard"}
+                to={"/faqs"}
               >
-                Leaderboard
+                FAQs
               </Button>
               &nbsp;
               <Avatar
@@ -141,9 +141,9 @@ export default function Navigation() {
               <Button
                 style={{ color: WHITE_COLOR }}
                 component={NavLink}
-                to={"/how-to-play"}
+                to={"/faqs"}
               >
-                How to play
+                FAQs
               </Button>
               <Button
                 style={{ color: WHITE_COLOR }}
@@ -152,7 +152,11 @@ export default function Navigation() {
               >
                 Register
               </Button>
-              <Button style={{ color: WHITE_COLOR }} component={NavLink} to="/login">
+              <Button
+                style={{ color: WHITE_COLOR }}
+                component={NavLink}
+                to="/login"
+              >
                 Login
               </Button>
             </>

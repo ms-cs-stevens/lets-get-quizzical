@@ -55,7 +55,7 @@ function Faqs() {
     );
   };
   return (
-    <div className="App">
+    <div className="app-bg">
       <Header />
       <div className="faqs">
         {faqs.map((faq, i) => (

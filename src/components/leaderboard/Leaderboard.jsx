@@ -20,15 +20,13 @@ import {
   HEADER_CSS,
 } from "../../variables/constant";
 import firebase from "../../firebase/firebaseApp";
-import { createMuiTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
+import { createMuiTheme } from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/styles";
 
 const theme = createMuiTheme({
   typography: {
-    fontFamily: [
-      "Lato", "sans-serif"
-    ].join(','),
-  }
+    fontFamily: ["Lato", "sans-serif"].join(","),
+  },
 });
 
 const useStyles = makeStyles(() => ({
@@ -106,29 +104,29 @@ const Leaderboard = () => {
     if (data) {
       return (
         <ThemeProvider theme={theme}>
-        <div style={{ position: "relative" }}>
-          <img
-            src="avatar-default.png"
-            alt="userImage"
-            className={styles.winnersImages}
-          />
-          <br />
-          <p className={styles.score}> {data.score}</p>
-          <Typography
-            variant="button"
-            gutterBottom
-            className={
-              isCurrentUser(data.id) ? styles.cuWinner : styles.ncuWinner
-            }
-          >
-            {data.firstName} {data.lastName}
-            {isCurrentUser(data.id) ? "*" : ""}
-          </Typography>
+          <div style={{ position: "relative" }}>
+            <img
+              src="avatar-default.png"
+              alt="userImage"
+              className={styles.winnersImages}
+            />
+            <br />
+            <p className={styles.score}> {data.score}</p>
+            <Typography
+              variant="button"
+              gutterBottom
+              className={
+                isCurrentUser(data.id) ? styles.cuWinner : styles.ncuWinner
+              }
+            >
+              {data.firstName} {data.lastName}
+              {isCurrentUser(data.id) ? "*" : ""}
+            </Typography>
 
-          <Fab size="small" className={styles.rankButton}>
-            {position}
-          </Fab>
-        </div>
+            <Fab size="small" className={styles.rankButton}>
+              {position}
+            </Fab>
+          </div>
         </ThemeProvider>
       );
     } else {
@@ -212,25 +210,27 @@ const Leaderboard = () => {
   }
 
   return (
-    <Container maxWidth="lg">
-      <Grid container spacing={2} justifyContent="center">
-        <Grid item xs={12}>
-          <Typography component={"h1"} variant="h4" className={styles.header}>
-            Leaderboard
-          </Typography>
-        </Grid>
-        {/* winners grid */}
-        <Grid item xs={8} style={{ marginTop: "20vh" }}>
-          {generateWinners(users.slice(0, 3))}
-        </Grid>
-        {/* Runner ups */}
-        <Grid item xs={6}>
-          <Grid container justifyContent="center">
-            {generateRunnerUp(users.slice(3, users.length))}
+    <div className="app-bg">
+      <Container maxWidth="lg">
+        <Grid container spacing={2} justifyContent="center">
+          <Grid item xs={12}>
+            <Typography component={"h1"} variant="h4" className={styles.header}>
+              Leaderboard
+            </Typography>
+          </Grid>
+          {/* winners grid */}
+          <Grid item xs={8} style={{ marginTop: "20vh" }}>
+            {generateWinners(users.slice(0, 3))}
+          </Grid>
+          {/* Runner ups */}
+          <Grid item xs={6}>
+            <Grid container justifyContent="center">
+              {generateRunnerUp(users.slice(3, users.length))}
+            </Grid>
           </Grid>
         </Grid>
-      </Grid>
-    </Container>
+      </Container>
+    </div>
   );
 };
 
