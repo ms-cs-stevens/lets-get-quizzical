@@ -17,7 +17,7 @@
   position: relative;
   font-size: 20px;
   padding-right: 80px;
-
+  color: #6148be;
   transition: all 0.4s ease;
 }
 .faqs .faq .faq-question::after {
@@ -39,12 +39,13 @@
 .faqs .faq .faq-answer {
   opacity: 0;
   max-height: 0;
+  color: #6148be;
   overflow-y: hidden;
   transition: all 0.4s ease;
 }
 
 .faqs .faq.open .faq-question {
-  margin-bottom: 15px;
+  margin-bottom: 6px;
 }
 
 .faqs .faq.open .faq-question::after {

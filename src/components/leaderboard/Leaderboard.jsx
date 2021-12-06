@@ -20,6 +20,16 @@ import {
   HEADER_CSS,
 } from "../../variables/constant";
 import firebase from "../../firebase/firebaseApp";
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+
+const theme = createMuiTheme({
+  typography: {
+    fontFamily: [
+      "Lato", "sans-serif"
+    ].join(','),
+  }
+});
 
 const useStyles = makeStyles(() => ({
   header: HEADER_CSS,
@@ -95,6 +105,7 @@ const Leaderboard = () => {
   function gridCore(data, position) {
     if (data) {
       return (
+        <ThemeProvider theme={theme}>
         <div style={{ position: "relative" }}>
           <img
             src="avatar-default.png"
@@ -118,6 +129,7 @@ const Leaderboard = () => {
             {position}
           </Fab>
         </div>
+        </ThemeProvider>
       );
     } else {
       return "";

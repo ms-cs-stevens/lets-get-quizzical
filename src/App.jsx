@@ -19,6 +19,7 @@ import { PURPLE_COLOR } from "./variables/constant";
 
 const theme = createTheme({
   typography: {
+    color: '#6148be',
     subtitle1: {
       color: PURPLE_COLOR,
       fontSize: 12,
