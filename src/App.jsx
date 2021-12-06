@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Navigation from "./components/Navigation";
@@ -16,7 +16,7 @@ import Leaderboard from "./components/leaderboard/Leaderboard";
 import Summary from "./components/quiz/Summary";
 import UserQuizzes from "./components/quiz/UserQuizzes";
 import { PURPLE_COLOR } from "./variables/constant";
-import NotFound from "./components/NotFound";
+// import NotFound from "./components/NotFound";
 
 const theme = createTheme({
   typography: {
@@ -52,10 +52,9 @@ const App = () => {
                   <Route path="/:id/summary" component={Summary} />
                   <Route path="/user/account" component={Account} />
                   <Route path="/quizzes" component={UserQuizzes} />
-                  <Route />
                   <br />
                   <br />
-                  <Route component={NotFound} />
+                  {/* <Route component={NotFound} /> */}
                 </div>
               </Switch>
             </div>
