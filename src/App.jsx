@@ -48,7 +48,7 @@ const App = () => {
                   <Route path="/quiz" component={Questions} />
                   <Route path="/select-quiz-category" component={Categories} />
                   <Route path="/learn" component={Learn} />
-                  <Route path="/how-to-play" component={Faqs} />
+                  <Route path="/faqs" component={Faqs} />
                   <Route path="/:id/summary" component={Summary} />
                   <Route path="/user/account" component={Account} />
                   <Route path="/quizzes" component={UserQuizzes} />

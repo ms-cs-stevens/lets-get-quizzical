@@ -66,7 +66,6 @@ const Learn = () => {
             <Typography component={"h1"} variant="h4" className={styles.header}>
               Learn - {categoryList[currentCategory]}
             </Typography>
-            <br />
           </Grid>
           {questions.length > 0 && <FlashcardList flashcards={questions} />}
         </Grid>
