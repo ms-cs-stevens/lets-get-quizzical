@@ -21,6 +21,9 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
   },
+  header: {
+    color: '#fff',
+  }
 }));
 
 function Account() {
@@ -97,14 +100,13 @@ function Account() {
       });
     });
 
-    console.log(data);
     return data;
   };
 
   if (user) {
     return (
       <div className={classes.paper}>
-        <Typography component={"h1"} variant="h3">
+        <Typography component={"h1"} variant="h4" className={classes.header}>
           Profile
         </Typography>
         <Container component="main" maxWidth="md">

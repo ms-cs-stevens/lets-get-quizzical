@@ -9,12 +9,16 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import { Typography } from "@mui/material";
+import Card from "@material-ui/core/Card";
 import Avatar from "@mui/material/Avatar";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import { Switch, FormControlLabel } from "@material-ui/core";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useHistory } from "react-router-dom";
 import { styled } from "@mui/material/styles";
+import { makeStyles } from "@material-ui/core/styles";
+import cx from "clsx";
+import { useFadedShadowStyles } from "@mui-treasury/styles/shadow/faded";
 import { AuthContext } from "../../AuthProvider";
 import { useRecoilState } from "recoil";
 import state from "../../state/global";
@@ -24,17 +28,30 @@ const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
   textAlign: "center",
   color: "#fff",
-  width: 400,
-  height: 200,
+  width: 305,
+  height: 145,
   lineHeight: "100px",
   fontWeight: "400",
-  fontSize: 25,
-  backgroundColor: "#fb8c00",
+  fontSize: 18,
+  backgroundColor: '#8068d2',
   borderRadius: 20,
   cursor: "pointer",
 }));
 
+const useStyles = makeStyles(({ palette }) => ({
+  card: {
+    borderRadius: 12,
+    minWidth: "-webkit-fill-available",
+    textAlign: "center",
+  },
+  header: {
+    color: '#fff',
+  },
+}));
+
 function Categories() {
+  const styles = useStyles();
+  const shadowStyles = useFadedShadowStyles();
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const { currentUser } = useContext(AuthContext);
@@ -66,11 +83,6 @@ function Categories() {
 
   const getCategories = async () => {
     setLoading(true);
-    // const snapshot = await db
-    //   .collection('categories')
-    //   .get();
-    // let data = {}
-    // snapshot.docs.map((doc) => (data[doc.id] = ...doc.data()));
     setCategories(categoryList);
     setLoading(false);
   };
@@ -89,9 +101,15 @@ function Categories() {
 
   return (
     <Container maxWidth="md">
-      <Typography variant={"h5"} style={{ fontWeight: "bold" }}>
-        SELECT A CATEGORY FOR QUIZ
-      </Typography>
+      <Grid container spacing={2} justifyContent="space-evenly">
+        <Grid item>
+          <Typography component={"h1"} variant="h4" className={styles.header}>
+            Select a Category
+          </Typography>
+        </Grid>
+      </Grid>
+
+      <Card className={cx(styles.card, shadowStyles.root)}>
       <Grid
         container
         direction="row"
@@ -121,6 +139,7 @@ function Categories() {
           </Grid>
         ))}
       </Grid>
+      </Card>
       <Dialog maxWidth={"sm"} fullWidth={true} open={open} align="left">
         <DialogTitle>
           <Grid container direction="row" alignItems="center">

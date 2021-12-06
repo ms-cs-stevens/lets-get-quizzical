@@ -8,7 +8,7 @@ const states = {
 
   timerState: atom({
     key: "timer",
-    default: "true",
+    default: true,
   }),
 
   currentCategoryState: atom({

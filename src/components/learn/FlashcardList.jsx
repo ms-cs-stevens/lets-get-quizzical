@@ -11,8 +11,8 @@ export default function FlashcardList({ flashcards }) {
         alignItems="center"
         alignContent="center"
       >
-        {flashcards.map((flashcard, index) => (
-          <Grid item xs={4} key={index}>
+        {flashcards.map((flashcard) => (
+          <Grid item xs={4}>
             <Flashcard flashcard={flashcard} key={flashcard.id} />
           </Grid>
         ))}
