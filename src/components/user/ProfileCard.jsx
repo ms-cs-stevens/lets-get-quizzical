@@ -46,7 +46,7 @@ const useStyles = makeStyles(({ palette }) => ({
     fontWeight: "bold",
     marginBottom: 4,
     letterSpacing: "1px",
-  },
+  }
 }));
 
 export const ProfileCard = ({

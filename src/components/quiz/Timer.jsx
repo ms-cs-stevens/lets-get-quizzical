@@ -1,7 +1,17 @@
 import { useEffect, useState } from 'react';
+import { makeStyles } from "@material-ui/core/styles";
 // import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 
+const useStyles = makeStyles(({ palette }) => ({
+  time: {
+    fontSize: '18px',
+    padding: '1.5rem',
+    color: '#fff',
+  }
+}));
+
 function Timer() {
+  const styles = useStyles();
   const [today, setToday] = useState(new Date(Date.now() + (5 * 60 * 1000)))
   const calculateTimeLeft = (endTime) => {
 
@@ -29,7 +39,7 @@ function Timer() {
     // }
 
     timerComponents.push(
-      <span>
+      <span key={interval}>
         {interval === 'minutes' && `${timeLeft[interval]}min `}
         {interval === 'seconds' && `${timeLeft[interval]}sec remaining`}
       </span>
@@ -45,9 +55,9 @@ function Timer() {
   });
 
   return (
-      <div className="time">
+    <div className={styles.time}>
       {timerComponents.length ? timerComponents : <span>Time's up! No Bonus now!</span>}
-      </div>
+    </div>
   );
 }
 
