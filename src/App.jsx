@@ -15,11 +15,12 @@ import { AuthProvider } from "./AuthProvider.jsx";
 import Leaderboard from "./components/leaderboard/Leaderboard";
 import Summary from "./components/quiz/Summary";
 import UserQuizzes from "./components/quiz/UserQuizzes";
+import { PURPLE_COLOR } from "./variables/constant";
 
 const theme = createTheme({
   typography: {
     subtitle1: {
-      color: "#333",
+      color: PURPLE_COLOR,
       fontSize: 12,
     },
     fontFamily: ["Lato", "sans-serif"].join(","),

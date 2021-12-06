@@ -5,13 +5,14 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import { useHistory } from "react-router-dom";
+import { WHITE_COLOR, PURPLE_COLOR } from "../variables/constant";
 
 const useStyles = makeStyles((theme) => ({
   button: {
     margin: theme.spacing(1),
-    background: "#fff",
+    background: WHITE_COLOR,
     padding: "15px 30px",
-    color: "#6148be",
+    color: PURPLE_COLOR,
     borderRadius: "30px",
   },
   home: {
@@ -52,7 +53,6 @@ function Landing() {
             }}
             variant="contained"
             size="large"
-            color="#2E3338"
             disableElevation
             className={classes.button}
             endIcon={<ArrowForwardIosIcon />}
@@ -65,7 +65,6 @@ function Landing() {
             }}
             variant="contained"
             size="large"
-            color="#2E3338"
             disableElevation
             className={classes.button}
             endIcon={<ArrowForwardIosIcon />}

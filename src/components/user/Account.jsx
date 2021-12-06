@@ -12,7 +12,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import EditIcon from "@mui/icons-material/Edit";
 import { Typography } from "@mui/material";
 import { Container, makeStyles } from "@material-ui/core";
-import { categoryList } from "../../variables/constant";
+import { categoryList, WHITE_COLOR } from "../../variables/constant";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   header: {
-    color: '#fff',
+    color: WHITE_COLOR
   }
 }));
 
