@@ -16,10 +16,11 @@ import Leaderboard from "./components/leaderboard/Leaderboard";
 import Summary from "./components/quiz/Summary";
 import UserQuizzes from "./components/quiz/UserQuizzes";
 import { PURPLE_COLOR } from "./variables/constant";
+import NotFound from "./components/NotFound";
 
 const theme = createTheme({
   typography: {
-    color: '#6148be',
+    color: "#6148be",
     subtitle1: {
       color: PURPLE_COLOR,
       fontSize: 12,
@@ -51,8 +52,10 @@ const App = () => {
                   <Route path="/:id/summary" component={Summary} />
                   <Route path="/user/account" component={Account} />
                   <Route path="/quizzes" component={UserQuizzes} />
+                  <Route />
                   <br />
                   <br />
+                  <Route component={NotFound} />
                 </div>
               </Switch>
             </div>

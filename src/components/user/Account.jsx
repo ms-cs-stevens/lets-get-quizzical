@@ -11,8 +11,8 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import EditIcon from "@mui/icons-material/Edit";
 import { Typography } from "@mui/material";
-import { Container, makeStyles } from "@material-ui/core";
 import { categoryList, HEADER_CSS } from "../../variables/constant";
+import { Container, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
