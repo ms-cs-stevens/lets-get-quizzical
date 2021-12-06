@@ -37,8 +37,6 @@ const useStyles = makeStyles(({ palette }) => ({
     fontSize: 12,
     color: palette.grey[500],
     fontWeight: 500,
-    fontFamily:
-      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
     margin: 0,
   },
   statValue: {
@@ -46,7 +44,7 @@ const useStyles = makeStyles(({ palette }) => ({
     fontWeight: "bold",
     marginBottom: 4,
     letterSpacing: "1px",
-  }
+  },
 }));
 
 export const ProfileCard = ({
