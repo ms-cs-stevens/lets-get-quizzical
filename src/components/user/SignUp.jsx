@@ -245,7 +245,6 @@ export default function SignInSide() {
               type="submit"
               fullWidth
               variant="contained"
-              variant="contained"
               style={{
                 border: "1px solid",
                 background: LIGHT_PURPLE_COLOR,

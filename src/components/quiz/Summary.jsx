@@ -19,11 +19,7 @@ import { makeStyles } from "@material-ui/styles";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { red, orange, green, blue, purple } from "@material-ui/core/colors";
-import {
-  WHITE_COLOR,
-  PURPLE_COLOR,
-  PINK_COLOR,
-} from "../../variables/constant";
+import { WHITE_COLOR, PURPLE_COLOR } from "../../variables/constant";
 import { yellow } from "@mui/material/colors";
 import { categoryList } from "../../variables/constant";
 
@@ -42,13 +38,6 @@ const Summary = () => {
   const [loading, setLoading] = useState(true);
   const db = firebase.firestore();
 
-  const fetchQuiz = async () => {
-    const snapshot = await getDoc(doc(db, "quizes", id));
-    const data = { id: snapshot.id, ...snapshot.data() };
-    setQuiz(data);
-    setLoading(false);
-  };
-
   const millisToMinutesAndSeconds = (millis) => {
     var minutes = Math.floor(millis / 60000);
     var seconds = ((millis % 60000) / 1000).toFixed(0);
@@ -56,8 +45,15 @@ const Summary = () => {
   };
 
   useEffect(() => {
+    async function fetchQuiz() {
+      const snapshot = await getDoc(doc(db, "quizes", id));
+      const data = { id: snapshot.id, ...snapshot.data() };
+      setQuiz(data);
+      setLoading(false);
+    }
+
     fetchQuiz();
-  }, [id]);
+  }, [id, db]);
 
   if (!currentUser) {
     history.push("/login");

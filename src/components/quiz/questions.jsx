@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useRecoilValue, useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import { doc, increment, updateDoc } from "firebase/firestore";
 import state from "../../state/global";
 import Box from "@mui/material/Box";
@@ -22,7 +22,6 @@ import { Prompt } from "react-router";
 import {
   categoryList,
   allQuestions,
-  DEFAULT_CATEGORY,
   HEADER_CSS,
 } from "../../variables/constant";
 
@@ -56,10 +55,10 @@ function Questions() {
   const [loading, setLoading] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [quizAnswers, setQuizAnswers] = useState({});
+
+  // eslint-disable-next-line no-unused-vars
   const [startTime, setStartTime] = useState(+new Date());
-  const [currentCategory, setCategory] = useRecoilState(
-    state.currentCategoryState
-  );
+  const currentCategory = useRecoilValue(state.currentCategoryState);
   const timer = useRecoilValue(state.timerState);
   const db = firebase.firestore();
   const [showPrompt, setShowPrompt] = useState(true);
@@ -72,22 +71,22 @@ function Questions() {
   };
 
   useEffect(() => {
+    if (currentCategory) {
+      setLoading(true);
+      const shuffled = allQuestions[currentCategory].sort(
+        () => 0.5 - Math.random()
+      );
+      // Get sub-array of first 10 elements after shuffled
+      setQuestions(shuffled.slice(0, 10));
+      setLoading(false);
+    } else {
+      history.push("/select-quiz-category");
+    }
+  }, [currentCategory, history]);
+
+  useEffect(() => {
     checkForRefresh();
   }, []);
-
-  const shuffleQuestions = () => {
-    const shuffled = allQuestions[currentCategory].sort(
-      () => 0.5 - Math.random()
-    );
-    // Get sub-array of first 10 elements after shuffled
-    return shuffled.slice(0, 10);
-  };
-
-  const getQuestions = () => {
-    setLoading(true);
-    setQuestions(shuffleQuestions());
-    setLoading(false);
-  };
 
   const updateUserScore = async (quizScore) => {
     const userRef = doc(db, "users", currentUser.uid);
@@ -150,14 +149,6 @@ function Questions() {
       history.push(`${quiz.id}/summary`);
     }
   };
-
-  useEffect(() => {
-    if (currentCategory) {
-      getQuestions();
-    } else {
-      history.push("/select-quiz-category");
-    }
-  }, [currentCategory]);
 
   if (loading) {
     return <h1>Loading...</h1>;

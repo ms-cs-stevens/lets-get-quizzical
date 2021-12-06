@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { WHITE_COLOR } from "../../variables/constant";
-// import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 
 const useStyles = makeStyles(({ palette }) => ({
   time: {
@@ -14,6 +13,7 @@ const useStyles = makeStyles(({ palette }) => ({
 
 function Timer() {
   const styles = useStyles();
+  // eslint-disable-next-line no-unused-vars
   const [today, setToday] = useState(new Date(Date.now() + 5 * 60 * 1000));
   const calculateTimeLeft = (endTime) => {
     let difference = +endTime - +new Date();
