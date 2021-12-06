@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# Let's Get Quizzical
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Section 1 - Some screenshots:
 
-## Available Scripts
+#### Home page
+<img width="1440" alt="Screen Shot 2021-12-05 at 11 01 16" src="https://user-images.githubusercontent.com/26408955/144896507-089470f8-7611-4dee-83d0-e773e1aa706a.png">
 
-In the project directory, you can run:
+#### Register and Login
+<img width="1439" alt="Screen Shot 2021-12-06 at 12 51 57" src="https://user-images.githubusercontent.com/26408955/144896613-e9480ab1-28df-4d1d-a217-40eb048a3ea6.png">
+<img width="1440" alt="Screen Shot 2021-12-06 at 12 52 06" src="https://user-images.githubusercontent.com/26408955/144896617-19ec887d-a37b-4e1c-8dc5-39f029e006fb.png">
 
-### `yarn start`
+#### Quiz Category Selection and Flashcards
+<img width="1431" alt="Screen Shot 2021-12-06 at 12 52 44" src="https://user-images.githubusercontent.com/26408955/144897033-81f92417-b0af-49f2-a1be-847d6b76b04c.png">
+<img width="1434" alt="Screen Shot 2021-12-06 at 12 52 52" src="https://user-images.githubusercontent.com/26408955/144897036-575525d5-bdf4-441b-876c-fd7c6bb46065.png">
+<img width="1414" alt="Screen Shot 2021-12-06 at 12 53 04" src="https://user-images.githubusercontent.com/26408955/144897037-e817c964-ad3a-4a10-96d4-39cc9e7cdea5.png">
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#### Quiz Summary
+<img width="1434" alt="Screen Shot 2021-12-06 at 12 53 56" src="https://user-images.githubusercontent.com/26408955/144897087-52874493-e0c5-4a63-ae98-def4f93386fb.png">
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+#### Leaderboard
+<img width="1425" alt="Screen Shot 2021-12-06 at 12 53 18" src="https://user-images.githubusercontent.com/26408955/144897109-2bacef1e-df1a-4c53-9a13-f63d6955de00.png">
 
-### `yarn test`
+#### User Profile
+<img width="1437" alt="Screen Shot 2021-12-06 at 12 54 34" src="https://user-images.githubusercontent.com/26408955/144897141-4f0b3757-b12c-4c13-8f6f-990dda7bf6e0.png">
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+## Section 2 - Installation:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- All the api keys and authetication keys are stored .env file of the client
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Open 2 terminals in the project folder:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Terminal 1-
+* cd into the root folder of the project
+* npm install
+* npm start
 
-### `yarn eject`
+### The server will start running at localhost:4000
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Core Features in the application:
+* Firebase authentication
+* Quizz
+* Quiz Summary
+* Flashcards
+* Leaderboard
+* User profile and quiz analytics
