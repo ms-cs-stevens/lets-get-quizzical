@@ -14,11 +14,10 @@ import firebase from "../../firebase/firebaseApp";
 import { categoryList } from "../../variables/constant.jsx";
 
 const UserQuizzes = (props) => {
-  console.log(props);
   const history = useHistory();
   const [quizzes, setQuizzes] = useState([]);
-  const { currentUser } = useContext(AuthContext);
   const db = firebase.firestore();
+  const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
     async function fetchData() {

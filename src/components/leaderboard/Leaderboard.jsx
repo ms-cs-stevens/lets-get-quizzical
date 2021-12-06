@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider";
 import { useHistory } from "react-router";
 import {
@@ -8,8 +8,8 @@ import {
   Container,
   ListItemText,
   ListItem,
-  makeStyles,
   List,
+  makeStyles,
   Divider,
 } from "@material-ui/core";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -18,13 +18,24 @@ import {
   PURPLE_COLOR,
   PINK_COLOR,
 } from "../../variables/constant";
-
-// leader board dummy data
-import dummyData from "../../dataset/leaderboard.json";
+import firebase from "../../firebase/firebaseApp";
 
 const useStyles = makeStyles(() => ({
   header: {
     color: "#fff",
+    fontFamily: ["Lato", "sans-serif"].join(","),
+  },
+  cuWinner: {
+    color: PINK_COLOR,
+  },
+  ncuWinner: {
+    color: WHITE_COLOR,
+  },
+  currentUserLI: {
+    background: PINK_COLOR,
+  },
+  notCurrentUserLI: {
+    background: "#fff",
   },
   winnersImages: {
     width: "100px",
@@ -35,6 +46,7 @@ const useStyles = makeStyles(() => ({
   rankButton: {
     position: "absolute",
     top: "0",
+    right: "0",
     fontWeight: "700",
     background: PINK_COLOR,
     color: PURPLE_COLOR,
@@ -57,35 +69,61 @@ const useStyles = makeStyles(() => ({
 const Leaderboard = () => {
   const styles = useStyles();
   const history = useHistory();
+  const db = firebase.firestore();
+  const [users, setUsers] = useState([]);
   const { currentUser } = useContext(AuthContext);
+
+  const isCurrentUser = (id) => id === currentUser.uid;
+
+  useEffect(() => {
+    async function fetchData() {
+      const snapshot = await db.collection("users").get();
+
+      let data = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      const sortedData = data.sort((a, b) => (a.score > b.score ? -1 : 1));
+      setUsers(sortedData);
+    }
+
+    fetchData();
+  }, [db]);
 
   if (!currentUser) {
     history.push("/login");
   }
 
   function gridCore(data, position) {
-    return (
-      <div style={{ position: "relative" }}>
-        <img
-          src={data.image}
-          alt="userImage"
-          className={styles.winnersImages}
-        />
-        <br />
-        <p className={styles.score}> {data.score}</p>
-        <Typography
-          variant="button"
-          gutterBottom
-          style={{ color: WHITE_COLOR, opacity: 0.7 }}
-        >
-          {data.userName}
-        </Typography>
+    if (data) {
+      return (
+        <div style={{ position: "relative" }}>
+          <img
+            src="avatar-default.png"
+            alt="userImage"
+            className={styles.winnersImages}
+          />
+          <br />
+          <p className={styles.score}> {data.score}</p>
+          <Typography
+            variant="button"
+            gutterBottom
+            className={
+              isCurrentUser(data.id) ? styles.cuWinner : styles.ncuWinner
+            }
+          >
+            {data.firstName} {data.lastName}
+            {isCurrentUser(data.id) ? "*" : ""}
+          </Typography>
 
-        <Fab size="small" className={styles.rankButton}>
-          {position}
-        </Fab>
-      </div>
-    );
+          <Fab size="small" className={styles.rankButton}>
+            {position}
+          </Fab>
+        </div>
+      );
+    } else {
+      return "";
+    }
   }
 
   function generateWinners(data) {
@@ -109,13 +147,20 @@ const Leaderboard = () => {
       <List style={{ width: "100%" }}>
         {data.map((k, i, a) => (
           <>
-            <ListItem style={{ background: "#fff" }}>
+            {console.log(a)}
+            <ListItem
+              className={
+                k.id === currentUser.uid
+                  ? styles.currentUserLI
+                  : styles.notCurrentUserLI
+              }
+            >
               <ListItemText>
                 <ListItemButton>
                   <Grid container alignItems="center">
                     <Grid item xs={2}>
                       <img
-                        src={k.image}
+                        src="avatar-default.png"
                         alt="userImage"
                         style={{
                           width: "40px",
@@ -124,17 +169,25 @@ const Leaderboard = () => {
                         }}
                       ></img>
                     </Grid>
-                    <Grid item xs={8}>
+                    <Grid item xs={6}>
                       <Typography
                         variant="button"
                         style={{ color: PURPLE_COLOR }}
                       >
-                        {k.userName}
+                        {k.firstName} {k.lastName}
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={2}>
+                      <Typography
+                        variant="button"
+                        style={{ color: PURPLE_COLOR }}
+                      >
+                        {k.score}
                       </Typography>
                     </Grid>
                     <Grid item xs={2}>
                       <Fab size="small" className={styles.rankButtonRP}>
-                        {k.score}
+                        {i + 4}
                       </Fab>
                     </Grid>
                   </Grid>
@@ -158,13 +211,12 @@ const Leaderboard = () => {
         </Grid>
         {/* winners grid */}
         <Grid item xs={8} style={{ marginTop: "20vh" }}>
-          {generateWinners(dummyData.slice(0, 3))}
+          {generateWinners(users.slice(0, 3))}
         </Grid>
         {/* Runner ups */}
-
         <Grid item xs={6}>
           <Grid container justifyContent="center">
-            {generateRunnerUp(dummyData.slice(3, dummyData.length))}
+            {generateRunnerUp(users.slice(3, users.length))}
           </Grid>
         </Grid>
       </Grid>

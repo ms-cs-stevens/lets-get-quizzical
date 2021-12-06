@@ -16,14 +16,13 @@ import { categoryList, WHITE_COLOR } from "../../variables/constant";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
   },
   header: {
-    color: WHITE_COLOR
-  }
+    color: WHITE_COLOR,
+  },
 }));
 
 function Account() {
