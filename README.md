@@ -4,7 +4,7 @@
 
 - All the api keys and authetication keys are stored .env file of the client
 
-### Open 1 terminals in the project folder:
+### Open 1 terminal in the project folder:
 
 Terminal 1-
 
