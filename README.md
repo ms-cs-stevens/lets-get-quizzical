@@ -1,6 +1,29 @@
 # Let's Get Quizzical
 
-## Section 1 - App screenshots:
+## Section 1 - Installation:
+
+- All the api keys and authetication keys are stored .env file of the client
+
+### Open 1 terminals in the project folder:
+
+Terminal 1-
+
+- cd into the root folder of the project
+- npm install
+- npm start
+
+### The server will start running at localhost:3000
+
+### Core Features in the application:
+
+- Firebase authentication
+- Quizz
+- Quiz Summary
+- Flashcards
+- Leaderboard
+- User profile and quiz analytics
+
+## Section 2 - App screenshots:
 
 #### Home page
 
@@ -28,26 +51,3 @@
 #### User Profile
 
 <img width="1437" alt="Screen Shot 2021-12-06 at 12 54 34" src="https://user-images.githubusercontent.com/26408955/144897141-4f0b3757-b12c-4c13-8f6f-990dda7bf6e0.png">
-
-## Section 2 - Installation:
-
-- All the api keys and authetication keys are stored .env file of the client
-
-### Open 2 terminals in the project folder:
-
-Terminal 1-
-
-- cd into the root folder of the project
-- npm install
-- npm start
-
-### The server will start running at localhost:4000
-
-### Core Features in the application:
-
-- Firebase authentication
-- Quizz
-- Quiz Summary
-- Flashcards
-- Leaderboard
-- User profile and quiz analytics
