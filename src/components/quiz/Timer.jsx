@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { makeStyles } from "@material-ui/core/styles";
+import { WHITE_COLOR} from '../../variables/constant';
 // import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 
 const useStyles = makeStyles(({ palette }) => ({
   time: {
     fontSize: '18px',
     padding: '1.5rem',
-    color: '#fff',
+    color: WHITE_COLOR,
   }
 }));
 

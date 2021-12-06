@@ -17,7 +17,7 @@ import firebase from "../../firebase/firebaseApp";
 import Timer from "./Timer";
 import { collection, addDoc } from "firebase/firestore";
 import { AuthContext } from "../../AuthProvider";
-import { categoryList, allQuestions, DEFAULT_CATEGORY } from "../../variables/constant";
+import { categoryList, allQuestions, DEFAULT_CATEGORY, WHITE_COLOR } from "../../variables/constant";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -38,7 +38,7 @@ const useStyles = makeStyles(({ palette }) => ({
     textAlign: "center",
   },
   header: {
-    color: '#fff',
+    color: WHITE_COLOR,
   }
 }));
 

@@ -8,6 +8,7 @@ import QuizCharts from "./QuizCharts.jsx";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
 import { Grid } from "@material-ui/core";
+import {WHITE_COLOR, categoryList} from '../../variables/constant';
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -15,7 +16,7 @@ const useStyles = makeStyles(() => ({
     position: "relative",
     borderRadius: "1rem",
     boxShadow: "0 6px 20px 0 #dbdbe8",
-    backgroundColor: "#fff",
+    backgroundColor: WHITE_COLOR,
     transition: "0.4s",
     height: "100%",
   },
@@ -50,25 +51,6 @@ const CustomCard = ({
 
 const Card = ({ quizData }) => {
   const [category, setCategory] = useState("country-capitals");
-  const categories = [
-    {
-      value: "country-capitals",
-      label: "Country capitals",
-    },
-    {
-      value: "mathematics",
-      label: "Mathematics",
-    },
-    {
-      value: "antonyms",
-      label: "Antonyms",
-    },
-    {
-      value: "solar-system",
-      label: "Solar System",
-    },
-  ];
-
   const handleClick = (e, category) => {
     setCategory(category);
   };
@@ -85,10 +67,10 @@ const Card = ({ quizData }) => {
           marginLeft: "30%",
         }}
       >
-        {categories.map((category) => (
+        {Object.entries(categoryList).map(([key, label]) => (
           <Chip
-            label={category.label}
-            onClick={(e) => handleClick(e, category.value)}
+            label={label}
+            onClick={(e) => handleClick(e, key)}
           />
         ))}
       </Stack>

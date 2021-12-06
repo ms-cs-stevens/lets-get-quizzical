@@ -9,7 +9,6 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import { Typography } from "@mui/material";
-import Card from "@material-ui/core/Card";
 import Avatar from "@mui/material/Avatar";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import { Switch, FormControlLabel } from "@material-ui/core";
@@ -17,23 +16,21 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { useHistory } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import { makeStyles } from "@material-ui/core/styles";
-import cx from "clsx";
-import { useFadedShadowStyles } from "@mui-treasury/styles/shadow/faded";
 import { AuthContext } from "../../AuthProvider";
 import { useRecoilState } from "recoil";
 import state from "../../state/global";
-import { categoryList } from "../../variables/constant";
+import { categoryList, WHITE_COLOR, PURPLE_COLOR } from "../../variables/constant";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
   textAlign: "center",
-  color: "#fff",
+  color: PURPLE_COLOR,
   width: 305,
   height: 145,
   lineHeight: "100px",
   fontWeight: "400",
   fontSize: 18,
-  backgroundColor: '#8068d2',
+  backgroundColor: WHITE_COLOR,
   borderRadius: 20,
   cursor: "pointer",
 }));
@@ -45,13 +42,15 @@ const useStyles = makeStyles(({ palette }) => ({
     textAlign: "center",
   },
   header: {
-    color: '#fff',
+    color: WHITE_COLOR,
   },
+  popup: {
+    color: PURPLE_COLOR
+  }
 }));
 
 function Categories() {
   const styles = useStyles();
-  const shadowStyles = useFadedShadowStyles();
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const { currentUser } = useContext(AuthContext);
@@ -102,26 +101,16 @@ function Categories() {
   return (
     <Container maxWidth="md">
       <Grid container spacing={2} justifyContent="space-evenly">
-        <Grid item>
+        <Grid item xs={12}>
           <Typography component={"h1"} variant="h4" className={styles.header}>
             Select a Category
           </Typography>
         </Grid>
-      </Grid>
-
-      <Card className={cx(styles.card, shadowStyles.root)}>
-      <Grid
-        container
-        direction="row"
-        justifyContent="space-evenly"
-        alignItems="center"
-      >
         {Object.entries(categories).map(([key, value]) => (
           <Grid item xs={6} md={6} key={key}>
             <Box
               sx={{
                 p: 2,
-                bgcolor: "background.default",
                 display: "grid",
                 gridTemplateColumns: { md: "1fr 1fr" },
                 gap: 2,
@@ -139,16 +128,16 @@ function Categories() {
           </Grid>
         ))}
       </Grid>
-      </Card>
+
       <Dialog maxWidth={"sm"} fullWidth={true} open={open} align="left">
         <DialogTitle>
-          <Grid container direction="row" alignItems="center">
+          <Grid container direction="row" alignItems="center" className={styles.popup}>
             <Grid item xs={2}>
               <Avatar variant="rounded" sx={{ width: 56, height: 56 }}>
                 <AssignmentIcon />
               </Avatar>
             </Grid>
-            <Grid item xs={10}>
+            <Grid item xs={10} >
               Selected Category: {categories[currentCategory]}
               <br />
               <Typography variant="subtitle1">10 Questions</Typography>
@@ -168,6 +157,7 @@ function Categories() {
               flexDirection: "column",
               m: "auto",
               width: "fit-content",
+              color: PURPLE_COLOR
             }}
           >
             <FormControlLabel

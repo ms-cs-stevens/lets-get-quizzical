@@ -10,11 +10,12 @@ import MenuItem from "@material-ui/core/MenuItem";
 import { NavLink, useHistory } from "react-router-dom";
 import { signout } from "../firebase/firebaseFunctions";
 import { AuthContext } from "../AuthProvider";
+import { WHITE_COLOR, PURPLE_COLOR } from "../variables/constant";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
     height: "3.5 rem",
-    background: "#6148be",
+    background: PURPLE_COLOR,
   },
   root: {
     flexGrow: 1,
@@ -25,11 +26,11 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
     textDecoration: "none",
-    color: "#fff",
+    color: WHITE_COLOR,
   },
   avatar: {
     width: theme.spacing(5),
-    border: "1px solid #fff",
+    border: `1px solid ${WHITE_COLOR}`,
     fontSize: "1em",
     color: "#333",
     fontWeight: "bold",
@@ -100,21 +101,21 @@ export default function Navigation() {
           {currentUser ? (
             <>
               <Button
-                style={{ color: "#fff" }}
+                style={{ color: WHITE_COLOR }}
                 component={NavLink}
                 to={"/select-quiz-category"}
               >
                 Quiz
               </Button>
               <Button
-                style={{ color: "#fff" }}
+                style={{ color: WHITE_COLOR }}
                 component={NavLink}
                 to={"/how-to-play"}
               >
                 How to play
               </Button>
               <Button
-                style={{ color: "#fff" }}
+                style={{ color: WHITE_COLOR }}
                 component={NavLink}
                 to={"/leaderboard"}
               >
@@ -138,20 +139,20 @@ export default function Navigation() {
           ) : (
             <>
               <Button
-                style={{ color: "#fff" }}
+                style={{ color: WHITE_COLOR }}
                 component={NavLink}
                 to={"/how-to-play"}
               >
                 How to play
               </Button>
               <Button
-                style={{ color: "#fff" }}
+                style={{ color: WHITE_COLOR }}
                 component={NavLink}
                 to={"/register"}
               >
                 Register
               </Button>
-              <Button style={{ color: "#fff" }} component={NavLink} to="/login">
+              <Button style={{ color: WHITE_COLOR }} component={NavLink} to="/login">
                 Login
               </Button>
             </>
