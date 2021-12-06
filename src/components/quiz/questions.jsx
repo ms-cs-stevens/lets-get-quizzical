@@ -18,7 +18,12 @@ import firebase from "../../firebase/firebaseApp";
 import Timer from "./Timer";
 import { collection, addDoc } from "firebase/firestore";
 import { AuthContext } from "../../AuthProvider";
-import { categoryList, allQuestions, DEFAULT_CATEGORY, WHITE_COLOR } from "../../variables/constant";
+import {
+  categoryList,
+  allQuestions,
+  DEFAULT_CATEGORY,
+  HEADER_CSS,
+} from "../../variables/constant";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -34,13 +39,11 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const useStyles = makeStyles(({ palette }) => ({
   card: {
-    borderRadius: '12px !important',
+    borderRadius: "12px !important",
     minWidth: "-webkit-fill-available",
     textAlign: "center",
   },
-  header: {
-    color: WHITE_COLOR,
-  }
+  header: HEADER_CSS,
 }));
 
 function Questions() {
@@ -53,19 +56,23 @@ function Questions() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [quizAnswers, setQuizAnswers] = useState({});
   const [startTime, setStartTime] = useState(+new Date());
-  const [currentCategory, setCategory] = useRecoilState(state.currentCategoryState);
+  const [currentCategory, setCategory] = useRecoilState(
+    state.currentCategoryState
+  );
   const timer = useRecoilValue(state.timerState);
   const db = firebase.firestore();
 
   const shuffleQuestions = () => {
-    const shuffled = allQuestions[currentCategory].sort(() => 0.5 - Math.random());
+    const shuffled = allQuestions[currentCategory].sort(
+      () => 0.5 - Math.random()
+    );
     // Get sub-array of first 10 elements after shuffled
     return shuffled.slice(0, 10);
-  }
+  };
 
   const getQuestions = () => {
     setLoading(true);
-    setQuestions(shuffleQuestions())
+    setQuestions(shuffleQuestions());
     setLoading(false);
   };
 
@@ -73,9 +80,9 @@ function Questions() {
     const userRef = doc(db, "users", currentUser.uid);
     // Atomically increment the population of the city by 50.
     await updateDoc(userRef, {
-        score: increment(quizScore)
+      score: increment(quizScore),
     });
-  }
+  };
 
   const submitQuiz = async () => {
     const actualEndTime = startTime + 300000;
@@ -107,7 +114,7 @@ function Questions() {
     const quiz = await addDoc(collection(db, "quizes"), payload);
     updateUserScore(totalScore);
     return quiz;
-  }
+  };
 
   const handleAnswerOptionClick = async (choice) => {
     const answers = quizAnswers;
@@ -134,7 +141,7 @@ function Questions() {
     if (currentCategory) {
       getQuestions();
     } else {
-      setCategory(DEFAULT_CATEGORY)
+      setCategory(DEFAULT_CATEGORY);
     }
   }, [currentCategory]);
 
@@ -154,7 +161,7 @@ function Questions() {
             QUIZ - {categoryList[currentCategory]}
           </Typography>
         </Grid>
-        {timer && (<Timer></Timer>)}
+        {timer && <Timer></Timer>}
       </Grid>
 
       {questions && questions.length > 0 && (
@@ -178,9 +185,7 @@ function Questions() {
                     (answerOption, index) => (
                       <Grid item xs={6} key={index}>
                         <Item
-                          onClick={() =>
-                            handleAnswerOptionClick(answerOption)
-                          }
+                          onClick={() => handleAnswerOptionClick(answerOption)}
                           key={index}
                           elevation={0}
                           className="card"

@@ -16,6 +16,11 @@ import banner from "../../images/sign-in-page.jpg";
 import { useForm, Controller } from "react-hook-form";
 import { Redirect, useHistory } from "react-router";
 import { AuthContext } from "../../AuthProvider";
+import {
+  PURPLE_COLOR,
+  LIGHT_PURPLE_COLOR,
+  WHITE_COLOR,
+} from "../../variables/constant";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: PURPLE_COLOR,
   },
   form: {
     width: "100%", // Fix IE 11 issue.
@@ -107,6 +112,7 @@ export default function SignInSide() {
       <Grid item xs={12} sm={8} md={4} component={Paper} elevation={6} square>
         <CssBaseline />
         <div className={classes.paper}>
+          <br />
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
@@ -239,7 +245,13 @@ export default function SignInSide() {
               type="submit"
               fullWidth
               variant="contained"
-              color="primary"
+              variant="contained"
+              style={{
+                border: "1px solid",
+                background: LIGHT_PURPLE_COLOR,
+                color: WHITE_COLOR,
+                boxShadow: "none",
+              }}
               className={classes.submit}
             >
               Sign Up

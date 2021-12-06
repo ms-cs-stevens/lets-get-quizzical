@@ -9,11 +9,18 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Typography } from "@mui/material";
+import { makeStyles } from "@material-ui/core/styles";
+import { Typography, Grid } from "@mui/material";
 import firebase from "../../firebase/firebaseApp";
 import { categoryList } from "../../variables/constant.jsx";
+import { HEADER_CSS } from "../../variables/constant.jsx";
+
+const useStyles = makeStyles(() => ({
+  header: HEADER_CSS,
+}));
 
 const UserQuizzes = (props) => {
+  const styles = useStyles();
   const history = useHistory();
   const [quizzes, setQuizzes] = useState([]);
   const db = firebase.firestore();
@@ -56,9 +63,11 @@ const UserQuizzes = (props) => {
 
   return (
     <Container maxWidth="md">
-      <br />
-      <Typography variant={"h3"}>Past Quizzes</Typography>
-      <br />
+      <Grid item xs={12}>
+        <Typography component={"h1"} variant="h4" className={styles.header}>
+          Select a Category
+        </Typography>
+      </Grid>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
