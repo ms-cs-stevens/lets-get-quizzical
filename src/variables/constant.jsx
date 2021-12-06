@@ -18,3 +18,8 @@ export const allQuestions = {
 }
 
 export const DEFAULT_CATEGORY = "country-capitals";
+
+export const LIGHT_PURPLE_COLOR = '#8169d3';
+export const PURPLE_COLOR = '#6841c5';
+export const WHITE_COLOR = '#fff';
+export const PINK_COLOR = '#ffa4dc';
