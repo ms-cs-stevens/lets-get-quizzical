@@ -12,7 +12,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import EditIcon from "@mui/icons-material/Edit";
 import { Typography } from "@mui/material";
 import { Container, makeStyles } from "@material-ui/core";
-import { categoryList, WHITE_COLOR } from "../../variables/constant";
+import { categoryList, HEADER_CSS } from "../../variables/constant";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -20,9 +20,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
   },
-  header: {
-    color: WHITE_COLOR,
-  },
+  header: HEADER_CSS,
 }));
 
 function Account() {
@@ -117,7 +115,7 @@ function Account() {
                   cursor: "pointer",
                   position: "absolute",
                   right: "20%",
-                  top: "20%",
+                  top: "25%",
                 }}
               />
               <ProfileCard

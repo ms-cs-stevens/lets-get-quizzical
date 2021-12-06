@@ -23,6 +23,7 @@ import {
   categoryList,
   WHITE_COLOR,
   PURPLE_COLOR,
+  HEADER_CSS,
 } from "../../variables/constant";
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -45,9 +46,7 @@ const useStyles = makeStyles(({ palette }) => ({
     minWidth: "-webkit-fill-available",
     textAlign: "center",
   },
-  header: {
-    color: WHITE_COLOR,
-  },
+  header: HEADER_CSS,
   popup: {
     color: PURPLE_COLOR,
   },

@@ -20,7 +20,6 @@ html {
   background-size: cover;
   -webkit-background-size: cover;
   min-height: 100vh;
-
 }
 
 .card {
@@ -39,8 +38,7 @@ html {
 }
 
 .card.flipped {
-  height: 150px;
-  width: 370px;
+  height: 200px;
   background-color: lemonchiffon;
   transform: rotateY(2turn);
 }
@@ -53,4 +51,3 @@ html {
 .time {
   font-size: 15px;
 } */
-

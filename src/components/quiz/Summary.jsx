@@ -15,14 +15,27 @@ import PercentIcon from "@mui/icons-material/Percent";
 import TimerOffIcon from "@mui/icons-material/TimerOff";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
+import { makeStyles } from "@material-ui/styles";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { red, orange, green, blue, purple } from "@material-ui/core/colors";
+import {
+  WHITE_COLOR,
+  PURPLE_COLOR,
+  PINK_COLOR,
+} from "../../variables/constant";
 import { yellow } from "@mui/material/colors";
 import { categoryList } from "../../variables/constant";
 
+const useStyles = makeStyles(({ palette }) => ({
+  header: {
+    color: WHITE_COLOR,
+  },
+}));
+
 const Summary = () => {
   const history = useHistory();
+  const styles = useStyles();
   const { currentUser } = useContext(AuthContext);
   const { id } = useParams();
   const [quiz, setQuiz] = useState(undefined);
@@ -58,8 +71,16 @@ const Summary = () => {
     <>
       {quiz && (
         <Container maxWidth="lg">
-          <h1>SUMMARY</h1>
-          <Grid container spacing={3}>
+          <Grid container spacing={1}>
+            <Grid item xs={12}>
+              <Typography
+                component={"h1"}
+                variant="h4"
+                className={styles.header}
+              >
+                Quiz Summary
+              </Typography>
+            </Grid>
             <Grid item lg={4} sm={6} xl={3} xs={12}>
               <InfoCard
                 title="Accuracy"
@@ -114,7 +135,11 @@ const Summary = () => {
           <br />
           <Paper>
             <br />
-            <Typography variant="h5" component="div" sx={{ mb: 1, mt: 2 }}>
+            <Typography
+              variant="h5"
+              component="div"
+              sx={{ mb: 1, mt: 2, color: PURPLE_COLOR }}
+            >
               Review Questions
             </Typography>
             <Typography sx={{ mb: 1.5 }} color="text.secondary">
@@ -125,18 +150,24 @@ const Summary = () => {
               justifyContent="space-evenly"
               alignItems="center"
               alignContent="center"
+              style={{ padding: "20px" }}
               spacing={1}
             >
               {Object.entries(quiz.questions).map(([key, value]) => (
                 <Grid item xs={4}>
-                  <br />
                   <Card
                     variant="outlined"
-                    sx={{ borderColor: value.isCorrect ? "green" : " red" }}
+                    sx={{
+                      borderColor: value.isCorrect ? "green" : " red",
+                      minHeight: "180px",
+                    }}
                   >
                     <CardContent>
-                      <Typography variant="body2">
-                        {value.statement} - ({value.isCorrect ? "3/3" : "-1/3"})
+                      <Typography
+                        variant="body2"
+                        style={{ color: PURPLE_COLOR }}
+                      >
+                        {value.statement} [{value.isCorrect ? "+3" : "-1"}]
                         <hr />
                         <Grid container>
                           Your Choice: {value.selected}
@@ -149,7 +180,9 @@ const Summary = () => {
                 </Grid>
               ))}
             </Grid>
+            <br />
           </Paper>
+          <br />
         </Container>
       )}
     </>

@@ -17,14 +17,12 @@ import {
   WHITE_COLOR,
   PURPLE_COLOR,
   PINK_COLOR,
+  HEADER_CSS,
 } from "../../variables/constant";
 import firebase from "../../firebase/firebaseApp";
 
 const useStyles = makeStyles(() => ({
-  header: {
-    color: "#fff",
-    fontFamily: ["Lato", "sans-serif"].join(","),
-  },
+  header: HEADER_CSS,
   cuWinner: {
     color: PINK_COLOR,
   },
@@ -159,6 +157,11 @@ const Leaderboard = () => {
                 <ListItemButton>
                   <Grid container alignItems="center">
                     <Grid item xs={2}>
+                      <Fab size="small" className={styles.rankButtonRP}>
+                        {i + 4}
+                      </Fab>
+                    </Grid>
+                    <Grid item xs={2}>
                       <img
                         src="avatar-default.png"
                         alt="userImage"
@@ -184,11 +187,6 @@ const Leaderboard = () => {
                       >
                         {k.score}
                       </Typography>
-                    </Grid>
-                    <Grid item xs={2}>
-                      <Fab size="small" className={styles.rankButtonRP}>
-                        {i + 4}
-                      </Fab>
                     </Grid>
                   </Grid>
                 </ListItemButton>
