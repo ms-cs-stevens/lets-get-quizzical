@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import state from "../../state/global";
 import Container from "@mui/material/Container";
 import FlashcardList from "./FlashcardList";
@@ -10,7 +10,6 @@ import { Grid, Typography } from "@mui/material";
 import {
   categoryList,
   allQuestions,
-  DEFAULT_CATEGORY,
   HEADER_CSS,
 } from "../../variables/constant";
 
@@ -24,9 +23,18 @@ const Learn = () => {
   const { currentUser } = useContext(AuthContext);
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [currentCategory, setCategory] = useRecoilState(
-    state.currentCategoryState
-  );
+  const currentCategory = useRecoilValue(state.currentCategoryState);
+
+  const checkForRefresh = () => {
+    window.addEventListener("beforeunload", function (e) {
+      (e || window.event).returnValue = null;
+      return null;
+    });
+  };
+
+  useEffect(() => {
+    checkForRefresh();
+  }, []);
 
   const getQuestions = async () => {
     setLoading(true);
@@ -38,7 +46,7 @@ const Learn = () => {
     if (currentCategory) {
       getQuestions();
     } else {
-      setCategory(DEFAULT_CATEGORY);
+      history.push("/select-quiz-category");
     }
   }, [currentCategory]);
 

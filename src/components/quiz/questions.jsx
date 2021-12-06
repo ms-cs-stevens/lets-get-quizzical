@@ -18,6 +18,7 @@ import firebase from "../../firebase/firebaseApp";
 import Timer from "./Timer";
 import { collection, addDoc } from "firebase/firestore";
 import { AuthContext } from "../../AuthProvider";
+import { Prompt } from "react-router";
 import {
   categoryList,
   allQuestions,
@@ -61,6 +62,18 @@ function Questions() {
   );
   const timer = useRecoilValue(state.timerState);
   const db = firebase.firestore();
+  const [showPrompt, setShowPrompt] = useState(true);
+
+  const checkForRefresh = () => {
+    window.addEventListener("beforeunload", function (e) {
+      (e || window.event).returnValue = null;
+      return null;
+    });
+  };
+
+  useEffect(() => {
+    checkForRefresh();
+  }, []);
 
   const shuffleQuestions = () => {
     const shuffled = allQuestions[currentCategory].sort(
@@ -132,6 +145,7 @@ function Questions() {
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
     } else {
+      setShowPrompt(false);
       const quiz = await submitQuiz();
       history.push(`${quiz.id}/summary`);
     }
@@ -141,7 +155,7 @@ function Questions() {
     if (currentCategory) {
       getQuestions();
     } else {
-      setCategory(DEFAULT_CATEGORY);
+      history.push("/select-quiz-category");
     }
   }, [currentCategory]);
 
@@ -155,6 +169,12 @@ function Questions() {
 
   return (
     <Container component="main" maxWidth="md">
+      <Prompt
+        when={showPrompt}
+        message={() =>
+          `Are you sure you want to go to another page? Any progress made on the quiz will be lost!`
+        }
+      />
       <Grid container spacing={2} justifyContent="space-between">
         <Grid item>
           <Typography component={"h1"} variant="h4" className={styles.header}>
