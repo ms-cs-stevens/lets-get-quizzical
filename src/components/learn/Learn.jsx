@@ -36,19 +36,15 @@ const Learn = () => {
     checkForRefresh();
   }, []);
 
-  const getQuestions = async () => {
-    setLoading(true);
-    setQuestions(allQuestions[currentCategory]);
-    setLoading(false);
-  };
-
   useEffect(() => {
     if (currentCategory) {
-      getQuestions();
+      setLoading(true);
+      setQuestions(allQuestions[currentCategory]);
+      setLoading(false);
     } else {
       history.push("/select-quiz-category");
     }
-  }, [currentCategory]);
+  }, [currentCategory, history]);
 
   if (loading) {
     return <h1>Loading...</h1>;
