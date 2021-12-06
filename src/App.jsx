@@ -16,6 +16,7 @@ import Faqs from "./components/faqs/Faqs_comp.js";
 import { AuthProvider } from "./AuthProvider.jsx";
 import Leaderboard from "./components/leaderboard/Leaderboard";
 import Summary from "./components/quiz/Summary";
+import UserQuizzes from "./components/quiz/UserQuizzes";
 
 const theme = createTheme({
   typography: {
@@ -54,6 +55,7 @@ const App = () => {
                   <Route path="/how-to-play" component={Faqs} />
                   <Route path="/:id/summary" component={Summary} />
                   <Route path="/user/account" component={Account} />
+                  <Route path="/quizzes" component={UserQuizzes} />
                   <br />
                   <br />
                 </div>

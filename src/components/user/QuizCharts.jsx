@@ -1,7 +1,7 @@
 import React from "react";
 import Chart from "react-google-charts";
 
-const QuizCharts = ({ quizData, category, chartType }) => {
+const QuizCharts = ({ quizData, category, chartType, x, y }) => {
   const categoryLabel = category.replace("-", " ").toUpperCase();
 
   const formatDate = (d) => {
@@ -35,9 +35,9 @@ const QuizCharts = ({ quizData, category, chartType }) => {
         data={formatQuizData(category)}
         options={{
           title: `Performance in ${categoryLabel}`,
-          hAxis: { title: "Score", titleTextStyle: { color: "#333" } },
+          hAxis: { title: x, titleTextStyle: { color: "#333" } },
           vAxis: {
-            title: "Date",
+            title: y,
             titleTextStyle: { color: "#333" },
             minValue: 0,
             maxValue: 40,

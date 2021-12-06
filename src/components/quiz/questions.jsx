@@ -108,10 +108,10 @@ function Questions() {
         ([key, value]) => value.isCorrect
       ).length;
       let totalScore = correctQuestions * 3 - (10 - correctQuestions);
-      let endTime = startTime + 300000;
+      let actualEndTime = startTime + 300000;
       const currentTime = +new Date();
       let timeBonus = false;
-      if (timer && endTime >= currentTime) {
+      if (timer && actualEndTime >= currentTime) {
         // give extra points if finished within time
         totalScore += correctQuestions;
         timeBonus = true;
@@ -123,7 +123,7 @@ function Questions() {
         userId: currentUser.uid,
         startTime: startTime,
         endTime: currentTime,
-        actualEndTime: startTime + 300000, // TODO: Save actual End time
+        actualEndTime: actualEndTime,
         questions: quizAnswers,
         timer: timer === "true",
         timeBonus: timeBonus,
