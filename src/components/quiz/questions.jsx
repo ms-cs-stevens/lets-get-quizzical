@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useRecoilValue, useRecoilState } from "recoil";
+import { doc, increment, updateDoc } from "firebase/firestore";
 import state from "../../state/global";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
@@ -56,7 +57,6 @@ function Questions() {
   const timer = useRecoilValue(state.timerState);
   const db = firebase.firestore();
 
-
   const shuffleQuestions = () => {
     const shuffled = allQuestions[currentCategory].sort(() => 0.5 - Math.random());
     // Get sub-array of first 10 elements after shuffled
@@ -68,6 +68,14 @@ function Questions() {
     setQuestions(shuffleQuestions())
     setLoading(false);
   };
+
+  const updateUserScore = async (quizScore) => {
+    const userRef = doc(db, "users", currentUser.uid);
+    // Atomically increment the population of the city by 50.
+    await updateDoc(userRef, {
+        score: increment(quizScore)
+    });
+  }
 
   const submitQuiz = async () => {
     const actualEndTime = startTime + 300000;
@@ -96,7 +104,9 @@ function Questions() {
       correctQuestions: correctQuestions,
     };
 
-    return await addDoc(collection(db, "quizes"), payload);
+    const quiz = await addDoc(collection(db, "quizes"), payload);
+    updateUserScore(totalScore);
+    return quiz;
   }
 
   const handleAnswerOptionClick = async (choice) => {
