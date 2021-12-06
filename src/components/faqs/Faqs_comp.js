@@ -6,9 +6,15 @@ import FAQ from "./FAQ";
 function Faqs() {
   const [faqs, setfaqs] = useState([
     {
+      question:
+        "Do I need to register for accessing the flashcards, quizzes, and leaderboard ?",
+      answer: "Yes",
+      open: true,
+    },
+    {
       question: "How many points do I gain for selecting the correct answer?",
       answer: "3 Points",
-      open: true,
+      open: false,
     },
     {
       question: "How many points do I loose for selecting the wrong answer?",
