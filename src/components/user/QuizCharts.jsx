@@ -30,7 +30,7 @@ const QuizCharts = ({ quizData, category, chartType, x, y }) => {
 
   return (
     <>
-      {Object.keys(formatQuizData(category)).length === 2 ? (
+      {Object.keys(formatQuizData(category)).length >= 2 ? (
         <Chart
           width={850}
           height={600}
