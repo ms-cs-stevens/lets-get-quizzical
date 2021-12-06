@@ -19,7 +19,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import { AuthContext } from "../../AuthProvider";
 import { useRecoilState } from "recoil";
 import state from "../../state/global";
-import { categoryList, WHITE_COLOR, PURPLE_COLOR } from "../../variables/constant";
+import {
+  categoryList,
+  WHITE_COLOR,
+  PURPLE_COLOR,
+} from "../../variables/constant";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -45,8 +49,8 @@ const useStyles = makeStyles(({ palette }) => ({
     color: WHITE_COLOR,
   },
   popup: {
-    color: PURPLE_COLOR
-  }
+    color: PURPLE_COLOR,
+  },
 }));
 
 function Categories() {
@@ -131,13 +135,18 @@ function Categories() {
 
       <Dialog maxWidth={"sm"} fullWidth={true} open={open} align="left">
         <DialogTitle>
-          <Grid container direction="row" alignItems="center" className={styles.popup}>
+          <Grid
+            container
+            direction="row"
+            alignItems="center"
+            className={styles.popup}
+          >
             <Grid item xs={2}>
               <Avatar variant="rounded" sx={{ width: 56, height: 56 }}>
                 <AssignmentIcon />
               </Avatar>
             </Grid>
-            <Grid item xs={10} >
+            <Grid item xs={10}>
               Selected Category: {categories[currentCategory]}
               <br />
               <Typography variant="subtitle1">10 Questions</Typography>
@@ -157,7 +166,7 @@ function Categories() {
               flexDirection: "column",
               m: "auto",
               width: "fit-content",
-              color: PURPLE_COLOR
+              color: PURPLE_COLOR,
             }}
           >
             <FormControlLabel
