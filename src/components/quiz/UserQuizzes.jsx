@@ -61,11 +61,19 @@ const UserQuizzes = (props) => {
     history.push("/login");
   }
 
+  if (!quizzes.length) {
+    return (
+      <Typography component={"h1"} variant="h4" className={styles.header}>
+        You've not taken any quiz yet!
+      </Typography>
+    );
+  }
+
   return (
     <Container maxWidth="md">
       <Grid item xs={12}>
         <Typography component={"h1"} variant="h4" className={styles.header}>
-          Select a Category
+          Past Quizzes
         </Typography>
       </Grid>
       <TableContainer component={Paper}>
@@ -82,35 +90,34 @@ const UserQuizzes = (props) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {quizzes &&
-              sortedQuizzes(quizzes).map((quiz) => (
-                <TableRow
-                  key={quiz.id}
-                  style={{ cursor: "pointer" }}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                  onClick={(e) => redirectToQuiz(e, `/${quiz.id}/summary`)}
-                >
-                  <TableCell component="th" scope="row">
-                    {categoryList[quiz.category]}
-                  </TableCell>
-                  <TableCell align="right" component="th" scope="row">
-                    {new Date(quiz.startTime).toLocaleDateString()}
-                  </TableCell>
-                  <TableCell align="right">{quiz.score}</TableCell>
-                  <TableCell align="right">{quiz.correctQuestions}</TableCell>
-                  <TableCell align="right">
-                    {10 - quiz.correctQuestions}
-                  </TableCell>
-                  <TableCell align="right">
-                    {quiz.timeBonus ? quiz.correctQuestions : 0}
-                  </TableCell>
-                  <TableCell align="right">
-                    {`${millisToMinutesAndSeconds(
-                      quiz.endTime - quiz.startTime
-                    )}`}
-                  </TableCell>
-                </TableRow>
-              ))}
+            {sortedQuizzes(quizzes).map((quiz) => (
+              <TableRow
+                key={quiz.id}
+                style={{ cursor: "pointer" }}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                onClick={(e) => redirectToQuiz(e, `/${quiz.id}/summary`)}
+              >
+                <TableCell component="th" scope="row">
+                  {categoryList[quiz.category]}
+                </TableCell>
+                <TableCell align="right" component="th" scope="row">
+                  {new Date(quiz.startTime).toLocaleDateString()}
+                </TableCell>
+                <TableCell align="right">{quiz.score}</TableCell>
+                <TableCell align="right">{quiz.correctQuestions}</TableCell>
+                <TableCell align="right">
+                  {10 - quiz.correctQuestions}
+                </TableCell>
+                <TableCell align="right">
+                  {quiz.timeBonus ? quiz.correctQuestions : 0}
+                </TableCell>
+                <TableCell align="right">
+                  {`${millisToMinutesAndSeconds(
+                    quiz.endTime - quiz.startTime
+                  )}`}
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </TableContainer>
