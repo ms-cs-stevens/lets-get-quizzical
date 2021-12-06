@@ -75,7 +75,7 @@ const Leaderboard = () => {
   }
 
   return (
-    <Grid container direction="center" alignItems="center" justifyContent="center" style={{ backgroundImage: "url('bg-web.jpg')", minHeight: "100vh", width: "100%" }}>
+    <Grid container direction="center" alignItems="center" justifyContent="center" style={{ backgroundImage: "url('bg-web.jpg')", minHeight: "100vh", width: "100% ", "backgroundSize" : "100% cover",backgroundRepeat: "no-repeat" ,"backgroundAttachment": "scroll" }}>
 
       {/* winners grid */} 
       <Grid item xs={8} style={{ marginTop: "20vh" }}>

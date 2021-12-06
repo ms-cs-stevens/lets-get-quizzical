@@ -18,6 +18,8 @@ html {
   background: url("./images/app-bg.png") no-repeat center center fixed;
   background-size: cover;
   -webkit-background-size: cover;
+  min-height: 100vh;
+
 }
 
 .card {
