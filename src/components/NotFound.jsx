@@ -27,7 +27,7 @@ function NotFound() {
   const history = useHistory();
 
   return (
-    <div className={classes.home}>
+    <div className="app-bg">
       <Typography component={"h1"} variant="h4" className={classes.header}>
         <h1>404 error</h1>
         Sorry ! Page Not Found.

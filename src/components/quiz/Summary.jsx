@@ -70,120 +70,122 @@ const Summary = () => {
   return (
     <>
       {quiz && (
-        <Container maxWidth="lg">
-          <Grid container spacing={1}>
-            <Grid item xs={12}>
+        <div className="app-bg">
+          <Container maxWidth="lg">
+            <Grid container spacing={1}>
+              <Grid item xs={12}>
+                <Typography
+                  component={"h1"}
+                  variant="h4"
+                  className={styles.header}
+                >
+                  Quiz Summary
+                </Typography>
+              </Grid>
+              <Grid item lg={4} sm={6} xl={3} xs={12}>
+                <InfoCard
+                  title="Accuracy"
+                  value={`${quiz.correctQuestions * 10}%`}
+                  icon={<PercentIcon />}
+                  color={yellow}
+                />
+              </Grid>
+              <Grid item lg={4} sm={6} xl={3} xs={12}>
+                <InfoCard
+                  title="Correct"
+                  value={quiz.correctQuestions}
+                  icon={<CheckIcon />}
+                  color={green}
+                />
+              </Grid>
+              <Grid item lg={4} sm={6} xl={3} xs={12}>
+                <InfoCard
+                  title="Incorrect"
+                  value={10 - quiz.correctQuestions}
+                  icon={<CloseIcon />}
+                  color={red}
+                />
+              </Grid>
+              <Grid item lg={4} sm={6} xl={3} xs={12}>
+                <InfoCard
+                  title="Total Time"
+                  value={`${millisToMinutesAndSeconds(
+                    quiz.endTime - quiz.startTime
+                  )} (mm:ss)`}
+                  icon={<AccessTimeIcon />}
+                  color={purple}
+                />
+              </Grid>
+              <Grid item lg={4} sm={6} xl={3} xs={12}>
+                <InfoCard
+                  title="Time Bonus"
+                  value={quiz.timeBonus ? quiz.correctQuestions : 0}
+                  icon={quiz.timer ? <TimerIcon /> : <TimerOffIcon />}
+                  color={blue}
+                />
+              </Grid>
+              <Grid item lg={4} sm={6} xl={3} xs={12}>
+                <InfoCard
+                  title="Total Score"
+                  value={quiz.score}
+                  icon={<GradeIcon />}
+                  color={orange}
+                />
+              </Grid>
+            </Grid>
+            <br />
+            <Paper>
+              <br />
               <Typography
-                component={"h1"}
-                variant="h4"
-                className={styles.header}
+                variant="h5"
+                component="div"
+                sx={{ mb: 1, mt: 2, color: PURPLE_COLOR }}
               >
-                Quiz Summary
+                Review Questions
               </Typography>
-            </Grid>
-            <Grid item lg={4} sm={6} xl={3} xs={12}>
-              <InfoCard
-                title="Accuracy"
-                value={`${quiz.correctQuestions * 10}%`}
-                icon={<PercentIcon />}
-                color={yellow}
-              />
-            </Grid>
-            <Grid item lg={4} sm={6} xl={3} xs={12}>
-              <InfoCard
-                title="Correct"
-                value={quiz.correctQuestions}
-                icon={<CheckIcon />}
-                color={green}
-              />
-            </Grid>
-            <Grid item lg={4} sm={6} xl={3} xs={12}>
-              <InfoCard
-                title="Incorrect"
-                value={10 - quiz.correctQuestions}
-                icon={<CloseIcon />}
-                color={red}
-              />
-            </Grid>
-            <Grid item lg={4} sm={6} xl={3} xs={12}>
-              <InfoCard
-                title="Total Time"
-                value={`${millisToMinutesAndSeconds(
-                  quiz.endTime - quiz.startTime
-                )} (mm:ss)`}
-                icon={<AccessTimeIcon />}
-                color={purple}
-              />
-            </Grid>
-            <Grid item lg={4} sm={6} xl={3} xs={12}>
-              <InfoCard
-                title="Time Bonus"
-                value={quiz.timeBonus ? quiz.correctQuestions : 0}
-                icon={quiz.timer ? <TimerIcon /> : <TimerOffIcon />}
-                color={blue}
-              />
-            </Grid>
-            <Grid item lg={4} sm={6} xl={3} xs={12}>
-              <InfoCard
-                title="Total Score"
-                value={quiz.score}
-                icon={<GradeIcon />}
-                color={orange}
-              />
-            </Grid>
-          </Grid>
-          <br />
-          <Paper>
+              <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                {categoryList[quiz.category]}
+              </Typography>
+              <Grid
+                container
+                justifyContent="space-evenly"
+                alignItems="center"
+                alignContent="center"
+                style={{ padding: "20px" }}
+                spacing={1}
+              >
+                {Object.entries(quiz.questions).map(([key, value]) => (
+                  <Grid item xs={4}>
+                    <Card
+                      variant="outlined"
+                      sx={{
+                        borderColor: value.isCorrect ? "green" : " red",
+                        minHeight: "180px",
+                      }}
+                    >
+                      <CardContent>
+                        <Typography
+                          variant="body2"
+                          style={{ color: PURPLE_COLOR }}
+                        >
+                          {value.statement} [{value.isCorrect ? "+3" : "-1"}]
+                          <hr />
+                          <Grid container>
+                            Your Choice: {value.selected}
+                            <br />
+                            Correct Answer: {value.correctChoice}
+                          </Grid>
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                ))}
+              </Grid>
+              <br />
+            </Paper>
             <br />
-            <Typography
-              variant="h5"
-              component="div"
-              sx={{ mb: 1, mt: 2, color: PURPLE_COLOR }}
-            >
-              Review Questions
-            </Typography>
-            <Typography sx={{ mb: 1.5 }} color="text.secondary">
-              {categoryList[quiz.category]}
-            </Typography>
-            <Grid
-              container
-              justifyContent="space-evenly"
-              alignItems="center"
-              alignContent="center"
-              style={{ padding: "20px" }}
-              spacing={1}
-            >
-              {Object.entries(quiz.questions).map(([key, value]) => (
-                <Grid item xs={4}>
-                  <Card
-                    variant="outlined"
-                    sx={{
-                      borderColor: value.isCorrect ? "green" : " red",
-                      minHeight: "180px",
-                    }}
-                  >
-                    <CardContent>
-                      <Typography
-                        variant="body2"
-                        style={{ color: PURPLE_COLOR }}
-                      >
-                        {value.statement} [{value.isCorrect ? "+3" : "-1"}]
-                        <hr />
-                        <Grid container>
-                          Your Choice: {value.selected}
-                          <br />
-                          Correct Answer: {value.correctChoice}
-                        </Grid>
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                </Grid>
-              ))}
-            </Grid>
-            <br />
-          </Paper>
-          <br />
-        </Container>
+          </Container>
+        </div>
       )}
     </>
   );

@@ -59,7 +59,7 @@ const Learn = () => {
   }
 
   return (
-    <div className="learn">
+    <div className="app-bg learn">
       <Container maxWidth="lg">
         <Grid container spacing={1}>
           <Grid item xs={12}>

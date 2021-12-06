@@ -102,94 +102,96 @@ function Categories() {
   }
 
   return (
-    <Container maxWidth="md">
-      <Grid container spacing={2} justifyContent="space-evenly">
-        <Grid item xs={12}>
-          <Typography component={"h1"} variant="h4" className={styles.header}>
-            Select a Category
-          </Typography>
+    <div className="app-bg">
+      <Container maxWidth="md">
+        <Grid container spacing={2} justifyContent="space-evenly">
+          <Grid item xs={12}>
+            <Typography component={"h1"} variant="h4" className={styles.header}>
+              Select a Category
+            </Typography>
+          </Grid>
+          {Object.entries(categories).map(([key, value]) => (
+            <Grid item xs={6} md={6} key={key}>
+              <Box
+                sx={{
+                  p: 2,
+                  display: "grid",
+                  gridTemplateColumns: { md: "1fr 1fr" },
+                  gap: 2,
+                }}
+              >
+                <Item
+                  onClick={(e) => handleCategorySelect(e, key)}
+                  key={key}
+                  className="card"
+                  elevation={3}
+                >
+                  {value}
+                </Item>
+              </Box>
+            </Grid>
+          ))}
         </Grid>
-        {Object.entries(categories).map(([key, value]) => (
-          <Grid item xs={6} md={6} key={key}>
+
+        <Dialog maxWidth={"sm"} fullWidth={true} open={open} align="left">
+          <DialogTitle>
+            <Grid
+              container
+              direction="row"
+              alignItems="center"
+              className={styles.popup}
+            >
+              <Grid item xs={2}>
+                <Avatar variant="rounded" sx={{ width: 56, height: 56 }}>
+                  <AssignmentIcon />
+                </Avatar>
+              </Grid>
+              <Grid item xs={10}>
+                Selected Category: {categories[currentCategory]}
+                <br />
+                <Typography variant="subtitle1">10 Questions</Typography>
+              </Grid>
+            </Grid>
+          </DialogTitle>
+          <DialogContent dividers>
+            <DialogContentText>
+              You can set timer for quiz. You'll get 1 bonus point for each
+              correct question if finished within the time.
+            </DialogContentText>
             <Box
+              noValidate
+              component="form"
               sx={{
-                p: 2,
-                display: "grid",
-                gridTemplateColumns: { md: "1fr 1fr" },
-                gap: 2,
+                display: "flex",
+                flexDirection: "column",
+                m: "auto",
+                width: "fit-content",
+                color: PURPLE_COLOR,
               }}
             >
-              <Item
-                onClick={(e) => handleCategorySelect(e, key)}
-                key={key}
-                className="card"
-                elevation={3}
-              >
-                {value}
-              </Item>
+              <FormControlLabel
+                sx={{ mt: 1 }}
+                control={
+                  <Switch checked={timer} onChange={() => setTimer(!timer)} />
+                }
+                label="Timer"
+              />
             </Box>
-          </Grid>
-        ))}
-      </Grid>
-
-      <Dialog maxWidth={"sm"} fullWidth={true} open={open} align="left">
-        <DialogTitle>
-          <Grid
-            container
-            direction="row"
-            alignItems="center"
-            className={styles.popup}
-          >
-            <Grid item xs={2}>
-              <Avatar variant="rounded" sx={{ width: 56, height: 56 }}>
-                <AssignmentIcon />
-              </Avatar>
-            </Grid>
-            <Grid item xs={10}>
-              Selected Category: {categories[currentCategory]}
-              <br />
-              <Typography variant="subtitle1">10 Questions</Typography>
-            </Grid>
-          </Grid>
-        </DialogTitle>
-        <DialogContent dividers>
-          <DialogContentText>
-            You can set timer for quiz. You'll get 1 bonus point for each
-            correct question if finished within the time.
-          </DialogContentText>
-          <Box
-            noValidate
-            component="form"
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              m: "auto",
-              width: "fit-content",
-              color: PURPLE_COLOR,
-            }}
-          >
-            <FormControlLabel
-              sx={{ mt: 1 }}
-              control={
-                <Switch checked={timer} onChange={() => setTimer(!timer)} />
-              }
-              label="Timer"
-            />
-          </Box>
-        </DialogContent>
-        <DialogActions>
-          <Button className={styles.btn} onClick={cancelQuiz}>
-            Change Category
-          </Button>
-          <Button className={styles.btn} onClick={showFlashcards}>
-            Show Flashcards
-          </Button>
-          <Button className={styles.btn} onClick={handleStartQuiz}>
-            Start Quiz
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </Container>
+          </DialogContent>
+          <DialogActions>
+            <Button className={styles.btn} onClick={cancelQuiz}>
+              Change Category
+            </Button>
+            <Button className={styles.btn} onClick={showFlashcards}>
+              Show Flashcards
+            </Button>
+            <Button className={styles.btn} onClick={handleStartQuiz}>
+              Start Quiz
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </Container>
+    </div>
   );
 }
 
