@@ -3,7 +3,7 @@ import React from "react";
 import Chart from "react-google-charts";
 
 const QuizCharts = ({ quizData, category, chartType, x, y }) => {
-  const categoryLabel = category.replace("-", " ").toUpperCase();
+  const categoryLabel = category.replace("-", " ");
 
   const formatDate = (d) => {
     const date = new Date(d);
@@ -50,7 +50,8 @@ const QuizCharts = ({ quizData, category, chartType, x, y }) => {
         />
       ) : (
         <Typography variant="p" component="p">
-          You need to take quizzes for this category to see {chartType} here!
+          You need to take quizzes for "{categoryLabel}" category to see{" "}
+          {chartType} here!
         </Typography>
       )}
     </>
