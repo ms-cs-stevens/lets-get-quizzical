@@ -178,13 +178,13 @@ function Categories() {
           </Box>
         </DialogContent>
         <DialogActions>
-          <Button color="primary" onClick={cancelQuiz}>
+          <Button className={styles.btn} onClick={cancelQuiz}>
             Change Category
           </Button>
-          <Button color="primary" onClick={showFlashcards}>
+          <Button className={styles.btn} onClick={showFlashcards}>
             Show Flashcards
           </Button>
-          <Button color="primary" onClick={handleStartQuiz}>
+          <Button className={styles.btn} onClick={handleStartQuiz}>
             Start Quiz
           </Button>
         </DialogActions>
